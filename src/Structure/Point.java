@@ -1,35 +1,35 @@
 package Structure;
 
 public class Point {
-	int x,y,z;
+	double x,y,z;
 	
-	public Point(int c, int d, int e) {
+	public Point(double c, double d, double e) {
 		x = c;
 		y = d;
 		z = e;
 	}
 
-	public int getX() {
+	public double getX() {
 		return x;
 	}
 
-	public void setX(int x) {
+	public void setX(double x) {
 		this.x = x;
 	}
 
-	public int getY() {
+	public double getY() {
 		return y;
 	}
 
-	public void setY(int y) {
+	public void setY(double y) {
 		this.y = y;
 	}
 
-	public int getZ() {
+	public double getZ() {
 		return z;
 	}
 
-	public void setZ(int z) {
+	public void setZ(double z) {
 		this.z = z;
 	}
 	

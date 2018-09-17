@@ -1,1 +1,1 @@
-README
+Groupe : Canonne Théo, Danglot Clément, Breviere Lucas, Bauvin Raphael

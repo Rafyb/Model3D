@@ -10,3 +10,5 @@ A faire:
 M -> model
 V-> Vue
 C -> controlleur
+
+Tests à faire;

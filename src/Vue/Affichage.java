@@ -28,12 +28,12 @@ public class Affichage extends Application {
 	    GestionAffichage direction = new GestionAffichage();
 	    Canvas canvas = new Canvas (300, 300);
 	    gc = canvas.getGraphicsContext2D();
-	    gc.setFill(Color.BLUE);
+	    gc.setFill(Color.GREY);
 	    root.getChildren().add(canvas);
 	    Scene scene = new Scene(root);
 	    scene.setCamera(new PerspectiveCamera());
 	    
-
+	    triangle(new double[] {30.0,100.0,10.0},new double[] {30.0,10.0,200.0},3);
 	    
 	    stage.setScene(scene);
 	    stage.setTitle("Model 3D Afficheur");

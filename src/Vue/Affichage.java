@@ -1,5 +1,7 @@
 package Vue;
 
+import java.util.ArrayList;
+
 import Controlleur.GestionAffichage;
 import javafx.application.Application;
 import javafx.scene.PerspectiveCamera;
@@ -10,29 +12,28 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Polygon;
+import javafx.scene.shape.TriangleMesh;
 import javafx.stage.Stage;
 
 public class Affichage extends Application {
+	ArrayList<TriangleMesh> triangles= new ArrayList<TriangleMesh>();
+	GraphicsContext gc;
 
 	  public void start(Stage stage) { 
+		  
+		//////////////////////////// SCENES ////////////////////////////
 		VBox root = new VBox();
 	    GestionAffichage direction = new GestionAffichage();
 	    Canvas canvas = new Canvas (300, 300);
-	    GraphicsContext gc = canvas.getGraphicsContext2D();
+	    gc = canvas.getGraphicsContext2D();
+	    gc.setFill(Color.BLUE);
 	    root.getChildren().add(canvas);
-        root.setStyle("-fx-background-color: lightgrey;"); 
-        
-	    
-	    
-
 	    Scene scene = new Scene(root);
 	    scene.setCamera(new PerspectiveCamera());
 	    
-	    
 
-	    
-	    
-	    
 	    
 	    stage.setScene(scene);
 	    stage.setTitle("Model 3D Afficheur");
@@ -44,6 +45,10 @@ public class Affichage extends Application {
 
 	  public static void main(String[] args) {
 	    Application.launch(args);
+	  }
+	  
+	  public void triangle(double[] pointX, double[] pointY, int nPoint) {
+		  gc.fillPolygon(pointX,pointY,nPoint);
 	  }
 
 }

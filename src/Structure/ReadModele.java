@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import Modele.Modele;
 
@@ -16,8 +15,8 @@ public class ReadModele {
 	private int nbPoint;
 	private int nbFace;
 
-	private ArrayList<Point> point = new ArrayList<Point>();
-	private ArrayList<Face> face = new ArrayList<Face>();
+	private Point[] points;
+	private Face[] faces;
 
 	public ReadModele(String fichier) {
 		f = new File(fichier);
@@ -39,6 +38,7 @@ public class ReadModele {
 			}
 		} while (!st.contains("element vertex"));
 		nbPoint = Integer.parseInt(st.substring(15));
+		points = new Point[nbPoint];
 		System.out.println(nbPoint);
 
 
@@ -51,6 +51,7 @@ public class ReadModele {
 			}
 		} while (!st.contains("element face"));
 		nbFace = Integer.parseInt(st.substring(13));
+		faces = new Face[nbFace];
 		System.out.println(nbFace);
 
 
@@ -73,7 +74,7 @@ public class ReadModele {
 			try {
 				st = br.readLine();
 				String[] p = st.split(" ");
-				point.add(new Point(Double.parseDouble(p[0]), Double.parseDouble(p[1]), Double.parseDouble(p[2])));
+				points[cpt] = new Point(Double.parseDouble(p[0]), Double.parseDouble(p[1]), Double.parseDouble(p[2]));
 				cpt ++;
 			} catch (IOException e) {
 				System.out.println("point bug bug");
@@ -87,7 +88,7 @@ public class ReadModele {
 			try {
 				st = br.readLine();
 				String[] p = st.split(" ");
-				face.add(new Face(point.get(Integer.parseInt(p[0])), point.get(Integer.parseInt(p[1])), point.get(Integer.parseInt(p[2]))));
+				faces[cpt] = new Face(points[Integer.parseInt(p[0])], points[Integer.parseInt(p[1])], points[Integer.parseInt(p[2])]);
 				cpt ++;
 			} catch (IOException e) {
 				System.out.println("point bug bug");
@@ -96,16 +97,18 @@ public class ReadModele {
 
 	}
 
-	public ArrayList<Point> getPoint(){	
-		return point;
+	public Point[] getPoint(){	
+		return points;
 	}
 
-	public ArrayList<Face> getFace(){	
-		return face;
+	public Face[] getFace(){	
+		return faces;
 	}
 
 	public static void main(String[] args) {
-		Modele m = new Modele(new ReadModele("ressources/3carre.ply"));
+		Modele m = new Modele(new ReadModele("ressources/dolphin.ply"));
+		System.out.println(m);
+		m.triZ();
 		System.out.println(m);
 	}
 }

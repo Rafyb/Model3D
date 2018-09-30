@@ -7,6 +7,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import Modele.Modele;
+
 public class ReadModele {
 	private File f;
 	private BufferedReader br;
@@ -71,14 +73,14 @@ public class ReadModele {
 			try {
 				st = br.readLine();
 				String[] p = st.split(" ");
-				point.add(new Point(Integer.parseInt(p[0]), Integer.parseInt(p[1]), Integer.parseInt(p[2])));
+				point.add(new Point(Double.parseDouble(p[0]), Double.parseDouble(p[1]), Double.parseDouble(p[2])));
 				cpt ++;
 			} catch (IOException e) {
 				System.out.println("point bug bug");
 			}
 		}
 
-		// ------------------------- Ajout des point dans l'ArrayList ------------------------
+		// ------------------------- Ajout des faces dans l'ArrayList ------------------------
 
 		cpt = 0;
 		while (cpt < nbFace) {
@@ -103,8 +105,7 @@ public class ReadModele {
 	}
 
 	public static void main(String[] args) {
-		ReadModele r = new ReadModele("ressources/dolphin.ply");
-		System.out.println(r.getPoint());
-		System.out.println(r.getFace());
+		Modele m = new Modele(new ReadModele("ressources/3carre.ply"));
+		System.out.println(m);
 	}
 }

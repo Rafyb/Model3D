@@ -1,12 +1,14 @@
 package Modele;
 
+import java.util.Observable;
+
 import Structure.Face;
 import Structure.Point;
 import Structure.ReadModele;
 import Tri.TriRapide;
 
 
-public class Modele {
+public class Modele extends Observable{
 
 	public Point[] points ;
 	//public ArrayList<Segment> segments = new ArrayList<>() ;

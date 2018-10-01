@@ -63,6 +63,13 @@ public class Modele extends Observable{
 		this.setChanged();
 		notifyObservers();
 	}
+	
+	public void translation(Point p) {
+		r.translation(this, p);
+		update();
+		this.setChanged();
+		notifyObservers();
+	}
 
 
 	private void update() {

@@ -1,6 +1,7 @@
 package Tri;
 
 import Modele.Modele;
+import Structure.Point;
 public class Rotation {
 
 	public Rotation() {
@@ -66,6 +67,19 @@ public class Rotation {
 			m.getPointAtIndex(i).setX(x*(1-coef));
 			m.getPointAtIndex(i).setY(y*(1-coef));
 			m.getPointAtIndex(i).setZ(z*(1-coef));
+		}
+	}
+	
+	public void translation(Modele m, Point p) {
+		for(int i = 0 ; i < m.getAllPoints().length;i++) {
+
+			double x = m.getPointAtIndex(i).getX();
+			double y = m.getPointAtIndex(i).getY();
+			double z = m.getPointAtIndex(i).getZ();
+
+			m.getPointAtIndex(i).setX(x+p.getX());
+			m.getPointAtIndex(i).setY(y+p.getY());
+			m.getPointAtIndex(i).setZ(z+p.getZ());
 		}
 	}
 }

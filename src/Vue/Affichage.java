@@ -47,7 +47,6 @@ public class Affichage implements Observer {
 	  
 
 	    
-	    
 	    mod.triZ();
 	    triangle(mod);
 	    

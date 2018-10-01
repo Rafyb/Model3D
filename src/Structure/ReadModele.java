@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 
 import Modele.Modele;
 
@@ -88,7 +89,8 @@ public class ReadModele {
 			try {
 				st = br.readLine();
 				String[] p = st.split(" ");
-				faces[cpt] = new Face(points[Integer.parseInt(p[0])], points[Integer.parseInt(p[1])], points[Integer.parseInt(p[2])]);
+				System.out.println(Arrays.toString(p));
+				faces[cpt] = new Face(points[Integer.parseInt(p[1])], points[Integer.parseInt(p[2])], points[Integer.parseInt(p[3])]);
 				cpt ++;
 			} catch (IOException e) {
 				System.out.println("point bug bug");
@@ -107,8 +109,6 @@ public class ReadModele {
 
 	public static void main(String[] args) {
 		Modele m = new Modele(new ReadModele("ressources/dolphin.ply"));
-		System.out.println(m);
-		m.triZ();
-		System.out.println(m);
+		
 	}
 }

@@ -17,7 +17,7 @@ public class Face {
 		centreGravite = new Point(xG,yG,zG);
 		
 	}
-
+	
 	public Point[] getTabp() {
 		return tabp;
 	}

@@ -13,9 +13,11 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class GestionAffichage implements Observer{
+	Modele mod;
 
 	  public GestionAffichage(Modele modele) {
-		// TODO Auto-generated constructor stub
+		mod = modele;
+		mod.addObserver(this);
 	}
 
 	public void start(Stage stage) {
@@ -62,7 +64,6 @@ public class GestionAffichage implements Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
 		
 	}
 }

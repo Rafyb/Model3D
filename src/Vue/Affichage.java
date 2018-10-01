@@ -27,9 +27,11 @@ public class Affichage implements Observer {
 	Polygon[] triangles;
 	GraphicsContext gc;
 	Canvas canvas;
+	Modele mod;
 
 	  public Affichage(Modele modele) {
-		// TODO Auto-generated constructor stub
+		mod = modele;
+		mod.addObserver(this);
 	}
 
 	public void start(Stage stage) { 
@@ -45,7 +47,7 @@ public class Affichage implements Observer {
 	  
 
 	    
-	    Modele mod = new Modele(new ReadModele("ressources/dolphin.ply"));
+	    
 	    mod.triZ();
 	    triangle(mod);
 	    
@@ -55,10 +57,6 @@ public class Affichage implements Observer {
 	    stage.show();
 
 
-	  }
-
-	  public static void main(String[] args) {
-	    Application.launch(args);
 	  }
 
 	  
@@ -78,6 +76,11 @@ public class Affichage implements Observer {
 		// TODO Auto-generated method stub
 		
 	}
+	
+
+	  public static void main(String[] args) {
+	    Application.launch(args);
+	  }
 
 }
 

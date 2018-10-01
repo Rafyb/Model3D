@@ -13,5 +13,9 @@ public class AppliModel3D extends Application {
 		mod.start();
 
 	}
+	
+	public static void main(String[] args) {
+		Application.launch(args);
+	}
 
 }

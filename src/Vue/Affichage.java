@@ -48,7 +48,7 @@ public class Affichage implements Observer {
 
 	    
 	    mod.triZ();
-	    triangle(mod);
+	    triangle();
 	    
 	    stage.setScene(scene);
 	    stage.setTitle("Model 3D Afficheur");
@@ -59,7 +59,7 @@ public class Affichage implements Observer {
 	  }
 
 	  
-	  public void triangle(Modele mod) {
+	  public void triangle() {
 		  for(int i = 0; i < mod.getAllFace().length; i++) {
 			  Face face = mod.getFaceAtIndex(i);
 			  Point[] points = face.getTabp();
@@ -72,7 +72,8 @@ public class Affichage implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
+		
+		triangle();
 		
 	}
 	

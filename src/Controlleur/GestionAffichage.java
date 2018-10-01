@@ -34,6 +34,10 @@ public class GestionAffichage implements Observer{
 	    zoom.setMinSize(35, 35);
 	    dezoom.setMinSize(35, 35);
 	    
+	    haut.setOnAction(e ->{
+	    	mod.rotationX(90);
+	    });
+	    
 	    
 	    droite.setMinSize(50, 50);
 	    gauche.setMinSize(50, 50);

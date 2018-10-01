@@ -40,8 +40,16 @@ public class Modele extends Observable{
 	
 	public void rotationX(int radian) {
 		r.rotationX(this,radian);
+		update();
+		this.setChanged();
+		notifyObservers();
 	}
 
+
+	private void update() {
+		
+		
+	}
 
 	public Point[] getAllPoints(){
 		return points;

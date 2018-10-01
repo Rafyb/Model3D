@@ -2,10 +2,13 @@ package Modele;
 
 import java.util.Observable;
 
+import Controlleur.GestionAffichage;
 import Structure.Face;
 import Structure.Point;
 import Structure.ReadModele;
 import Tri.TriRapide;
+import Vue.Affichage;
+import javafx.stage.Stage;
 
 
 public class Modele extends Observable{
@@ -14,6 +17,9 @@ public class Modele extends Observable{
 	//public ArrayList<Segment> segments = new ArrayList<>() ;
 	public Face[] face;
 	public TriRapide t = new TriRapide();
+	
+	Affichage aff = new Affichage(this);
+	GestionAffichage boutons = new GestionAffichage(this);
 
 
 	public Modele(ReadModele r) {
@@ -61,6 +67,12 @@ public class Modele extends Observable{
 		res = res.substring(0,res.length()-1);
 		res+= "]";
 		return res;
+	}
+
+	public void start() {
+		aff.start(new Stage());
+		boutons.start(new Stage());
+		
 	}
 
 

@@ -1,6 +1,8 @@
 package Vue;
 
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 import Controlleur.GestionAffichage;
 import Modele.Modele;
@@ -21,16 +23,19 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.TriangleMesh;
 import javafx.stage.Stage;
 
-public class Affichage extends Application {
+public class Affichage implements Observer {
 	Polygon[] triangles;
 	GraphicsContext gc;
 	Canvas canvas;
 
-	  public void start(Stage stage) { 
+	  public Affichage(Modele modele) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public void start(Stage stage) { 
 		  
 		//////////////////////////// SCENES ////////////////////////////
 		VBox root = new VBox();
-	    GestionAffichage direction = new GestionAffichage();
 	    canvas = new Canvas (1000, 800);
 	    gc = canvas.getGraphicsContext2D();
 	    gc.setFill(Color.GREY);
@@ -48,7 +53,7 @@ public class Affichage extends Application {
 	    stage.setTitle("Model 3D Afficheur");
 	    stage.setResizable(false);
 	    stage.show();
-	    //direction.start(new Stage());
+
 
 	  }
 
@@ -67,6 +72,12 @@ public class Affichage extends Application {
 					   new double[]{points[0].getY()+(canvas.getHeight()/2),points[1].getY()+(canvas.getHeight()/2),points[2].getY()+(canvas.getHeight()/2)},3);
 		  }
 	  }
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
 

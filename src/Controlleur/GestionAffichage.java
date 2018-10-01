@@ -1,5 +1,9 @@
 package Controlleur;
 
+import java.util.Observable;
+import java.util.Observer;
+
+import Modele.Modele;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -8,9 +12,13 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class GestionAffichage extends Application {
+public class GestionAffichage implements Observer{
 
-	  public void start(Stage stage) {
+	  public GestionAffichage(Modele modele) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public void start(Stage stage) {
 	    GridPane root = new GridPane();
 	    
 	    Button droite = new Button(">");
@@ -51,5 +59,11 @@ public class GestionAffichage extends Application {
 	  public static void main(String[] args) {
 	    Application.launch(args);
 	  }
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 

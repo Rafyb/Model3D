@@ -1,6 +1,13 @@
 package Tri;
 
+import javax.sound.midi.VoiceStatus;
+
+import com.sun.xml.internal.ws.policy.PolicyIntersector;
+
+import Modele.Modele;
 import Structure.Face;
+import Structure.Point;
+import Structure.ReadModele;
 
 public class TriRapide {
 	public  void triRapide(Face[] tableau)
@@ -40,5 +47,25 @@ public class TriRapide {
 
 		face[m] = face[n];
 		face[n] = temp;
+	}
+	
+	public static void main(String []args) {
+		Modele test1 = new Modele(new ReadModele("ressources/test1.ply"));
+		Modele test2 = new Modele(new ReadModele("ressources/test2.ply"));
+		Face[] points ;
+		Face[] points2 ;
+		
+		test2.triZ();
+		points = test1.getAllFace();
+		points2 = test2.getAllFace();
+		
+		for(int i = 0; i < points.length; i++) {
+			System.out.println(points[i]);
+			System.out.println(points2[i]);
+			
+		}
+		
+			
+		
 	}
 }

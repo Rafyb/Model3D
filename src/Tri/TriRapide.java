@@ -26,7 +26,7 @@ public class TriRapide {
 		return(compt);
 	}
 
-	private  void triRapide(Face[] tableau,int deb,int fin)
+	private void triRapide(Face[] tableau,int deb,int fin)
 	{
 		if(deb<fin)
 		{

@@ -3,6 +3,10 @@ package Vue;
 import java.util.ArrayList;
 
 import Controlleur.GestionAffichage;
+import Modele.Modele;
+import Structure.Face;
+import Structure.Point;
+import Structure.ReadModele;
 import javafx.application.Application;
 import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
@@ -26,14 +30,16 @@ public class Affichage extends Application {
 		//////////////////////////// SCENES ////////////////////////////
 		VBox root = new VBox();
 	    GestionAffichage direction = new GestionAffichage();
-	    Canvas canvas = new Canvas (300, 300);
+	    Canvas canvas = new Canvas (800, 800);
 	    gc = canvas.getGraphicsContext2D();
 	    gc.setFill(Color.GREY);
 	    root.getChildren().add(canvas);
 	    Scene scene = new Scene(root);
 	    scene.setCamera(new PerspectiveCamera());
 	    
-	    triangle(new double[] {30.0,100.0,10.0},new double[] {30.0,10.0,200.0},3);
+	    
+	    Modele mod = new Modele(new ReadModele("ressources/dolphin.ply"));
+	    affiche(mod);
 	    
 	    stage.setScene(scene);
 	    stage.setTitle("Model 3D Afficheur");
@@ -49,6 +55,15 @@ public class Affichage extends Application {
 	  
 	  public void triangle(double[] pointX, double[] pointY, int nPoint) {
 		  gc.fillPolygon(pointX,pointY,nPoint);
+	  }
+	  
+	  public void affiche(Modele mod) {
+		  for(int i = 0; i < mod.getAllFace().length; i++) {
+			  Face face = mod.getFaceAtIndex(i);
+			  Point[] points = face.getTabp();
+			  triangle(new double[]{points[0].getX(),points[1].getX(),points[2].getX()},
+					   new double[]{points[0].getY(),points[1].getY(),points[2].getY()},3);
+		  }
 	  }
 
 }

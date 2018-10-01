@@ -22,7 +22,7 @@ import javafx.scene.shape.TriangleMesh;
 import javafx.stage.Stage;
 
 public class Affichage extends Application {
-	ArrayList<TriangleMesh> triangles= new ArrayList<TriangleMesh>();
+	Polygon[] triangles;
 	GraphicsContext gc;
 
 	  public void start(Stage stage) { 
@@ -30,39 +30,40 @@ public class Affichage extends Application {
 		//////////////////////////// SCENES ////////////////////////////
 		VBox root = new VBox();
 	    GestionAffichage direction = new GestionAffichage();
-	    Canvas canvas = new Canvas (800, 800);
+	    Canvas canvas = new Canvas (1000, 800);
 	    gc = canvas.getGraphicsContext2D();
 	    gc.setFill(Color.GREY);
 	    root.getChildren().add(canvas);
 	    Scene scene = new Scene(root);
 	    scene.setCamera(new PerspectiveCamera());
+	  
 	    
 	    
 	    Modele mod = new Modele(new ReadModele("ressources/dolphin.ply"));
-	    affiche(mod);
+	    mod.triZ();
+	    triangle(mod);
 	    
 	    stage.setScene(scene);
 	    stage.setTitle("Model 3D Afficheur");
 	    stage.setResizable(false);
 	    stage.show();
-	    direction.start(new Stage());
+	    //direction.start(new Stage());
 
 	  }
 
 	  public static void main(String[] args) {
 	    Application.launch(args);
 	  }
+
 	  
-	  public void triangle(double[] pointX, double[] pointY, int nPoint) {
-		  gc.fillPolygon(pointX,pointY,nPoint);
-	  }
-	  
-	  public void affiche(Modele mod) {
+	  public void triangle(Modele mod) {
 		  for(int i = 0; i < mod.getAllFace().length; i++) {
 			  Face face = mod.getFaceAtIndex(i);
 			  Point[] points = face.getTabp();
-			  triangle(new double[]{points[0].getX(),points[1].getX(),points[2].getX()},
-					   new double[]{points[0].getY(),points[1].getY(),points[2].getY()},3);
+			  gc.fillPolygon(new double[]{points[0].getX()+500,points[1].getX()+500,points[2].getX()+500},
+					   new double[]{points[0].getY()+500,points[1].getY()+500,points[2].getY()+500},3);
+			  gc.strokePolygon(new double[]{points[0].getX()+500,points[1].getX()+500,points[2].getX()+500},
+					   new double[]{points[0].getY()+500,points[1].getY()+500,points[2].getY()+500},3);
 		  }
 	  }
 

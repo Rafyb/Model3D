@@ -1,12 +1,7 @@
 package Tri;
 
-import javax.sound.midi.VoiceStatus;
-
-import com.sun.xml.internal.ws.policy.PolicyIntersector;
-
 import Modele.Modele;
 import Structure.Face;
-import Structure.Point;
 import Structure.ReadModele;
 
 public class TriRapide {

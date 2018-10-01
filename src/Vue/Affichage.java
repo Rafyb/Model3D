@@ -1,26 +1,19 @@
 package Vue;
 
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-import Controlleur.GestionAffichage;
 import Modele.Modele;
 import Structure.Face;
 import Structure.Point;
-import Structure.ReadModele;
 import javafx.application.Application;
 import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
-import javafx.scene.shape.TriangleMesh;
 import javafx.stage.Stage;
 
 public class Affichage implements Observer {
@@ -72,7 +65,8 @@ public class Affichage implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		
+		gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+		mod.triZ();
 		triangle();
 		
 	}

@@ -5,8 +5,6 @@ import java.util.Observer;
 
 import Modele.Modele;
 import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
@@ -35,9 +33,24 @@ public class GestionAffichage implements Observer{
 	    dezoom.setMinSize(35, 35);
 	    
 	    haut.setOnAction(e ->{
-	    	mod.rotationX(90);
+	    	mod.rotationX(10);
+	    });
+	    bas.setOnAction(e ->{
+	    	mod.rotationX(-10);
 	    });
 	    
+	    gauche.setOnAction(e ->{
+	    	mod.rotationY(-10);
+	    });
+	    droite.setOnAction(e ->{
+	    	mod.rotationY(10);
+	    });
+	    zoom.setOnAction(e ->{
+	    	mod.zoom(0.25);
+	    });
+	    dezoom.setOnAction(e ->{
+	    	mod.dezoom(0.25);
+	    });
 	    
 	    droite.setMinSize(50, 50);
 	    gauche.setMinSize(50, 50);

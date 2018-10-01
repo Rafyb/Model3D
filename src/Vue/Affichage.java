@@ -24,20 +24,21 @@ import javafx.stage.Stage;
 public class Affichage extends Application {
 	Polygon[] triangles;
 	GraphicsContext gc;
+	Canvas canvas;
 
 	  public void start(Stage stage) { 
 		  
 		//////////////////////////// SCENES ////////////////////////////
 		VBox root = new VBox();
 	    GestionAffichage direction = new GestionAffichage();
-	    Canvas canvas = new Canvas (1000, 800);
+	    canvas = new Canvas (1000, 800);
 	    gc = canvas.getGraphicsContext2D();
 	    gc.setFill(Color.GREY);
 	    root.getChildren().add(canvas);
 	    Scene scene = new Scene(root);
 	    scene.setCamera(new PerspectiveCamera());
 	  
-	    
+
 	    
 	    Modele mod = new Modele(new ReadModele("ressources/dolphin.ply"));
 	    mod.triZ();
@@ -60,10 +61,10 @@ public class Affichage extends Application {
 		  for(int i = 0; i < mod.getAllFace().length; i++) {
 			  Face face = mod.getFaceAtIndex(i);
 			  Point[] points = face.getTabp();
-			  gc.fillPolygon(new double[]{points[0].getX()+500,points[1].getX()+500,points[2].getX()+500},
-					   new double[]{points[0].getY()+500,points[1].getY()+500,points[2].getY()+500},3);
-			  gc.strokePolygon(new double[]{points[0].getX()+500,points[1].getX()+500,points[2].getX()+500},
-					   new double[]{points[0].getY()+500,points[1].getY()+500,points[2].getY()+500},3);
+			  gc.fillPolygon(new double[]{points[0].getX()+(canvas.getWidth()/2),points[1].getX()+(canvas.getWidth()/2),points[2].getX()+(canvas.getWidth()/2)},
+					   new double[]{points[0].getY()+(canvas.getHeight()/2),points[1].getY()+(canvas.getHeight()/2),points[2].getY()+(canvas.getHeight()/2)},3);
+			  gc.strokePolygon(new double[]{points[0].getX()+(canvas.getWidth()/2),points[1].getX()+(canvas.getWidth()/2),points[2].getX()+(canvas.getWidth()/2)},
+					   new double[]{points[0].getY()+(canvas.getHeight()/2),points[1].getY()+(canvas.getHeight()/2),points[2].getY()+(canvas.getHeight()/2)},3);
 		  }
 	  }
 

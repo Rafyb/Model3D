@@ -3,13 +3,13 @@ package Tri;
 import Structure.Face;
 
 public class TriRapide {
-	public static void triRapide(Face[] tableau)
+	public  void triRapide(Face[] tableau)
 	{
 		int longueur=tableau.length;
 		triRapide(tableau,0,longueur-1);
 	}
 
-	private static int partition(Face[] tableau,int deb,int fin)
+	private  int partition(Face[] tableau,int deb,int fin)
 	{
 		int compt=deb;
 		Face pivot=tableau[deb];
@@ -26,7 +26,7 @@ public class TriRapide {
 		return(compt);
 	}
 
-	private static void triRapide(Face[] tableau,int deb,int fin)
+	private  void triRapide(Face[] tableau,int deb,int fin)
 	{
 		if(deb<fin)
 		{

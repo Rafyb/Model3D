@@ -21,6 +21,8 @@ public class Modele extends Observable{
 	public Rotation r = new Rotation();
 	
 	Affichage aff = new Affichage(this);
+	//Affichage aff2 = new Affichage(this);
+	//Affichage aff3 = new Affichage(this);
 	GestionAffichage boutons = new GestionAffichage(this);
 
 
@@ -110,6 +112,8 @@ public class Modele extends Observable{
 
 	public void start() {
 		aff.start(new Stage());
+		//aff2.start(new Stage());
+		//aff3.start(new Stage());
 		boutons.start(new Stage());
 		
 	}

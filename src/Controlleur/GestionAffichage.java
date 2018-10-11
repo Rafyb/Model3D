@@ -38,16 +38,18 @@ public class GestionAffichage implements Observer{
 
 	    root.setMargin(ligne2, new Insets(5.0,10.0,10.0,5.0));
 	    
-	    Text slideRot = new Text("0");
-	    Text slideTr = new Text("0");
+	    Text slideRot = new Text("10");
+	    Text slideTr = new Text("10");
 		
 	    Slider sliderrot = new Slider();
+	    sliderrot.setValue(10);
 	    sliderrot.setMin(0.0);
-	    sliderrot.setMax(360.0);
+	    sliderrot.setMax(180.0);
 	    
 	    Slider slidertr = new Slider();
+	    slidertr.setValue(10);
 	    slidertr.setMin(0.0);
-	    slidertr.setMax(50.0);
+	    slidertr.setMax(100.0);
 	    
 	    Button droite = new Button(">");
 	    Button gauche = new Button("<");

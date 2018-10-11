@@ -1,6 +1,6 @@
 package Structure;
 
-public class Face {	
+public class Face implements Comparable<Face>{	
 	Point[] tabp;
 	Point centreGravite;
 	/**
@@ -31,6 +31,14 @@ public class Face {
 	public String toString() {
 		//return "["+tabp[0]+"-"+tabp[1]+"-"+tabp[2]+"]";
 		return centreGravite.getZ()+"";
+	}
+
+	@Override
+	public int compareTo(Face o) {
+		// TODO Auto-generated method stub
+		if (this.getCentreG().getZ() == o.getCentreG().getZ()) return 0;
+		if (this.getCentreG().getZ() - o.getCentreG().getZ() < 0) return -1;
+		return 1;
 	}
 }
 		

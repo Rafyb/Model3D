@@ -1,12 +1,12 @@
 package Modele;
 
+import java.util.Arrays;
 import java.util.Observable;
 
 import Controlleur.GestionAffichage;
 import Structure.Face;
 import Structure.Point;
 import Structure.ReadModele;
-import Tri.TriRapide;
 import Vue.Affichage;
 import javafx.stage.Stage;
 import Tri.Rotation;
@@ -17,7 +17,6 @@ public class Modele extends Observable{
 	public Point[] points ;
 	//public ArrayList<Segment> segments = new ArrayList<>() ;
 	public Face[] face;
-	public TriRapide t = new TriRapide();
 	public Rotation r = new Rotation();
 	
 	Affichage aff = new Affichage(this);
@@ -37,7 +36,7 @@ public class Modele extends Observable{
 		}*/
 
 	public void triZ() {
-		t.triRapide(face);
+		Arrays.sort(face);
 	}
 	
 	public void rotationX(int radian) {

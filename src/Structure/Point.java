@@ -3,6 +3,7 @@ package Structure;
 public class Point {
 	double x,y,z;
 	
+	
 	public Point(double c, double d, double e) {
 		x = c;
 		y = d;

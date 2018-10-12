@@ -74,7 +74,10 @@ public class Modele extends Observable{
 
 
 	private void update() {
-		
+		for (Face f : face) {
+			
+			f.updateCdG();
+		}
 		
 	}
 

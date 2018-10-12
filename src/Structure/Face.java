@@ -24,6 +24,15 @@ public class Face implements Comparable<Face>{
 	public Point getCentreG() {
 		return centreGravite;
 	}
+	public void updateCdG() {
+		Point s = tabp[0];
+		Point s1 = tabp[1];
+		Point s2 = tabp[2];
+		double xG = (s.getX()+s1.getX()+s2.getX())/3;
+		double yG = (s.getY()+s1.getY()+s2.getY())/3;
+		double zG = (s.getZ()+s1.getZ()+s2.getZ())/3;
+		centreGravite = new Point(xG,yG,zG);
+	}
 	public void setTabp(Point[] tabp) {
 		this.tabp = tabp;
 	}

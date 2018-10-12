@@ -1,6 +1,7 @@
 package Tri;
 
 import Modele.Modele;
+import Structure.Face;
 import Structure.Point;
 public class Rotation {
 
@@ -15,7 +16,7 @@ public class Rotation {
 			double y = m.getPointAtIndex(i).getY();
 			double z = m.getPointAtIndex(i).getZ();
 
-			m.getPointAtIndex(i).setY((y*cos)-(z*sin));
+			m.getPointAtIndex(i).setY((y*cos+z*(-sin)));
 			m.getPointAtIndex(i).setZ((y*sin)+(z*cos));
 		}
 	}

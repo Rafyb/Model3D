@@ -38,6 +38,7 @@ public class GestionAffichage implements Observer{
 
 	    root.setMargin(ligne2, new Insets(5.0,10.0,10.0,5.0));
 	    
+	    Text choixT = new Text("Choix du modele :");
 	    Text slideRot = new Text("10");
 	    Text slideTr = new Text("10");
 		
@@ -141,7 +142,7 @@ public class GestionAffichage implements Observer{
 	    boutonsTr.add(thaut, 1, 0);
 	    
 	    
-	    root.getChildren().addAll(ligne1,sliderrot,boutonsRot,ligne2,ligne3,slidertr,boutonsTr);
+	    root.getChildren().addAll(choixT,ligne1,sliderrot,boutonsRot,ligne2,ligne3,slidertr,boutonsTr);
 
 	    Scene scene = new Scene(root, 150, 600);
 	    stage.setScene(scene);

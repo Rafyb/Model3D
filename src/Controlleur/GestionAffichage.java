@@ -51,6 +51,9 @@ public class GestionAffichage implements Observer{
 	    slidertr.setMin(0.0);
 	    slidertr.setMax(100.0);
 	    
+	    Button rotdroite = new Button("⤷");
+	    Button rotgauche = new Button("⤶");
+	    
 	    Button droite = new Button(">");
 	    Button gauche = new Button("<");
 	    Button haut = new Button("^");
@@ -116,11 +119,16 @@ public class GestionAffichage implements Observer{
 	    gauche.setMinSize(50, 50);
 	    haut.setMinSize(50, 50);
 	    bas.setMinSize(50, 50);
+	    
+	    rotdroite.setMinSize(50, 50);
+	    rotgauche.setMinSize(50, 50);
 
+	    boutonsRot.add(rotgauche, 0, 0);
+	    boutonsRot.add(rotdroite, 2, 0);
+	    boutonsRot.add(haut, 1, 0);
 	    boutonsRot.add(gauche, 0, 1);
 	    boutonsRot.add(bas, 1, 1);
 	    boutonsRot.add(droite, 2, 1);
-	    boutonsRot.add(haut, 1, 0);
 	    
 	    tdroite.setMinSize(50, 50);
 	    tgauche.setMinSize(50, 50);

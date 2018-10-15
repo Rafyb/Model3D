@@ -9,7 +9,7 @@ public class AppliModel3D extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Modele mod = new Modele(new ReadModele("data/spider.ply"));
+		Modele mod = new Modele(new ReadModele("data/corner.ply"));
 		mod.start();
 
 	}

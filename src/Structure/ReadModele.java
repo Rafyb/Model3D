@@ -106,7 +106,7 @@ public class ReadModele {
 	}
 
 	public static void main(String[] args) {
-		Modele m = new Modele(new ReadModele("ressources/dolphin.ply"));
+		Modele m = new Modele(new ReadModele("data/dolphin.ply"));
 		
 	}
 }

@@ -14,7 +14,7 @@ class ModeleReader {
 	
 	@Before
 	void initialiser() {
-		m = new Modele(new ReadModele("data/3carre.ply") );
+		m = new Modele(new ReadModele("data/dolphin.ply") );
 	}
 	
 	@Test

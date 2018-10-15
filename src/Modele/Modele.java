@@ -52,6 +52,13 @@ public class Modele extends Observable{
 		this.setChanged();
 		notifyObservers();
 	}
+	
+	public void rotationZ(int radian) {
+		r.rotationZ(this,radian);
+		update();
+		this.setChanged();
+		notifyObservers();
+	}
 	public void zoom(double coef) {
 		r.zoom(this,coef);
 		update();

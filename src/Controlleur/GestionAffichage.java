@@ -44,12 +44,12 @@ public class GestionAffichage implements Observer{
 		
 	    Slider sliderrot = new Slider();
 	    sliderrot.setValue(10);
-	    sliderrot.setMin(0.0);
+	    sliderrot.setMin(1.0);
 	    sliderrot.setMax(180.0);
 	    
 	    Slider slidertr = new Slider();
 	    slidertr.setValue(10);
-	    slidertr.setMin(0.0);
+	    slidertr.setMin(1.0);
 	    slidertr.setMax(100.0);
 	    
 	    Button rotdroite = new Button("⤷");
@@ -88,6 +88,13 @@ public class GestionAffichage implements Observer{
 	    });
 	    droite.setOnAction(e ->{
 	    	mod.rotationY((int)sliderrot.getValue());
+	    });
+	    
+	    rotgauche.setOnAction(e ->{
+	    	mod.rotationZ((int)sliderrot.getValue()*-1);
+	    });
+	    rotdroite.setOnAction(e ->{
+	    	mod.rotationZ((int)sliderrot.getValue());
 	    });
 	    zoom.setOnAction(e ->{
 	    	mod.zoom(0.25);

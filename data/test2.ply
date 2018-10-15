@@ -1,6 +1,6 @@
 ply
 format ascii 1.0
-comment created by cyprien
+comment created by lucas
 element vertex 6
 property float32 x
 property float32 y

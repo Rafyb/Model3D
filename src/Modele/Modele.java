@@ -29,6 +29,7 @@ public class Modele extends Observable{
 		points = r.getPoint();
 		//segments = r.getSegment();
 		face =  r.getFace();
+		this.centrer();
 	}
 
 	/*public void ajoutSegment(Segment s) {
@@ -37,6 +38,45 @@ public class Modele extends Observable{
 
 	public void triZ() {
 		Arrays.sort(face);
+	}
+	
+	public void centrer() {
+		double xMin = points[0].getX(), xMax = points[0].getX(),yMin = points[0].getY(),yMax = points[0].getY();
+		
+		for (Point p : points) {
+			if (p.getX()<xMin)
+				xMin = p.getX();
+			if (p.getX()>xMax)
+				xMax = p.getX();
+			if (p.getY()<yMin)
+				yMin = p.getY();
+			if (p.getY()>yMax)
+				yMax = p.getY();
+		}
+		double xT = -((xMax+xMin)/2);
+		double yT = -((yMax+yMin)/2);
+		Point translation = new Point(xT,yT,0);
+		r.translation(this, translation);
+		
+		for (Point p : points) {
+			if (p.getX()<xMin)
+				xMin = p.getX();
+			if (p.getX()>xMax)
+				xMax = p.getX();
+			if (p.getY()<yMin)
+				yMin = p.getY();
+			if (p.getY()>yMax)
+				yMax = p.getY();
+		}
+		
+		double transla = -300/xMin;
+		if (300/xMax < transla)  transla = 300/xMax;
+		if (-400/yMin < transla)  transla = -400/yMin;
+		if (400/yMax < transla)  transla = 400/yMax;
+		System.out.println(transla);
+		r.zoom(this,transla);
+		
+		System.out.println(" xMin = "+ xMin +" xMax = "+ xMax + " yMin = "+ yMin + " yMax = "+ yMax);
 	}
 	
 	public void rotationX(int radian) {
@@ -61,20 +101,17 @@ public class Modele extends Observable{
 	}
 	public void zoom(double coef) {
 		r.zoom(this,coef);
-		update();
 		this.setChanged();
 		notifyObservers();
 	}
 	public void dezoom(double coef) {
 		r.dezoom(this,coef);
-		update();
 		this.setChanged();
 		notifyObservers();
 	}
 	
 	public void translation(Point p) {
 		r.translation(this, p);
-		update();
 		this.setChanged();
 		notifyObservers();
 	}

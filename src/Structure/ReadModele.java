@@ -8,6 +8,10 @@ import java.io.IOException;
 
 import Modele.Modele;
 
+/**
+ * Lit un fichier de format .ply et genere la liste de point et de face du modele.
+ * @author canonnet
+ */
 public class ReadModele {
 	private File f;
 	private BufferedReader br;

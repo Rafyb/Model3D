@@ -19,8 +19,14 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * Un controleur attache au modele qui est la fenetre de controle de l'affichage.
+ * Permet d'effectuer les differentes operations de translation/rotation/zoom.
+ * La sensibilite des mouvements est modifiable via les sliders.
+ * @author bauvinr
+ */
 public class GestionAffichage implements Observer{
-	Modele mod;
+	private Modele mod;
 
 	  public GestionAffichage(Modele modele) {
 		mod = modele;

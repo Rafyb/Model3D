@@ -15,13 +15,21 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
-
+/**
+ * La vue du modele,fonctionne sous la forme de Observer/Observable.
+ * Fenetre affichant le modele en 3D à l'aide d'une methode de dessin de triangle.
+ * Gere aussi les rotations a la souris 
+ * > x et y
+ * > x seulement avec ctrl enfonce
+ * > y seulement avec shift enfonce
+ * @author bauvinr canonnet
+ */
 public class Affichage implements Observer {
-	Polygon[] triangles;
-	GraphicsContext gc;
-	Canvas canvas;
-	Modele mod;
-	double x,y;
+	private Polygon[] triangles;
+	private GraphicsContext gc;
+	private Canvas canvas;
+	private Modele mod;
+	private double x,y;
 
 	public Affichage(Modele modele) {
 		mod = modele;
@@ -38,7 +46,10 @@ public class Affichage implements Observer {
 		gc.setFill(Color.GREY);
 		root.getChildren().add(canvas);
 		Scene scene = new Scene(root);
-		scene.setCamera(new PerspectiveCamera());
+		//scene.setCamera(new PerspectiveCamera());
+		
+		
+		/////////////////////// MOUVEMENTS SOURIS ///////////////////////
 		canvas.setOnMouseDragged(e->{
 			
 			if(this.x-e.getX()<0 && !e.isShiftDown()) {
@@ -58,6 +69,7 @@ public class Affichage implements Observer {
 			this.y = e.getY();
 		});
 
+		////////////////////////// EXECUTION ///////////////////////////
 		mod.triZ();
 		triangle();
 
@@ -69,8 +81,8 @@ public class Affichage implements Observer {
 
 	}
 
-
-	public void triangle() {
+	// --------------------------- Dessine les triangles --------------------------//
+	private void triangle() {
 		for(int i = 0; i < mod.getAllFace().length; i++) {
 			Face face = mod.getFaceAtIndex(i);
 			Point[] points = face.getTabp();

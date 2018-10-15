@@ -1,8 +1,11 @@
 package Structure;
-
+/**
+ * Objet Face qui est forme de 3 points,contient les methodes de gestions du centre de gravite.
+ * @author danglotc
+ */
 public class Face implements Comparable<Face>{	
-	Point[] tabp;
-	Point centreGravite;
+	private Point[] tabp;
+	private Point centreGravite;
 	/**
 	 * 
 	 * @param s Premier point ( x ) 

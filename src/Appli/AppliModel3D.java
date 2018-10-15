@@ -5,6 +5,10 @@ import Structure.ReadModele;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+/**
+ * Class a executer pour lancer l'application. 
+ * @author bauvinr
+ */
 public class AppliModel3D extends Application {
 
 	@Override

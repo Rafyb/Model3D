@@ -1,7 +1,11 @@
 package Structure;
 
+/**
+ * Objet Point avec les coordonnees x, y et z.
+ * @author danglotc
+ */
 public class Point {
-	double x,y,z;
+	private double x,y,z;
 	
 	
 	public Point(double c, double d, double e) {

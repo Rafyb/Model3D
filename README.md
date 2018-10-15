@@ -7,8 +7,8 @@ A faire:
 - une class ReadFicher M
 - une classe modele M
 
-M -> model
-V-> Vue
-C -> controlleur
+M -> class Modele
+V-> class Affichage
+C -> class GestionAffichage
 
 Tests à faire;

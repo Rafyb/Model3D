@@ -14,12 +14,8 @@ public class TriTest {
 	@Test
 	public void TrieRapideTest() {
 		test1 = new Modele(new ReadModele("data/corner.ply"));
-		test2 = new Modele(new ReadModele("data/test1.ply"));
+		test2 = new Modele(new ReadModele("data/cornertrie.ply"));
 		test1.triZ();
-		
-		
-	
-		
 		assertFalse(test1.getAllFace().equals(test2.getAllFace()));	
 			
 			

@@ -10,7 +10,7 @@ import Modele.Modele;
 
 /**
  * Lit un fichier de format .ply et genere la liste de point et de face du modele.
- * @author canonnet
+ * @author danglotc
  */
 public class ReadModele {
 	private File f;
@@ -21,7 +21,12 @@ public class ReadModele {
 
 	private Point[] points;
 	private Face[] faces;
-
+	
+	
+	/**
+	 * Constructeur prenant en @param l'adresse d'un fichier, génère un objet ReadModele contenant les faces et les points lues sur le fichier.
+	 *  
+	 */
 	public ReadModele(String fichier) {
 		f = new File(fichier);
 
@@ -33,7 +38,7 @@ public class ReadModele {
 
 		String st = ""; 
 
-		// ------------------------- GET NB POINT ------------------------
+		// ------------------------- GET NB POINT ------------------------		
 		do {
 			try {
 				st = br.readLine();
@@ -100,17 +105,16 @@ public class ReadModele {
 		}
 
 	}
-
+	/**
+	 * Récupérer les points.
+	 */
 	public Point[] getPoint(){	
 		return points;
 	}
-
+	/**
+	 * Récupérer les faces.
+	 */
 	public Face[] getFace(){	
 		return faces;
-	}
-
-	public static void main(String[] args) {
-		Modele m = new Modele(new ReadModele("data/dolphin.ply"));
-		
-	}
+	}	
 }

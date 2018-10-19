@@ -119,6 +119,7 @@ public class GestionAffichage implements Observer{
 	    slidertr.valueProperty().addListener(e->slideTr.setText(Integer.toString((int)slidertr.getValue())));
 	    
 	    comboBox.getSelectionModel().selectedItemProperty().addListener(observable -> mod.changerModele(new ReadModele("./data/"+comboBox.getSelectionModel().getSelectedItem())));
+	    comboBox.setValue("corner.ply");
 	    // --------------------------- TAILLE BOUTONS --------------------------//
 	    
 	    droite.setMinSize(50, 50);

@@ -22,12 +22,16 @@ import javafx.stage.Stage;
  * Un controleur attache au modele qui est la fenetre de controle de l'affichage.
  * Permet d'effectuer les differentes operations de translation/rotation/zoom.
  * La sensibilite des mouvements est modifiable via les sliders.
- * @author bauvinr
+ * @author bauvinr danglotc
  */
 public class GestionAffichage implements Observer{
+	
 	private Modele mod;
 	private ArrayList<String> listeModele;
-
+		
+	/**
+	 * Constructeur prenant en paramètre le modèle qu'il va controler.	 * 
+	 */
 	  public GestionAffichage(Modele modele) {
 		mod = modele;
 		mod.addObserver(this);
@@ -39,7 +43,9 @@ public class GestionAffichage implements Observer{
 		}
 		System.out.println(listeModele);
 	}
-
+	  /**
+	   * Afficher tout les controleurs du modèle.
+	   */
 	public void start(Stage stage) {
 	    GridPane boutonsRot = new GridPane();
 	    GridPane boutonsTr = new GridPane();
@@ -153,7 +159,10 @@ public class GestionAffichage implements Observer{
 	  }
 
 
-	@Override
+
+	/**
+	 * Methode pour mettre à jour le modèle choisi.
+	 */
 	public void update(Observable o, Object arg) {
 		
 	}

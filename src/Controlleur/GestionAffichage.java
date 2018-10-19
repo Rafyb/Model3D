@@ -9,6 +9,7 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
@@ -41,6 +42,9 @@ public class GestionAffichage implements Observer{
 	    HBox ligne1 = new HBox();
 	    HBox ligne2 = new HBox();
 	    HBox ligne3 = new HBox();
+	    
+	    ComboBox<String> comboBox = new ComboBox();
+	    comboBox.setMinWidth(150);
 
 	    root.setMargin(ligne2, new Insets(5.0,10.0,10.0,5.0));
 	    
@@ -155,7 +159,7 @@ public class GestionAffichage implements Observer{
 	    boutonsTr.add(thaut, 1, 0);
 	    
 	    
-	    root.getChildren().addAll(choixT,ligne1,sliderrot,boutonsRot,ligne2,ligne3,slidertr,boutonsTr);
+	    root.getChildren().addAll(choixT,comboBox,ligne1,sliderrot,boutonsRot,ligne2,ligne3,slidertr,boutonsTr);
 
 	    Scene scene = new Scene(root, 150, 600);
 	    stage.setScene(scene);

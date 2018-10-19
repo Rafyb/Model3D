@@ -6,6 +6,7 @@ import java.util.Observable;
 import java.util.Observer;
 import Modele.Modele;
 import Structure.Point;
+import Structure.ReadModele;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -28,6 +29,7 @@ public class GestionAffichage implements Observer{
 	
 	private Modele mod;
 	private ArrayList<String> listeModele;
+	private ComboBox<String> comboBox;
 		
 	/**
 	 * Constructeur prenant en paramètre le modèle qu'il va controler.	 * 
@@ -55,7 +57,7 @@ public class GestionAffichage implements Observer{
 	    HBox ligne2 = new HBox();
 	    HBox ligne3 = new HBox();
 	    
-	    ComboBox<String> comboBox = new ComboBox();
+	    comboBox = new ComboBox();
 
 	    Text choixT = new Text("Choix du modele :");
 	    Text slideRot = new Text("10");
@@ -116,6 +118,7 @@ public class GestionAffichage implements Observer{
 	    sliderrot.valueProperty().addListener(e->slideRot.setText(Integer.toString((int)sliderrot.getValue())));
 	    slidertr.valueProperty().addListener(e->slideTr.setText(Integer.toString((int)slidertr.getValue())));
 	    
+	    comboBox.getSelectionModel().selectedItemProperty().addListener(observable -> mod.changerModele(new ReadModele("./data/"+comboBox.getSelectionModel().getSelectedItem())));
 	    // --------------------------- TAILLE BOUTONS --------------------------//
 	    
 	    droite.setMinSize(50, 50);
@@ -164,7 +167,7 @@ public class GestionAffichage implements Observer{
 	 * Methode pour mettre à jour le modèle choisi.
 	 */
 	public void update(Observable o, Object arg) {
-		
+		comboBox.setValue(comboBox.getSelectionModel().getSelectedItem());
 	}
 }
 

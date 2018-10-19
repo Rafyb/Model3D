@@ -35,7 +35,9 @@ public class Modele extends Observable{
 	public void changerModele(ReadModele r) {
 		points = r.getPoint();
 		face = r.getFace();
+		
 		this.update();
+		this.centrer();
 		this.setChanged();
 		this.notifyObservers();
 	}

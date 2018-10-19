@@ -40,7 +40,7 @@ public class GestionAffichage implements Observer{
 		File f = new File("./data");
 		String[] liste = f.list();
 		for(String s: liste) {
-			if (s.contains(".ply")) listeModele.add("data/" +s);		
+			if (s.contains(".ply")) listeModele.add(s);		
 		}
 		System.out.println(listeModele);
 	}
@@ -55,10 +55,7 @@ public class GestionAffichage implements Observer{
 	    HBox ligne3 = new HBox();
 	    
 	    ComboBox<String> comboBox = new ComboBox();
-	    comboBox.setMinWidth(150);
-	    
-	    root.setMargin(ligne2, new Insets(5.0,10.0,10.0,5.0));
-	    
+
 	    Text choixT = new Text("Choix du modele :");
 	    Text slideRot = new Text("10");
 	    Text slideTr = new Text("10");
@@ -97,52 +94,28 @@ public class GestionAffichage implements Observer{
 	    ligne1.getChildren().addAll(new Label("Slider rotation : "),slideRot);
 	    ligne3.getChildren().addAll(new Label("Slider translation : "),slideTr);
 	    
-	    haut.setOnAction(e ->{
-	    	mod.rotationX((int)sliderrot.getValue());
-	    });
-	    bas.setOnAction(e ->{
-	    	mod.rotationX((int)sliderrot.getValue()*-1);
-	    });
+	    // ---------------------------- CONTROLEURS ------------------------------//
 	    
-	    gauche.setOnAction(e ->{
-	    	mod.rotationY((int)sliderrot.getValue()*-1);
-	    });
-	    droite.setOnAction(e ->{
-	    	mod.rotationY((int)sliderrot.getValue());
-	    });
+	    haut.setOnAction(e ->mod.rotationX((int)sliderrot.getValue()));
+	    bas.setOnAction(e ->mod.rotationX((int)sliderrot.getValue()*-1)); 
+	    gauche.setOnAction(e ->mod.rotationY((int)sliderrot.getValue()*-1));
+	    droite.setOnAction(e ->mod.rotationY((int)sliderrot.getValue()));
 	    
-	    rotgauche.setOnAction(e ->{
-	    	mod.rotationZ((int)sliderrot.getValue()*-1);
-	    });
-	    rotdroite.setOnAction(e ->{
-	    	mod.rotationZ((int)sliderrot.getValue());
-	    });
-	    zoom.setOnAction(e ->{
-	    	mod.zoom(0.25);
-	    });
-	    dezoom.setOnAction(e ->{
-	    	mod.dezoom(0.25);
-	    });
-	    thaut.setOnAction(e ->{
-	    	mod.translation(new Point(0,slidertr.getValue()*-1, 0));
-	    });
-	    tbas.setOnAction(e ->{
-	    	mod.translation(new Point(0,slidertr.getValue(), 0));
-	    });
+	    rotgauche.setOnAction(e ->mod.rotationZ((int)sliderrot.getValue()*-1));
+	    rotdroite.setOnAction(e ->mod.rotationZ((int)sliderrot.getValue()));
 	    
-	    tgauche.setOnAction(e ->{
-	    	mod.translation(new Point(slidertr.getValue()*-1, 0, 0));
-	    });
-	    tdroite.setOnAction(e ->{
-	    	mod.translation(new Point(slidertr.getValue(), 0, 0));
-	    });
+	    zoom.setOnAction(e ->mod.zoom(0.25));
+	    dezoom.setOnAction(e ->mod.dezoom(0.25));
 	    
-	    sliderrot.valueProperty().addListener(e->{
-	    	slideRot.setText(Integer.toString((int)sliderrot.getValue()));
-	    });
-	    slidertr.valueProperty().addListener(e->{
-	    	slideTr.setText(Integer.toString((int)slidertr.getValue()));
-	    });
+	    thaut.setOnAction(e ->mod.translation(new Point(0,slidertr.getValue()*-1, 0)));
+	    tbas.setOnAction(e ->mod.translation(new Point(0,slidertr.getValue(), 0)));    
+	    tgauche.setOnAction(e ->mod.translation(new Point(slidertr.getValue()*-1, 0, 0)));
+	    tdroite.setOnAction(e ->mod.translation(new Point(slidertr.getValue(), 0, 0)));
+ 
+	    sliderrot.valueProperty().addListener(e->slideRot.setText(Integer.toString((int)sliderrot.getValue())));
+	    slidertr.valueProperty().addListener(e->slideTr.setText(Integer.toString((int)slidertr.getValue())));
+	    
+	    // --------------------------- TAILLE BOUTONS --------------------------//
 	    
 	    droite.setMinSize(50, 50);
 	    gauche.setMinSize(50, 50);
@@ -169,7 +142,11 @@ public class GestionAffichage implements Observer{
 	    boutonsTr.add(tdroite, 2, 1);
 	    boutonsTr.add(thaut, 1, 0);
 	    
+	    comboBox.setMinWidth(150); 
+	    root.setMargin(ligne2, new Insets(5.0,10.0,10.0,5.0));
 	    
+	    
+	    comboBox.getItems().setAll(listeModele);
 	    root.getChildren().addAll(choixT,comboBox,ligne1,sliderrot,boutonsRot,ligne2,ligne3,slidertr,boutonsTr);
 
 	    Scene scene = new Scene(root, 150, 600);

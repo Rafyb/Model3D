@@ -9,18 +9,29 @@ import Tri.Rotation;
 
 
 public class Modele extends Observable{
-
+	/**
+	 * @attributes points = tableau de point du modèle.
+	 * face = tableau de face du modèle.
+	 * r = Rotation du modèle. 
+	 */
+	
 	public Point[] points ;
 	public Face[] face;
 	public Rotation r = new Rotation();	
 
-
+/**
+ * 
+ * Constructeur
+ * @param r pour donner un modèle dans un fichier.
+ */
 	public Modele(ReadModele r) {
 		points = r.getPoint();		
 		face =  r.getFace();
 		this.centrer();
 	}
-
+	/**
+	 * Methode pour changer le modèle que l'on veut afficher.
+	 */
 	public void changerModele(ReadModele r) {
 		points = r.getPoint();
 		face = r.getFace();
@@ -28,11 +39,15 @@ public class Modele extends Observable{
 		this.setChanged();
 		this.notifyObservers();
 	}
-
+/**
+ * Methode pour trier le modèle.
+ */
 	public void triZ() {
 		Arrays.sort(face);
 	}
-	
+	/**
+	 * Methode pour afficher le modèle centrer par rapport à la vue.
+	 */
 	public void centrer() {
 		double xMin = points[0].getX(), xMax = points[0].getX(),yMin = points[0].getY(),yMax = points[0].getY();
 		
@@ -71,37 +86,55 @@ public class Modele extends Observable{
 		
 		System.out.println(" xMin = "+ xMin +" xMax = "+ xMax + " yMin = "+ yMin + " yMax = "+ yMax);
 	}
-	
+	/**
+	 * Methode pour la rotation dans l'axe X et notifie les observers.
+	 */
 	public void rotationX(int radian) {
 		r.rotationX(this,radian);
 		update();
 		this.setChanged();
 		notifyObservers();
 	}
-	
+	/**
+	 * Methode pour la rotation dans l'axe Y sur le modèle et notifie les observers.
+	 */
 	public void rotationY(int radian) {
 		r.rotationY(this,radian);
 		update();
 		this.setChanged();
 		notifyObservers();
 	}
-	
+	/**
+	 * Methode pour la rotation dans l'axe Z sur le modèle et notifie les observers.
+	 */
 	public void rotationZ(int radian) {
 		r.rotationZ(this,radian);
 		update();
 		this.setChanged();
 		notifyObservers();
 	}
+	/**
+	 * 
+	 * Methode pour zoomer le modèle et notifie les observers.
+	 */
 	public void zoom(double coef) {
 		r.zoom(this,coef);
 		this.setChanged();
 		notifyObservers();
 	}
+	/**
+	 * 
+	 * Methode pour dezoomer le modèle et notifie les observers.
+	 */
 	public void dezoom(double coef) {
 		r.dezoom(this,coef);
 		this.setChanged();
 		notifyObservers();
 	}
+	/**
+	 * 
+	 * Methode pour translater le modèle et notifie les observers.
+	 */
 	
 	public void translation(Point p) {
 		r.translation(this, p);
@@ -109,7 +142,9 @@ public class Modele extends Observable{
 		notifyObservers();
 	}
 
-
+	/**
+	 * Methode mettant à jour le centre de gravité.
+	 */ 
 	private void update() {
 		for (Face f : face) {
 			
@@ -117,23 +152,36 @@ public class Modele extends Observable{
 		}
 		
 	}
-
+/**
+ * Récupérer tout les points.
+ * 
+ */
 	public Point[] getAllPoints(){
 		return points;
 	}
-
+/**
+ * Récupérer toutes les faces.
+ */
 	public Face[] getAllFace(){
 		return face;
 	}
-
+/**
+ * Récupérer les points selon un index en paramètre.
+ * @param index
+ */
 	public Point getPointAtIndex(int index){
 		return points[index];
 	}
-
+/**
+ * Récupérer une face selon un index en paramètre.
+ * @param index
+ */
 	public Face getFaceAtIndex(int index){
 		return face[index];
 	}
-
+/**
+ * Methode d'affichage.
+ */
 	public String toString() {
 		String res = "Points : [";
 		for (Point p : points) {

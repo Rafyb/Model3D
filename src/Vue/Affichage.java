@@ -2,18 +2,14 @@ package Vue;
 
 import java.util.Observable;
 import java.util.Observer;
-
 import Modele.Modele;
 import Structure.Face;
 import Structure.Point;
-import javafx.application.Application;
-import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 /**
  * La vue du modele,fonctionne sous la forme de Observer/Observable.
@@ -25,7 +21,6 @@ import javafx.stage.Stage;
  * @author bauvinr canonnet
  */
 public class Affichage implements Observer {
-	private Polygon[] triangles;
 	private GraphicsContext gc;
 	private Canvas canvas;
 	private Modele mod;

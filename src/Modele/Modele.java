@@ -2,25 +2,17 @@ package Modele;
 
 import java.util.Arrays;
 import java.util.Observable;
-
-import Controlleur.GestionAffichage;
 import Structure.Face;
 import Structure.Point;
 import Structure.ReadModele;
-import Vue.Affichage;
-import javafx.stage.Stage;
 import Tri.Rotation;
 
 
 public class Modele extends Observable{
 
 	public Point[] points ;
-	
 	public Face[] face;
 	public Rotation r = new Rotation();	
-	Affichage aff = new Affichage(this);
-	
-	GestionAffichage boutons = new GestionAffichage(this);
 
 
 	public Modele(ReadModele r) {
@@ -155,12 +147,6 @@ public class Modele extends Observable{
 		res = res.substring(0,res.length()-1);
 		res+= "]";
 		return res;
-	}
-
-	public void start() {
-		aff.start(new Stage());
-		boutons.start(new Stage());
-		
 	}
 
 

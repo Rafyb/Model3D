@@ -63,6 +63,14 @@ public class Affichage implements Observer {
 			this.x = e.getX();
 			this.y = e.getY();
 		});
+		
+		canvas.setOnScroll(e -> {
+			if(e.getDeltaY() > 0) {
+				mod.zoom(0.1);
+			} else if (e.getDeltaY() < 0){
+				mod.dezoom(0.1);
+			}
+		});
 
 		////////////////////////// EXECUTION ///////////////////////////
 		mod.triZ();

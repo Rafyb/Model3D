@@ -8,6 +8,7 @@ import Structure.Point;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -75,6 +76,19 @@ public class Affichage implements Observer {
 				mod.zoom(0.1);
 			} else if (e.getDeltaY() < 0){
 				mod.dezoom(0.1);
+			}
+		});
+		
+		canvas.setOnKeyPressed(e -> {
+			System.out.println(e.getCode());
+			if (e.getCode().equals(KeyCode.LEFT)) {
+				mod.rotationY(-10);
+			} else if (e.getCode().equals(KeyCode.UP)) {
+				mod.rotationX(10);
+			} else if (e.getCode().equals(KeyCode.RIGHT)) {
+				mod.rotationY(10);
+			} else if (e.getCode().equals(KeyCode.DOWN)) {
+				mod.rotationX(10);
 			}
 		});
 

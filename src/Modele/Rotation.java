@@ -1,8 +1,5 @@
-package Tri;
+package Modele;
 
-import Modele.Modele;
-import Structure.Face;
-import Structure.Point;
 /**
  * Permet d'effectuer les calculs des operations de mouvement sur le modele : rotation, zoom et translation.
  * @author danglotc

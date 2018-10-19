@@ -2,9 +2,10 @@ package Vue;
 
 import java.util.Observable;
 import java.util.Observer;
+
+import Modele.Face;
 import Modele.Modele;
-import Structure.Face;
-import Structure.Point;
+import Modele.Point;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;

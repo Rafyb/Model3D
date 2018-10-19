@@ -1,12 +1,10 @@
-package Structure;
+package Modele;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-
-import Modele.Modele;
 
 /**
  * Lit un fichier de format .ply et genere la liste de point et de face du modele.

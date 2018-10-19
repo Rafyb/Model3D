@@ -6,8 +6,8 @@ import java.util.Observable;
 import java.util.Observer;
 
 import Modele.Modele;
-import Structure.Point;
-import Structure.ReadModele;
+import Modele.Point;
+import Modele.ReadModele;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

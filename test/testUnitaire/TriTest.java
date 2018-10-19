@@ -7,11 +7,11 @@ import org.junit.jupiter.api.Test;
 
 import com.sun.xml.internal.ws.policy.PolicyIntersector;
 
+import Modele.Face;
 import Modele.Modele;
-import Structure.Face;
-import Structure.Point;
-import Structure.ReadModele;
-import Tri.Rotation;
+import Modele.Point;
+import Modele.ReadModele;
+import Modele.Rotation;
 
 
 public class TriTest {

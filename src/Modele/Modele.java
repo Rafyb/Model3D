@@ -15,26 +15,21 @@ import Tri.Rotation;
 public class Modele extends Observable{
 
 	public Point[] points ;
-	//public ArrayList<Segment> segments = new ArrayList<>() ;
-	public Face[] face;
-	public Rotation r = new Rotation();
 	
+	public Face[] face;
+	public Rotation r = new Rotation();	
 	Affichage aff = new Affichage(this);
-	//Affichage aff2 = new Affichage(this);
-	//Affichage aff3 = new Affichage(this);
+	
 	GestionAffichage boutons = new GestionAffichage(this);
 
 
 	public Modele(ReadModele r) {
-		points = r.getPoint();
-		//segments = r.getSegment();
+		points = r.getPoint();		
 		face =  r.getFace();
 		this.centrer();
 	}
 
-	/*public void ajoutSegment(Segment s) {
-			points.add(s);
-		}*/
+	
 
 	public void triZ() {
 		Arrays.sort(face);
@@ -158,8 +153,6 @@ public class Modele extends Observable{
 
 	public void start() {
 		aff.start(new Stage());
-		//aff2.start(new Stage());
-		//aff3.start(new Stage());
 		boutons.start(new Stage());
 		
 	}

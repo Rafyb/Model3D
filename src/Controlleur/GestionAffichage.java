@@ -1,5 +1,8 @@
 package Controlleur;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -28,10 +31,18 @@ import javafx.stage.Stage;
  */
 public class GestionAffichage implements Observer{
 	private Modele mod;
+	private ArrayList<String> listeModele;
 
 	  public GestionAffichage(Modele modele) {
 		mod = modele;
 		mod.addObserver(this);
+		listeModele = new ArrayList<String>();
+		File f = new File("./data");
+		String[] liste = f.list();
+		for(String s: liste) {
+			if (s.contains(".ply")) listeModele.add("data/" +s);		
+		}
+		System.out.println(listeModele);
 	}
 
 	public void start(Stage stage) {
@@ -45,7 +56,7 @@ public class GestionAffichage implements Observer{
 	    
 	    ComboBox<String> comboBox = new ComboBox();
 	    comboBox.setMinWidth(150);
-
+	    
 	    root.setMargin(ligne2, new Insets(5.0,10.0,10.0,5.0));
 	    
 	    Text choixT = new Text("Choix du modele :");
@@ -169,9 +180,6 @@ public class GestionAffichage implements Observer{
 
 	  }
 
-	  public static void main(String[] args) {
-	    Application.launch(args);
-	  }
 
 	@Override
 	public void update(Observable o, Object arg) {

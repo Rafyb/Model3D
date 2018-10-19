@@ -29,7 +29,13 @@ public class Modele extends Observable{
 		this.centrer();
 	}
 
-	
+	public void changerModele(ReadModele r) {
+		points = r.getPoint();
+		face = r.getFace();
+		this.update();
+		this.setChanged();
+		this.notifyObservers();
+	}
 
 	public void triZ() {
 		Arrays.sort(face);

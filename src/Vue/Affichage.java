@@ -18,20 +18,26 @@ import javafx.stage.Stage;
  * > x et y
  * > x seulement avec ctrl enfonce
  * > y seulement avec shift enfonce
- * @author bauvinr canonnet
+ * @author bauvinr canonnet danglotc
  */
 public class Affichage implements Observer {
 	private GraphicsContext gc;
 	private Canvas canvas;
 	private Modele mod;
 	private double x,y;
-
+	/**
+	 * Constructeur de la classe Affichage.
+	 *  @param modele = attribut mod.
+	 */
 	public Affichage(Modele modele) {
 		mod = modele;
 		mod.addObserver(this);
 		x=y=0;
 	}
-
+	/**
+	 * Methode principale pour l'affichage qui crée les fenêtres.
+	 * 
+	 */
 	public void start(Stage stage) { 
 
 		//////////////////////////// SCENES ////////////////////////////
@@ -41,7 +47,7 @@ public class Affichage implements Observer {
 		gc.setFill(Color.GREY);
 		root.getChildren().add(canvas);
 		Scene scene = new Scene(root);
-		//scene.setCamera(new PerspectiveCamera());
+		
 		
 		
 		/////////////////////// MOUVEMENTS SOURIS ///////////////////////
@@ -84,7 +90,9 @@ public class Affichage implements Observer {
 
 	}
 
-	// --------------------------- Dessine les triangles --------------------------//
+	/**
+	 * Methode pour dessiner les triangles.
+	 */
 	private void triangle() {
 		for(int i = 0; i < mod.getAllFace().length; i++) {
 			Face face = mod.getFaceAtIndex(i);
@@ -96,7 +104,9 @@ public class Affichage implements Observer {
 		}
 	}
 
-	@Override
+	/**
+	 * Methode pour mettre à jour l'affichage en effaçant l'écran et en triant le modèle.
+	 */
 	public void update(Observable o, Object arg) {
 		gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 		mod.triZ();

@@ -19,24 +19,38 @@ public class ReadModele {
 
 	private Point[] points;
 	private Face[] faces;
-	
-	
+
+
 	/**
 	 * Constructeur prenant en @param l'adresse d'un fichier, génère un objet ReadModele contenant les faces et les points lues sur le fichier.
 	 *  
 	 */
 	public ReadModele(String fichier) {
-		f = new File(fichier);
+		if(this.fileExist(fichier)) {
+			f = new File(fichier);
 
-		try {
-			br = new BufferedReader(new FileReader(f));
-		} catch (FileNotFoundException e) {
-			System.out.println(e);
+			try {
+				br = new BufferedReader(new FileReader(f));
+			} catch (FileNotFoundException e) {
+				System.out.println(e);
+			}
+
+			nbPoint = this.getNbPoints();
+			nbFace = this.getNbFaces();
+			this.endHeader();
+			this.insertPoints(nbPoint);
+			this.insertFaces(nbFace);
 		}
 
-		String st = ""; 
 
-		// ------------------------- GET NB POINT ------------------------		
+	}
+
+	public static boolean fileExist(String path) {
+		return new File(path).exists();
+	}
+	public int getNbPoints() {
+		String st ="";
+		int res;
 		do {
 			try {
 				st = br.readLine();
@@ -44,12 +58,13 @@ public class ReadModele {
 				System.out.println("element vertex bug");
 			}
 		} while (!st.contains("element vertex"));
-		nbPoint = Integer.parseInt(st.substring(15));
-		points = new Point[nbPoint];
-		System.out.println(nbPoint);
+		res = Integer.parseInt(st.substring(15));
+		return res;
 
-
-		// ------------------------- GET NB FACE ------------------------
+	}
+	public int getNbFaces() {
+		String st = "";
+		int res;
 		do {
 			try {
 				st = br.readLine();
@@ -57,14 +72,12 @@ public class ReadModele {
 				System.out.println("element face bug");
 			}
 		} while (!st.contains("element face"));
-		nbFace = Integer.parseInt(st.substring(13));
-		faces = new Face[nbFace];
-		System.out.println(nbFace);
+		res = Integer.parseInt(st.substring(13));
+		return res;
+	}
 
-
-
-
-		// ------------------------- Arrive fin du header ------------------------
+	public String endHeader() {
+		String st = "";
 		do {
 			try {
 				st = br.readLine();
@@ -72,11 +85,13 @@ public class ReadModele {
 				System.out.println("end header bug");
 			}
 		} while (!st.contains("end_header"));
+		return st;
+	}
 
-
-		// ------------------------- Ajout des point dans l'ArrayList ------------------------
-
+	public Point[] insertPoints(int nbPoint) {
+		points = new Point[nbPoint];
 		int cpt = 0;
+		String st = "";  
 		while (cpt < nbPoint) {
 			try {
 				st = br.readLine();
@@ -87,10 +102,13 @@ public class ReadModele {
 				System.out.println("point bug bug");
 			}
 		}
+		return points;
+	}
 
-		// ------------------------- Ajout des faces dans l'ArrayList ------------------------
-
-		cpt = 0;
+	public Face[] insertFaces(int nbFace) {
+		faces = new Face[nbFace];
+		int cpt = 0;
+		String st = "";
 		while (cpt < nbFace) {
 			try {
 				st = br.readLine();
@@ -101,7 +119,7 @@ public class ReadModele {
 				System.out.println("point bug bug");
 			}
 		}
-
+		return faces;
 	}
 	/**
 	 * Récupérer les points.

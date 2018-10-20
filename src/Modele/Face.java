@@ -1,4 +1,5 @@
-package Structure;
+package Modele;
+
 /**
  * Objet Face qui est forme de 3 points, contient les methodes de gestions du centre de gravite.
  * @author danglotc

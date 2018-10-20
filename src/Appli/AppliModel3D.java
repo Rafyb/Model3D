@@ -2,7 +2,7 @@ package Appli;
 
 import Controlleur.GestionAffichage;
 import Modele.Modele;
-import Structure.ReadModele;
+import Modele.ReadModele;
 import Vue.Affichage;
 import javafx.application.Application;
 import javafx.stage.Stage;

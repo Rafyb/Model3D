@@ -2,10 +2,6 @@ package Modele;
 
 import java.util.Arrays;
 import java.util.Observable;
-import Structure.Face;
-import Structure.Point;
-import Structure.ReadModele;
-import Tri.Rotation;
 
 
 public class Modele extends Observable{

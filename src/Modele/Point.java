@@ -1,4 +1,4 @@
-package Structure;
+package Modele;
 
 /**
  * Objet Point avec les coordonnees x, y et z.

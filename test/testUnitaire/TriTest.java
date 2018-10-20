@@ -208,7 +208,7 @@ public class TriTest {
 		int rotation = -10;
 		r.rotationZ(test1, rotation);
 		
-		for(int i = 0 ; i < test2.getAllPoints().length;i++) {
+		for(int i = 0 ; i < test2.getAllPoints().length;i++)  {
 			double cos = Math.cos(Math.toRadians(rotation));
 			double sin = Math.sin(Math.toRadians(rotation));
 

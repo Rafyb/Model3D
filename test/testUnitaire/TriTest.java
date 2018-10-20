@@ -21,8 +21,13 @@ public class TriTest {
 
 	@Test
 	public void TrieRapideTest() {
-		test1.triZ();
-		assertFalse(test1.getAllFace().equals(test2.getAllFace()));
+	test1.triZ();
+	for(int i = 0; i < test2.getAllPoints().length; i++) {
+			
+			assertTrue(test1.getPointAtIndex(i).getX() == test2.getPointAtIndex(i).getX());
+			assertTrue(test1.getPointAtIndex(i).getY() == (test2.getPointAtIndex(i).getY()));
+			assertTrue(test1.getPointAtIndex(i).getZ() == (test2.getPointAtIndex(i).getZ()));
+		}
 
 	}
 

@@ -10,16 +10,16 @@ public class Modele extends Observable{
 	 * face = tableau de face du modèle.
 	 * r = Rotation du modèle. 
 	 */
-	
+
 	public Point[] points ;
 	public Face[] face;
 	public Rotation r = new Rotation();	
 
-/**
- * 
- * Constructeur
- * @param r pour donner un modèle dans un fichier.
- */
+	/**
+	 * 
+	 * Constructeur
+	 * @param r pour donner un modèle dans un fichier.
+	 */
 	public Modele(ReadModele r) {
 		points = r.getPoint();		
 		face =  r.getFace();
@@ -31,15 +31,15 @@ public class Modele extends Observable{
 	public void changerModele(ReadModele r) {
 		points = r.getPoint();
 		face = r.getFace();
-		
+
 		this.update();
 		this.centrer();
 		this.setChanged();
 		this.notifyObservers();
 	}
-/**
- * Methode pour trier le modèle.
- */
+	/**
+	 * Methode pour trier le modèle.
+	 */
 	public void triZ() {
 		Arrays.sort(face);
 	}
@@ -48,7 +48,7 @@ public class Modele extends Observable{
 	 */
 	public void centrer() {
 		double xMin = points[0].getX(), xMax = points[0].getX(),yMin = points[0].getY(),yMax = points[0].getY();
-		
+
 		for (Point p : points) {
 			if (p.getX()<xMin)
 				xMin = p.getX();
@@ -59,11 +59,14 @@ public class Modele extends Observable{
 			if (p.getY()>yMax)
 				yMax = p.getY();
 		}
+		
 		double xT = -((xMax+xMin)/2);
 		double yT = -((yMax+yMin)/2);
 		Point translation = new Point(xT,yT,0);
 		r.translation(this, translation);
+		System.out.println(" xMin = "+ xMin +" xMax = "+ xMax + " yMin = "+ yMin + " yMax = "+ yMax);
 		
+		xMin = points[0].getX(); xMax = points[0].getX();yMin = points[0].getY();yMax = points[0].getY();
 		for (Point p : points) {
 			if (p.getX()<xMin)
 				xMin = p.getX();
@@ -74,14 +77,13 @@ public class Modele extends Observable{
 			if (p.getY()>yMax)
 				yMax = p.getY();
 		}
-		
-		double transla = -300/xMin;
-		if (300/xMax < transla)  transla = 300/xMax;
-		if (-400/yMin < transla)  transla = -400/yMin;
-		if (400/yMax < transla)  transla = 400/yMax;
-		System.out.println(transla);
-		r.zoom(this,transla);
-		
+
+		double zoom = 350/xMax;
+		if (450/yMax < zoom)  zoom = 450/yMax;
+
+		System.out.println(zoom);
+		r.zoom(this,zoom);
+
 		System.out.println(" xMin = "+ xMin +" xMax = "+ xMax + " yMin = "+ yMin + " yMax = "+ yMax);
 	}
 	/**
@@ -133,7 +135,7 @@ public class Modele extends Observable{
 	 * 
 	 * Methode pour translater le modèle et notifie les observers.
 	 */
-	
+
 	public void translation(Point p) {
 		r.translation(this, p);
 		this.setChanged();
@@ -145,41 +147,41 @@ public class Modele extends Observable{
 	 */ 
 	private void update() {
 		for (Face f : face) {
-			
+
 			f.updateCdG();
 		}
-		
+
 	}
-/**
- * Récupérer tout les points.
- * 
- */
+	/**
+	 * Récupérer tout les points.
+	 * 
+	 */
 	public Point[] getAllPoints(){
 		return points;
 	}
-/**
- * Récupérer toutes les faces.
- */
+	/**
+	 * Récupérer toutes les faces.
+	 */
 	public Face[] getAllFace(){
 		return face;
 	}
-/**
- * Récupérer les points selon un index en paramètre.
- * @param index
- */
+	/**
+	 * Récupérer les points selon un index en paramètre.
+	 * @param index
+	 */
 	public Point getPointAtIndex(int index){
 		return points[index];
 	}
-/**
- * Récupérer une face selon un index en paramètre.
- * @param index
- */
+	/**
+	 * Récupérer une face selon un index en paramètre.
+	 * @param index
+	 */
 	public Face getFaceAtIndex(int index){
 		return face[index];
 	}
-/**
- * Methode d'affichage.
- */
+	/**
+	 * Methode d'affichage.
+	 */
 	public String toString() {
 		String res = "Points : [";
 		for (Point p : points) {

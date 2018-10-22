@@ -12,7 +12,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 /**
@@ -43,7 +42,7 @@ public class Affichage implements Observer {
 	 * 
 	 */
 	public void start(Stage stage) { 
-
+	
 		//////////////////////////// SCENES ////////////////////////////
 		HBox root = new HBox();
 		GestionAffichage boutons = new GestionAffichage(mod);
@@ -106,7 +105,9 @@ public class Affichage implements Observer {
 		stage.setResizable(false);
 		stage.show();
 
-
+		
+			
+		
 	}
 
 	/**
@@ -127,9 +128,13 @@ public class Affichage implements Observer {
 	 * Methode pour mettre à jour l'affichage en effaçant l'écran et en triant le modèle.
 	 */
 	public void update(Observable o, Object arg) {
+		try {
 		gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 		mod.triZ();
 		triangle();
+		} catch(Exception e) {
+			
+		}
 
 	}
 

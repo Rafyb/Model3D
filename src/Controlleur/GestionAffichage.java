@@ -2,7 +2,6 @@ package Controlleur;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -10,7 +9,6 @@ import Modele.Modele;
 import Modele.Point;
 import Modele.ReadModele;
 import javafx.geometry.Insets;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;

@@ -3,6 +3,7 @@ package Vue;
 import java.util.Observable;
 import java.util.Observer;
 
+import Controlleur.GestionAffichage;
 import Modele.Face;
 import Modele.Modele;
 import Modele.Point;
@@ -10,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -43,11 +45,13 @@ public class Affichage implements Observer {
 	public void start(Stage stage) { 
 
 		//////////////////////////// SCENES ////////////////////////////
-		VBox root = new VBox();
-		canvas = new Canvas (1000, 800);
+		HBox root = new HBox();
+		GestionAffichage boutons = new GestionAffichage(mod);
+		boutons.start(stage);
+		canvas = new Canvas (1150, 800);
 		gc = canvas.getGraphicsContext2D();
 		gc.setFill(Color.GREY);
-		root.getChildren().add(canvas);
+		root.getChildren().addAll(canvas,boutons.getPage());
 		Scene scene = new Scene(root);
 		
 		

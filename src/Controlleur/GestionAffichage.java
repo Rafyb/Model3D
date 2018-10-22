@@ -2,6 +2,7 @@ package Controlleur;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -31,6 +32,7 @@ public class GestionAffichage implements Observer{
 	private Modele mod;
 	private ArrayList<String> listeModele;
 	private ComboBox<String> comboBox;
+	private VBox root;
 		
 	/**
 	 * Constructeur prenant en paramètre le modèle qu'il va controler.	 * 
@@ -44,6 +46,7 @@ public class GestionAffichage implements Observer{
 		for(String s: liste) {
 			if (s.contains(".ply")) listeModele.add(s);		
 		}
+		listeModele.sort(null);
 		System.out.println(listeModele);
 	}
 	  /**
@@ -53,7 +56,7 @@ public class GestionAffichage implements Observer{
 	    GridPane boutonsRot = new GridPane();
 	    GridPane boutonsTr = new GridPane();
 
-	    VBox root = new VBox();
+	    root = new VBox();
 	    HBox ligne1 = new HBox();
 	    HBox ligne2 = new HBox();
 	    HBox ligne3 = new HBox();
@@ -155,11 +158,13 @@ public class GestionAffichage implements Observer{
 	    comboBox.getItems().setAll(listeModele);
 	    root.getChildren().addAll(choixT,comboBox,ligne1,sliderrot,boutonsRot,ligne2,ligne3,slidertr,boutonsTr);
 
+	    
+	    /*
 	    Scene scene = new Scene(root, 150, 600);
 	    stage.setScene(scene);
 	    stage.setTitle("Model 3D Move");
 	    stage.setResizable(false);
-	    stage.show();
+	    stage.show();*/
 
 	  }
 
@@ -170,6 +175,10 @@ public class GestionAffichage implements Observer{
 	 */
 	public void update(Observable o, Object arg) {
 		comboBox.setValue(comboBox.getSelectionModel().getSelectedItem());
+	}
+	
+	public VBox getPage() {
+		return root;
 	}
 }
 

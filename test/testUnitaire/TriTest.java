@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
+import com.sun.org.apache.bcel.internal.generic.RETURN;
 import com.sun.xml.internal.ws.policy.PolicyIntersector;
 
 import Modele.Face;
@@ -16,11 +17,20 @@ import Modele.Rotation;
 
 public class TriTest {
 	Modele test1  = new Modele(new ReadModele("data/corner.ply"));;
-	Modele test2 = new Modele(new ReadModele("data/cornertrie.ply"));;
+	ReadModele exist =  new ReadModele("/data/corner.ply");
+	
+	@Before
+	public void setup() {
+		Modele test1  = new Modele(new ReadModele("data/corner.ply"));;
+		ReadModele exist =  new ReadModele("/data/corner.ply");
+		
+	
+		
+	}
 
 
 	@Test
-	public void TrieRapideTest() {
+	public void trieRapideTest() {
 	test1.triZ();
 	for(int i = 0; i < test2.getAllPoints().length; i++) {
 			
@@ -316,22 +326,16 @@ public class TriTest {
 		r.translation(test1, p);
 		
 		
-		for(int i = 0 ; i < test2.getAllPoints().length;i++) {
-
-			double x = test2.getPointAtIndex(i).getX();
-			double y = test2.getPointAtIndex(i).getY();
-			double z = test2.getPointAtIndex(i).getZ();
-
-			test2.getPointAtIndex(i).setX(x+p.getX());
-			test2.getPointAtIndex(i).setY(y+p.getY());
-			test2.getPointAtIndex(i).setZ(z+p.getZ());
-		}
-		for(int i = 0; i < test2.getAllPoints().length; i++) {
-			
-			assertTrue(test1.getPointAtIndex(i).getX() == test2.getPointAtIndex(i).getX());
-			assertTrue(test1.getPointAtIndex(i).getY() == (test2.getPointAtIndex(i).getY()));
-			assertTrue(test1.getPointAtIndex(i).getZ() == (test2.getPointAtIndex(i).getZ()));
-		}
+	
+		assertEquals(2.0, test1.getPointAtIndex(0).getX());
+		assertEquals(0.0, test1.getPointAtIndex(0).getY());
+		assertEquals(0.0, test1.getPointAtIndex(0).getZ());
+		
+		
+		assertEquals(1.0, test1.getPointAtIndex(3).getX());
+		assertEquals(301.0, test1.getPointAtIndex(3).getY());
+		assertEquals(0.0, test1.getPointAtIndex(3).getZ());
+		
 		
 	}
 	
@@ -340,28 +344,51 @@ public class TriTest {
 	@Test
 	public void TranslationGauche() {
 		Rotation r= new Rotation();
-		Point p = new Point(1, 0, 0);
+		Point p = new Point(-1, 0, 0);
 		r.translation(test1, p);
 		
-		
-		for(int i = 0 ; i < test2.getAllPoints().length;i++) {
 
-			double x = test2.getPointAtIndex(i).getX();
-			double y = test2.getPointAtIndex(i).getY();
-			double z = test2.getPointAtIndex(i).getZ();
-
-			test2.getPointAtIndex(i).setX(x+p.getX());
-			test2.getPointAtIndex(i).setY(y+p.getY());
-			test2.getPointAtIndex(i).setZ(z+p.getZ());
-		}
-		for(int i = 0; i < test2.getAllPoints().length; i++) {
 			
-			assertTrue(test1.getPointAtIndex(i).getX() == test2.getPointAtIndex(i).getX());
-			assertTrue(test1.getPointAtIndex(i).getY() == (test2.getPointAtIndex(i).getY()));
-			assertTrue(test1.getPointAtIndex(i).getZ() == (test2.getPointAtIndex(i).getZ()));
-		}
+			assertEquals(300, test1.getPointAtIndex(0).getX());
+			assertEquals(0.0, test1.getPointAtIndex(0).getY());
+			assertEquals(0.0, test1.getPointAtIndex(0).getZ());
+			
+			
+			assertEquals(-1.0, test1.getPointAtIndex(3).getX());
+			assertEquals(301.0, test1.getPointAtIndex(3).getY());
+			assertEquals(0.0, test1.getPointAtIndex(3).getZ());
+
+	//	}
 		
 	}
+	
+	@Test
+	public void RecupFace() {
+		
+		
+	}
+	
+	@Test
+	public void RecupPoints() {
+		
+		
+	}
+	
+	@Test
+	public void FileExist() {
+	assertTrue(exist.fileExist("data/corner.ply"));		
+		
+	}
+
+	
+	@Test
+	public void RecupNotExist() {
+	assertFalse(exist.fileExist("ppppp"));		
+		
+	}
+
+
+
 
 
 

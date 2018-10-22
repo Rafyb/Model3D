@@ -2,6 +2,7 @@ package Controlleur;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -44,6 +45,7 @@ public class GestionAffichage implements Observer{
 		for(String s: liste) {
 			if (s.contains(".ply")) listeModele.add(s);		
 		}
+		listeModele.sort(null);;
 		System.out.println(listeModele);
 	}
 	  /**

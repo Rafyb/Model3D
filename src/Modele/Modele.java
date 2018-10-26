@@ -73,7 +73,7 @@ public class Modele extends Observable{
 		double yT = -((yMax+yMin)/2);
 		Point translation = new Point(xT,yT,0);
 		r.translation(this, translation);
-		System.out.println(" xMin = "+ xMin +" xMax = "+ xMax + " yMin = "+ yMin + " yMax = "+ yMax);
+		
 		
 		xMin = points[0].getX(); xMax = points[0].getX();yMin = points[0].getY();yMax = points[0].getY();
 		for (Point p : points) {
@@ -87,13 +87,15 @@ public class Modele extends Observable{
 				yMax = p.getY();
 		}
 
-		double zoom = 350/xMax;
-		if (450/yMax < zoom)  zoom = 450/yMax;
+		double zoom = 0;
+		while(xMax*(1+zoom) < 500 && yMax*(1+zoom) < 380) {
+			zoom += 0.01;
+		}
 
 		System.out.println(zoom);
 		r.zoom(this,zoom);
 
-		System.out.println(" xMin = "+ xMin +" xMax = "+ xMax + " yMin = "+ yMin + " yMax = "+ yMax);
+		//System.out.println(" xMin = "+ xMin +" xMax = "+ xMax + " yMin = "+ yMin + " yMax = "+ yMax);
 	}
 	/**
 	 * Methode pour la rotation dans l'axe X et notifie les observers.

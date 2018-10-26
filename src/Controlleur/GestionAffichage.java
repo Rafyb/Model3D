@@ -10,6 +10,7 @@ import Modele.Point;
 import Modele.ReadModele;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
@@ -59,6 +60,9 @@ public class GestionAffichage implements Observer{
 	    HBox ligne2 = new HBox();
 	    HBox ligne3 = new HBox();
 	    
+	    HBox ligne4 = new HBox();
+	    HBox ligne5 = new HBox();
+	    
 	    comboBox = new ComboBox();
 
 	    Text choixT = new Text("Choix du modele :");
@@ -91,6 +95,9 @@ public class GestionAffichage implements Observer{
 	    Button zoom = new Button("+");
 	    Button dezoom = new Button("-");
 	    
+	    CheckBox trait = new CheckBox();
+	    CheckBox face = new CheckBox();
+	    
 	    ligne2.getChildren().addAll(zoom,dezoom);
 	    
 	    zoom.setMinSize(75, 35);
@@ -98,6 +105,8 @@ public class GestionAffichage implements Observer{
 	    
 	    ligne1.getChildren().addAll(new Label("Slider rotation : "),slideRot);
 	    ligne3.getChildren().addAll(new Label("Slider translation : "),slideTr);
+	    ligne4.getChildren().addAll(trait,new Label("Afficher trait"));
+	    ligne5.getChildren().addAll(face,new Label("Afficher face"));
 	    
 	    // ---------------------------- CONTROLEURS ------------------------------//
 	    
@@ -120,8 +129,13 @@ public class GestionAffichage implements Observer{
 	    sliderrot.valueProperty().addListener(e->slideRot.setText(Integer.toString((int)sliderrot.getValue())));
 	    slidertr.valueProperty().addListener(e->slideTr.setText(Integer.toString((int)slidertr.getValue())));
 	    
+	    
+	    
 	    comboBox.getSelectionModel().selectedItemProperty().addListener(observable -> mod.changerModele(new ReadModele("./data/"+comboBox.getSelectionModel().getSelectedItem())));
 	    comboBox.setValue("corner.ply");
+	    
+	    
+	    
 	    // --------------------------- TAILLE BOUTONS --------------------------//
 	    
 	    droite.setMinSize(50, 50);
@@ -150,12 +164,12 @@ public class GestionAffichage implements Observer{
 	    boutonsTr.add(thaut, 1, 0);
 	    
 	    comboBox.setMinWidth(150); 
-	    root.setMargin(ligne2, new Insets(5.0,10.0,10.0,5.0));
 	    
 	    
 	    comboBox.getItems().setAll(listeModele);
-	    root.getChildren().addAll(choixT,comboBox,ligne1,sliderrot,boutonsRot,ligne2,ligne3,slidertr,boutonsTr);
-
+	    root.getChildren().addAll(choixT,comboBox,ligne1,sliderrot,boutonsRot,ligne2,ligne3,slidertr,boutonsTr,ligne4,ligne5);
+	    root.setPadding(new Insets(10,15,20,20));
+	    root.setSpacing(10);
 	    
 	    /*
 	    Scene scene = new Scene(root, 150, 600);

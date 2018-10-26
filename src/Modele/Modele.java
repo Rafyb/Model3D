@@ -87,8 +87,10 @@ public class Modele extends Observable{
 				yMax = p.getY();
 		}
 
-		double zoom = 350/xMax;
-		if (450/yMax < zoom)  zoom = 450/yMax;
+		double zoom = 0;
+		while(xMax*(1+zoom) < 500 && yMax*(1+zoom) < 380) {
+			zoom += 0.01;
+		}
 
 		System.out.println(zoom);
 		r.zoom(this,zoom);

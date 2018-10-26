@@ -16,17 +16,22 @@ import Modele.Rotation;
 
 
 public class TriTest {
-	Modele test1  = new Modele(new ReadModele("data/corner.ply"));;
-	ReadModele exist =  new ReadModele("/data/corner.ply");
+	Modele test1  = new Modele(new ReadModele("data/corner.ply"));
+	Modele test2  = new Modele(new ReadModele("data/cornertrie.ply"));
+	ReadModele exist  =  new ReadModele("data/corner.ply");
 	
 	@Before
 	public void setup() {
-		Modele test1  = new Modele(new ReadModele("data/corner.ply"));;
-		ReadModele exist =  new ReadModele("/data/corner.ply");
+		Modele test1  = new Modele(new ReadModele("data/corner.ply"));
+		ReadModele exist =  new ReadModele("data/corner.ply");
+		
+		Modele test2  = new Modele(new ReadModele("data/cornertrie.ply"));
+
+}
 		
 	
 		
-	}
+	
 
 
 	@Test
@@ -38,231 +43,169 @@ public class TriTest {
 			assertTrue(test1.getPointAtIndex(i).getY() == (test2.getPointAtIndex(i).getY()));
 			assertTrue(test1.getPointAtIndex(i).getZ() == (test2.getPointAtIndex(i).getZ()));
 		}
-
 	}
 
 	@Test
 	public void Dezoom() {
         double dezoom = 0.25;
 		Rotation r = new Rotation();
-		r.dezoom(test2,0.25);
-		test1.triZ();
-		for(int i = 0 ; i < test1.getAllPoints().length;i++) {
-
-			double x = test1.getPointAtIndex(i).getX();
-			double y = test1.getPointAtIndex(i).getY();
-			double z = test1.getPointAtIndex(i).getZ();
-
-			test1.getPointAtIndex(i).setX(x*(1-dezoom));
-			test1.getPointAtIndex(i).setY(y*(1-dezoom));
-			test1.getPointAtIndex(i).setZ(z*(1-dezoom));
-
-		}
-			for(int i = 0; i < test2.getAllPoints().length; i++) {
-			
-			assertTrue(test1.getPointAtIndex(i).getX() == test2.getPointAtIndex(i).getX());
-			assertTrue(test1.getPointAtIndex(i).getY() == (test2.getPointAtIndex(i).getY()));
-			assertTrue(test1.getPointAtIndex(i).getZ() == (test2.getPointAtIndex(i).getZ()));
-		}
-
+		r.dezoom(test1,1);
 		
-	}
-
+		//On ajoute 350 car les points sont centrés	
+		
+		assertEquals(0.0, test1.getPointAtIndex(0).getX());
+		assertEquals(0.0, test1.getPointAtIndex(0).getY());
+		assertEquals(0.0, test1.getPointAtIndex(0).getZ());
+		
+		
+		assertEquals(0.0, test1.getPointAtIndex(3).getX());
+		assertEquals(0.0, test1.getPointAtIndex(3).getY());
+		assertEquals(0.0, test1.getPointAtIndex(3).getZ());
+		}
 
 	@Test
 	public void RotationXHaut() {
-		int rotation = 10;
+		int rotation = 1;
 
 		Rotation r = new Rotation();
 		r.rotationX(test1, rotation);
 
 
-
-		for(int i = 0 ; i < test2.getAllPoints().length;i++) {
-			double cos = Math.cos(Math.toRadians(rotation));
-			double sin = Math.sin(Math.toRadians(rotation));
-
-			double y = test2.getPointAtIndex(i).getY();
-			double z = test2.getPointAtIndex(i).getZ();
-
-			test2.getPointAtIndex(i).setY((y*cos+z*(-sin)));
-			test2.getPointAtIndex(i).setZ((y*sin)+(z*cos));
-		}
-
-		test1.triZ();
-		for(int i = 0; i < test2.getAllPoints().length; i++) {
-			
-			assertTrue(test1.getPointAtIndex(i).getX() == test2.getPointAtIndex(i).getX());
-			assertTrue(test1.getPointAtIndex(i).getY() == (test2.getPointAtIndex(i).getY()));
-			assertTrue(test1.getPointAtIndex(i).getZ() == (test2.getPointAtIndex(i).getZ()));
-		}
-
-
-
-	}
+		//On ajoute 350 car les points sont centrés	
+		
+				assertEquals(1 + 350.0, test1.getPointAtIndex(0).getX());
+				assertEquals(0.0, test1.getPointAtIndex(0).getY());
+				assertEquals(0.0, test1.getPointAtIndex(0).getZ());
+				
+				
+				assertEquals(0.0, test1.getPointAtIndex(3).getX());
+				assertEquals(0.94654099989333 + 350, test1.getPointAtIndex(3).getY());
+				assertEquals(6.1257946594865125, test1.getPointAtIndex(3).getZ());
+				}
 	
 	
 	@Test
 	public void RotationXBas() {
-		int rotation = -10;
+		int rotation = -1;
 
 		Rotation r = new Rotation();
 		r.rotationX(test1, rotation);
 
 
 
-		for(int i = 0 ; i < test2.getAllPoints().length;i++) {
-			double cos = Math.cos(Math.toRadians(rotation));
-			double sin = Math.sin(Math.toRadians(rotation));
-
-			double y = test2.getPointAtIndex(i).getY();
-			double z = test2.getPointAtIndex(i).getZ();
-
-			test2.getPointAtIndex(i).setY((y*cos+z*(-sin)));
-			test2.getPointAtIndex(i).setZ((y*sin)+(z*cos));
-		}
-
-		test1.triZ();
-		for(int i = 0; i < test2.getAllPoints().length; i++) {
-			
-			assertTrue(test1.getPointAtIndex(i).getX() == test2.getPointAtIndex(i).getX());
-			assertTrue(test1.getPointAtIndex(i).getY() == (test2.getPointAtIndex(i).getY()));
-			assertTrue(test1.getPointAtIndex(i).getZ() == (test2.getPointAtIndex(i).getZ()));
-		}
+		//On ajoute 350 car les points sont centrés	
+		
+				assertEquals(1 + 350.0, test1.getPointAtIndex(0).getX());
+				assertEquals(0.0, test1.getPointAtIndex(0).getY());
+				assertEquals(0.0, test1.getPointAtIndex(0).getZ());
+				
+				
+				assertEquals(0.0, test1.getPointAtIndex(3).getX());
+				assertEquals(0.94654099989333 + 350, test1.getPointAtIndex(3).getY());
+				assertEquals(-6.1257946594865125, test1.getPointAtIndex(3).getZ());
+				}
 
 
 
-	}
+	
 
 	@Test
 	public void RotationYDroite() {
 		Rotation r = new Rotation();
-		int rotation = 10;
+		int rotation = 1;
 		r.rotationY(test1, rotation);
 		
-		for(int i = 0 ; i < test2.getAllPoints().length;i++) {
-			double cos = Math.cos(Math.toRadians(rotation));
-			double sin = Math.sin(Math.toRadians(rotation));
-
-			double x = test2.getPointAtIndex(i).getX();
-			double z = test2.getPointAtIndex(i).getZ();
-
-			test2.getPointAtIndex(i).setX(x*cos+z*sin);
-			test2.getPointAtIndex(i).setZ((-sin)*x+z*cos);
-		}
+		//On ajoute 350 car les points sont centrés	
 		
-		test1.triZ();
-		for(int i = 0; i < test2.getAllPoints().length; i++) {
-			
-			assertTrue(test1.getPointAtIndex(i).getX() == test2.getPointAtIndex(i).getX());
-			assertTrue(test1.getPointAtIndex(i).getY() == (test2.getPointAtIndex(i).getY()));
-			assertTrue(test1.getPointAtIndex(i).getZ() == (test2.getPointAtIndex(i).getZ()));
+		assertEquals(0.94654099989333 + 350.0, test1.getPointAtIndex(0).getX());
+		assertEquals(0.0, test1.getPointAtIndex(0).getY());
+		assertEquals(-6.1257946594865125, test1.getPointAtIndex(0).getZ());
+		
+		
+		assertEquals(0.0, test1.getPointAtIndex(3).getX());
+		assertEquals(1 + 350, test1.getPointAtIndex(3).getY());
+		assertEquals(0.0, test1.getPointAtIndex(3).getZ());
 		}
-	}
+	
 	
 	@Test
 	public void RotationYGauche() {
 		Rotation r = new Rotation();
-		int rotation = -10;
+		int rotation = -1;
 		r.rotationY(test1, rotation);
 		
-		for(int i = 0 ; i < test2.getAllPoints().length;i++) {
-			double cos = Math.cos(Math.toRadians(rotation));
-			double sin = Math.sin(Math.toRadians(rotation));
-
-			double x = test2.getPointAtIndex(i).getX();
-			double z = test2.getPointAtIndex(i).getZ();
-
-			test2.getPointAtIndex(i).setX(x*cos+z*sin);
-			test2.getPointAtIndex(i).setZ((-sin)*x+z*cos);
-		}
+		//On ajoute 350 car les points sont centrés	
 		
-		test1.triZ();
-		for(int i = 0; i < test2.getAllPoints().length; i++) {
-			
-			assertTrue(test1.getPointAtIndex(i).getX() == test2.getPointAtIndex(i).getX());
-			assertTrue(test1.getPointAtIndex(i).getY() == (test2.getPointAtIndex(i).getY()));
-			assertTrue(test1.getPointAtIndex(i).getZ() == (test2.getPointAtIndex(i).getZ()));
-		}
-	}
+				assertEquals(0.94654099989333 + 350.0, test1.getPointAtIndex(0).getX());
+				assertEquals(0.0, test1.getPointAtIndex(0).getY());
+				assertEquals(6.1257946594865125, test1.getPointAtIndex(0).getZ());
+				
+				
+				assertEquals(0.0, test1.getPointAtIndex(3).getX());
+				assertEquals(1 + 350, test1.getPointAtIndex(3).getY());
+				assertEquals(0.0, test1.getPointAtIndex(3).getZ());
+				}
+		
+	
 
 	@Test
 	public void RotationZDroite() {
 		Rotation r = new Rotation();
-		int rotation = 10;
+		int rotation = 1;
 		r.rotationZ(test1, rotation);
 		
-		for(int i = 0 ; i < test2.getAllPoints().length;i++) {
-			double cos = Math.cos(Math.toRadians(rotation));
-			double sin = Math.sin(Math.toRadians(rotation));
-
-			double x = test2.getPointAtIndex(i).getX();
-			double y = test2.getPointAtIndex(i).getY();
-
-			test2.getPointAtIndex(i).setX(x*cos-sin*y);
-			test2.getPointAtIndex(i).setY(sin*x+cos*y);
-		}
+		//On ajoute 350 car les points sont centrés	
 		
-		test1.triZ();
-		for(int i = 0; i < test2.getAllPoints().length; i++) {
-			
-			assertTrue(test1.getPointAtIndex(i).getX() == test2.getPointAtIndex(i).getX());
-			assertTrue(test1.getPointAtIndex(i).getY() == (test2.getPointAtIndex(i).getY()));
-			assertTrue(test1.getPointAtIndex(i).getZ() == (test2.getPointAtIndex(i).getZ()));
+		assertEquals(0.94654099989333 + 350.0, test1.getPointAtIndex(0).getX());
+		assertEquals(6.1257946594865125, test1.getPointAtIndex(0).getY());
+		assertEquals(0.0, test1.getPointAtIndex(0).getZ());
+		
+		
+		assertEquals(-6.1257946594865125, test1.getPointAtIndex(3).getX());
+		assertEquals(350.0 + 0.94654099989333, test1.getPointAtIndex(3).getY());
+		assertEquals(0.0, test1.getPointAtIndex(3).getZ());
 		}
-	}
+	
 	
 	@Test
 	public void RotationZGauche() {
 		Rotation r = new Rotation();
-		int rotation = -10;
+		int rotation = -1;
 		r.rotationZ(test1, rotation);
 		
-		for(int i = 0 ; i < test2.getAllPoints().length;i++)  {
-			double cos = Math.cos(Math.toRadians(rotation));
-			double sin = Math.sin(Math.toRadians(rotation));
-
-			double x = test2.getPointAtIndex(i).getX();
-			double y = test2.getPointAtIndex(i).getY();
-
-			test2.getPointAtIndex(i).setX(x*cos-sin*y);
-			test2.getPointAtIndex(i).setY(sin*x+cos*y);
-		}
+		//On ajoute 350 car les points sont centrés	
 		
-		test1.triZ();
-		for(int i = 0; i < test2.getAllPoints().length; i++) {
-			
-			assertTrue(test1.getPointAtIndex(i).getX() == test2.getPointAtIndex(i).getX());
-			assertTrue(test1.getPointAtIndex(i).getY() == (test2.getPointAtIndex(i).getY()));
-			assertTrue(test1.getPointAtIndex(i).getZ() == (test2.getPointAtIndex(i).getZ()));
+		assertEquals(0.94654099989333 + 350.0, test1.getPointAtIndex(0).getX());
+		assertEquals(-6.1257946594865125, test1.getPointAtIndex(0).getY());
+		assertEquals(0.0, test1.getPointAtIndex(0).getZ());
+		
+		
+		assertEquals(6.1257946594865125, test1.getPointAtIndex(3).getX());
+		assertEquals(350.94654099989333, test1.getPointAtIndex(3).getY());
+		assertEquals(0.0, test1.getPointAtIndex(3).getZ());
+		
 		}
-	}
+	
 	
 
 	@Test
 	public void Zoom() {
 		double zoom = 0.25;
 		Rotation r = new Rotation();
-		r.zoom(test2,0.25);
+		r.zoom(test1,1);
 		test1.triZ();
-		for(int i = 0 ; i < test1.getAllPoints().length;i++) {
 
-			double x = test1.getPointAtIndex(i).getX();
-			double y = test1.getPointAtIndex(i).getY();
-			double z = test1.getPointAtIndex(i).getZ();
-
-			test1.getPointAtIndex(i).setX(x*(1+zoom));
-			test1.getPointAtIndex(i).setY(y*(1+zoom));
-			test1.getPointAtIndex(i).setZ(z*(1+zoom));
-
-		}
-			for(int i = 0; i < test2.getAllPoints().length; i++) {
-			
-			assertTrue(test1.getPointAtIndex(i).getX() == test2.getPointAtIndex(i).getX());
-			assertTrue(test1.getPointAtIndex(i).getY() == (test2.getPointAtIndex(i).getY()));
-			assertTrue(test1.getPointAtIndex(i).getZ() == (test2.getPointAtIndex(i).getZ()));
-		}
-	}
+		//On ajoute 350 car les points sont centrés	
+		
+				assertEquals(352 + 350.0, test1.getPointAtIndex(0).getX());
+				assertEquals(0.0, test1.getPointAtIndex(0).getY());
+				assertEquals(0.0, test1.getPointAtIndex(0).getZ());
+				
+				
+				assertEquals(0.0, test1.getPointAtIndex(3).getX());
+				assertEquals(352 + 350, test1.getPointAtIndex(3).getY());
+				assertEquals(0.0, test1.getPointAtIndex(3).getZ());
+				}
 	
 	@Test
 	public void TranslationHaut() {
@@ -271,23 +214,18 @@ public class TriTest {
 		r.translation(test1, p);
 		
 		
-		for(int i = 0 ; i < test2.getAllPoints().length;i++) {
-
-			double x = test2.getPointAtIndex(i).getX();
-			double y = test2.getPointAtIndex(i).getY();
-			double z = test2.getPointAtIndex(i).getZ();
-
-			test2.getPointAtIndex(i).setX(x+p.getX());
-			test2.getPointAtIndex(i).setY(y+p.getY());
-			test2.getPointAtIndex(i).setZ(z+p.getZ());
+		//On ajoute 350 car les points sont centrés	
+		assertEquals(1 + 350.0, test1.getPointAtIndex(0).getX());
+		assertEquals(-1.0, test1.getPointAtIndex(0).getY());
+		assertEquals(0.0, test1.getPointAtIndex(0).getZ());
+		
+		
+		assertEquals(0.0, test1.getPointAtIndex(3).getX());
+		assertEquals(0 + 350.0, test1.getPointAtIndex(3).getY());
+		assertEquals(0.0, test1.getPointAtIndex(3).getZ());
+		
 		}
-		for(int i = 0; i < test2.getAllPoints().length; i++) {
-			
-			assertTrue(test1.getPointAtIndex(i).getX() == test2.getPointAtIndex(i).getX());
-			assertTrue(test1.getPointAtIndex(i).getY() == (test2.getPointAtIndex(i).getY()));
-			assertTrue(test1.getPointAtIndex(i).getZ() == (test2.getPointAtIndex(i).getZ()));
-		}
-	}
+	
 		
 	
 	
@@ -297,24 +235,18 @@ public class TriTest {
 		Rotation r= new Rotation();
 		Point p = new Point(0, 1, 0);
 		r.translation(test1, p);
+		//On ajoute 350 car les points sont centrés	
+		
+		assertEquals(1 + 350.0, test1.getPointAtIndex(0).getX());
+		assertEquals(1.0, test1.getPointAtIndex(0).getY());
+		assertEquals(0.0, test1.getPointAtIndex(0).getZ());
 		
 		
-		for(int i = 0 ; i < test2.getAllPoints().length;i++) {
-
-			double x = test2.getPointAtIndex(i).getX();
-			double y = test2.getPointAtIndex(i).getY();
-			double z = test2.getPointAtIndex(i).getZ();
-
-			test2.getPointAtIndex(i).setX(x+p.getX());
-			test2.getPointAtIndex(i).setY(y+p.getY());
-			test2.getPointAtIndex(i).setZ(z+p.getZ());
-		}
-		for(int i = 0; i < test2.getAllPoints().length; i++) {
-			
-			assertTrue(test1.getPointAtIndex(i).getX() == test2.getPointAtIndex(i).getX());
-			assertTrue(test1.getPointAtIndex(i).getY() == (test2.getPointAtIndex(i).getY()));
-			assertTrue(test1.getPointAtIndex(i).getZ() == (test2.getPointAtIndex(i).getZ()));
-		}
+		assertEquals(0.0, test1.getPointAtIndex(3).getX());
+		assertEquals(2 + 350.0, test1.getPointAtIndex(3).getY());
+		assertEquals(0.0, test1.getPointAtIndex(3).getZ());
+		
+	
 		
 	}
 	
@@ -325,15 +257,15 @@ public class TriTest {
 		Point p = new Point(-1, 0, 0);
 		r.translation(test1, p);
 		
-		
+       //On ajoute 350 car les points sont centrés	
 	
-		assertEquals(2.0, test1.getPointAtIndex(0).getX());
+		assertEquals(0 + 350.0, test1.getPointAtIndex(0).getX());
 		assertEquals(0.0, test1.getPointAtIndex(0).getY());
 		assertEquals(0.0, test1.getPointAtIndex(0).getZ());
 		
 		
-		assertEquals(1.0, test1.getPointAtIndex(3).getX());
-		assertEquals(301.0, test1.getPointAtIndex(3).getY());
+		assertEquals(-1.0, test1.getPointAtIndex(3).getX());
+		assertEquals(1 +350.0, test1.getPointAtIndex(3).getY());
 		assertEquals(0.0, test1.getPointAtIndex(3).getZ());
 		
 		
@@ -346,16 +278,15 @@ public class TriTest {
 		Rotation r= new Rotation();
 		Point p = new Point(-1, 0, 0);
 		r.translation(test1, p);
+		//On ajoute 350 car les points sont centrés	
 		
-
-			
-			assertEquals(300, test1.getPointAtIndex(0).getX());
+			assertEquals(0 + 350, test1.getPointAtIndex(0).getX());
 			assertEquals(0.0, test1.getPointAtIndex(0).getY());
 			assertEquals(0.0, test1.getPointAtIndex(0).getZ());
 			
 			
 			assertEquals(-1.0, test1.getPointAtIndex(3).getX());
-			assertEquals(301.0, test1.getPointAtIndex(3).getY());
+			assertEquals(1+ 350.0, test1.getPointAtIndex(3).getY());
 			assertEquals(0.0, test1.getPointAtIndex(3).getZ());
 
 	//	}
@@ -366,10 +297,14 @@ public class TriTest {
 	public void RecupFace() {
 		
 		
+		assertEquals(8, exist.getNbFaces());
+		
+		
 	}
 	
 	@Test
 	public void RecupPoints() {
+    assertEquals(6,exist.getNbPoints());
 		
 		
 	}

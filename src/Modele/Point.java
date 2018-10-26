@@ -6,6 +6,7 @@ package Modele;
  */
 public class Point {
 	private double x,y,z;
+	private double r,g,b;
 	
 	/**
 	 * Constructeur pour les coordonnées
@@ -17,6 +18,15 @@ public class Point {
 		x = c;
 		y = d;
 		z = e;
+	}
+	
+	public Point(double c, double d, double e, double r, double g, double b) {
+		x = c;
+		y = d;
+		z = e;
+		this.r = r;
+		this.g = g;
+		this.b = b; 
 	}
 	/**
 	 * Récupérer la coordonnée X
@@ -54,6 +64,21 @@ public class Point {
 	public void setZ(double z) {
 		this.z = z;
 	}
+	
+	public double getR() {
+		return r;
+	}
+	public double getG() {
+		return g;
+	}
+	public double getB() {
+		return b;
+	}
+	
+	
+	
+	
+	
 	/**
 	 * Méthode d'affichage.
 	 */

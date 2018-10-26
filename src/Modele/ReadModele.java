@@ -26,7 +26,7 @@ public class ReadModele {
 	 *  
 	 */
 	public ReadModele(String fichier) {
-		if(this.fileExist(fichier)) {
+		if(ReadModele.fileExist(fichier)) {
 			f = new File(fichier);
 
 			try {
@@ -96,7 +96,10 @@ public class ReadModele {
 			try {
 				st = br.readLine();
 				String[] p = st.split(" ");
-				points[cpt] = new Point(Double.parseDouble(p[0]), Double.parseDouble(p[1]), Double.parseDouble(p[2]));
+				if (p.length == 3)
+					points[cpt] = new Point(Double.parseDouble(p[0]), Double.parseDouble(p[1]), Double.parseDouble(p[2]));
+				else 
+					points[cpt] = new Point(Double.parseDouble(p[0]), Double.parseDouble(p[1]), Double.parseDouble(p[2]),Double.parseDouble(p[3]), Double.parseDouble(p[4]), Double.parseDouble(p[5]));
 				cpt ++;
 			} catch (IOException e) {
 				System.out.println("point bug bug");

@@ -6,6 +6,7 @@ package Modele;
  */
 public class Face implements Comparable<Face>{	
 	private Point[] tabp;
+	private double[] couleur;
 	private Point centreGravite;
 	/**
 	 * Constructeur : 
@@ -20,6 +21,7 @@ public class Face implements Comparable<Face>{
 		double yG = (s.getY()+s1.getY()+s2.getY())/3;
 		double zG = (s.getZ()+s1.getZ()+s2.getZ())/3;
 		centreGravite = new Point(xG,yG,zG);
+		couleur = new double[]{(s.getR()+s1.getR()+s2.getR())/3,(s.getG()+s1.getG()+s2.getG())/3,(s.getB()+s1.getB()+s2.getB())/3};
 		
 	}
 	/**

@@ -9,8 +9,6 @@ public class Modele extends Observable{
 	 * face = tableau de face du modèle.
 	 * r = Rotation du modèle. 
 	 */
-	private static  Modele modele = null; 	
-
 	public Point[] points ;
 	public Face[] face;
 	public Rotation r = new Rotation();	
@@ -20,17 +18,10 @@ public class Modele extends Observable{
 	 * Constructeur
 	 * @param r pour donner un modèle dans un fichier.
 	 */
-	private Modele(ReadModele r) {
+	public Modele(ReadModele r) {
 		points = r.getPoint();		
 		face =  r.getFace();
 		this.centrer();
-	}
-	
-	
-	public static Modele getModele(ReadModele r) {
-		if(modele == null) modele = new Modele(r);
-		return modele;
-		
 	}
 	
 	

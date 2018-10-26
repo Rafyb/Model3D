@@ -13,6 +13,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 /**
  * La vue du modele,fonctionne sous la forme de Observer/Observable.
@@ -117,6 +118,10 @@ public class Affichage implements Observer {
 		for(int i = 0; i < mod.getAllFace().length; i++) {
 			Face face = mod.getFaceAtIndex(i);
 			Point[] points = face.getTabp();
+			if(face.getCouleur()!= null) {
+				int[] colors = face.getCouleur();
+				gc.setFill(Color.rgb(colors[0], colors[1], colors[2]));
+			}
 			gc.fillPolygon(new double[]{points[0].getX()+(canvas.getWidth()/2),points[1].getX()+(canvas.getWidth()/2),points[2].getX()+(canvas.getWidth()/2)},
 					new double[]{points[0].getY()+(canvas.getHeight()/2),points[1].getY()+(canvas.getHeight()/2),points[2].getY()+(canvas.getHeight()/2)},3);
 			gc.strokePolygon(new double[]{points[0].getX()+(canvas.getWidth()/2),points[1].getX()+(canvas.getWidth()/2),points[2].getX()+(canvas.getWidth()/2)},

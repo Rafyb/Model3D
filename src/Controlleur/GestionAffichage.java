@@ -129,7 +129,8 @@ public class GestionAffichage implements Observer{
 	    sliderrot.valueProperty().addListener(e->slideRot.setText(Integer.toString((int)sliderrot.getValue())));
 	    slidertr.valueProperty().addListener(e->slideTr.setText(Integer.toString((int)slidertr.getValue())));
 	    
-	    
+	    trait.setOnAction(e-> mod.checkT());
+	    face.setOnAction(e-> mod.checkF());
 	    
 	    comboBox.getSelectionModel().selectedItemProperty().addListener(observable -> mod.changerModele(new ReadModele("./data/"+comboBox.getSelectionModel().getSelectedItem())));
 	    comboBox.setValue("corner.ply");

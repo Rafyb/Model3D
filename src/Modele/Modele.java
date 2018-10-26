@@ -9,9 +9,12 @@ public class Modele extends Observable{
 	 * face = tableau de face du modèle.
 	 * r = Rotation du modèle. 
 	 */
-	public Point[] points ;
-	public Face[] face;
-	public Rotation r = new Rotation();	
+	private Point[] points ;
+	private Face[] face;
+	private Rotation r = new Rotation();	
+	private boolean affTrait = true;
+	private boolean affFace = true;
+	
 
 	/**
 	 * 
@@ -88,6 +91,26 @@ public class Modele extends Observable{
 
 		//System.out.println(" xMin = "+ xMin +" xMax = "+ xMax + " yMin = "+ yMin + " yMax = "+ yMax);
 	}
+	
+	public void checkT() {
+		if(affTrait) affTrait =false;
+		else {
+			affTrait = true;
+		}
+		this.setChanged();
+		notifyObservers();
+	}
+	
+	public void checkF() {
+		if(affFace) affFace =false;
+		else {
+			affFace = true;
+		}
+		this.setChanged();
+		notifyObservers();
+	}
+	
+	
 	/**
 	 * Methode pour la rotation dans l'axe X et notifie les observers.
 	 */
@@ -152,7 +175,6 @@ public class Modele extends Observable{
 
 			f.updateCdG();
 		}
-
 	}
 	/**
 	 * Récupérer tout les points.
@@ -197,6 +219,16 @@ public class Modele extends Observable{
 		res = res.substring(0,res.length()-1);
 		res+= "]";
 		return res;
+	}
+
+
+	public boolean getCheckF() {
+		return affFace;
+	}
+
+
+	public boolean getCheckT() {
+		return affTrait;
 	}
 
 

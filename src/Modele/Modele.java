@@ -3,13 +3,13 @@ package Modele;
 import java.util.Arrays;
 import java.util.Observable;
 
-
 public class Modele extends Observable{
 	/**
 	 * @attributes points = tableau de point du modèle.
 	 * face = tableau de face du modèle.
 	 * r = Rotation du modèle. 
 	 */
+	private static  Modele modele = null; 	
 
 	public Point[] points ;
 	public Face[] face;
@@ -20,11 +20,20 @@ public class Modele extends Observable{
 	 * Constructeur
 	 * @param r pour donner un modèle dans un fichier.
 	 */
-	public Modele(ReadModele r) {
+	private Modele(ReadModele r) {
 		points = r.getPoint();		
 		face =  r.getFace();
 		this.centrer();
 	}
+	
+	
+	public static Modele getModele(ReadModele r) {
+		if(modele == null) modele = new Modele(r);
+		return modele;
+		
+	}
+	
+	
 	/**
 	 * Methode pour changer le modèle que l'on veut afficher.
 	 */

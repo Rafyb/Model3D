@@ -222,6 +222,16 @@ public class Modele extends Observable{
 	}
 
 
+	public boolean getCheckF() {
+		return affFace;
+	}
+
+
+	public boolean getCheckT() {
+		return affTrait;
+	}
+
+
 
 
 

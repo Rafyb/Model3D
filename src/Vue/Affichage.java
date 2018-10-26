@@ -50,7 +50,7 @@ public class Affichage implements Observer {
 		boutons.start(stage);
 		canvas = new Canvas (1150, 800);
 		gc = canvas.getGraphicsContext2D();
-		gc.setFill(Color.GREY);
+		
 		root.getChildren().addAll(canvas,boutons.getPage());
 		Scene scene = new Scene(root);
 		
@@ -126,15 +126,16 @@ public class Affichage implements Observer {
 	 */
 	private void triangle() {
 		for(int i = 0; i < mod.getAllFace().length; i++) {
+			gc.setFill(Color.GREY);
 			Face face = mod.getFaceAtIndex(i);
 			Point[] points = face.getTabp();
 			if(face.getCouleur()!= null) {
 				int[] colors = face.getCouleur();
 				gc.setFill(Color.rgb(colors[0], colors[1], colors[2]));
 			}
-			gc.fillPolygon(new double[]{points[0].getX()+(canvas.getWidth()/2),points[1].getX()+(canvas.getWidth()/2),points[2].getX()+(canvas.getWidth()/2)},
+			if(mod.getCheckF())gc.fillPolygon(new double[]{points[0].getX()+(canvas.getWidth()/2),points[1].getX()+(canvas.getWidth()/2),points[2].getX()+(canvas.getWidth()/2)},
 					new double[]{points[0].getY()+(canvas.getHeight()/2),points[1].getY()+(canvas.getHeight()/2),points[2].getY()+(canvas.getHeight()/2)},3);
-			gc.strokePolygon(new double[]{points[0].getX()+(canvas.getWidth()/2),points[1].getX()+(canvas.getWidth()/2),points[2].getX()+(canvas.getWidth()/2)},
+			if(mod.getCheckT())gc.strokePolygon(new double[]{points[0].getX()+(canvas.getWidth()/2),points[1].getX()+(canvas.getWidth()/2),points[2].getX()+(canvas.getWidth()/2)},
 					new double[]{points[0].getY()+(canvas.getHeight()/2),points[1].getY()+(canvas.getHeight()/2),points[2].getY()+(canvas.getHeight()/2)},3);
 		}
 	}

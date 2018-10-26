@@ -105,8 +105,8 @@ public class GestionAffichage implements Observer{
 	    
 	    ligne1.getChildren().addAll(new Label("Slider rotation : "),slideRot);
 	    ligne3.getChildren().addAll(new Label("Slider translation : "),slideTr);
-	    ligne4.getChildren().addAll(trait,new Label("Afficher trait"));
-	    ligne5.getChildren().addAll(face,new Label("Afficher face"));
+	    ligne4.getChildren().addAll(trait,new Label("Masquer traits"));
+	    ligne5.getChildren().addAll(face,new Label("Masquer faces"));
 	    
 	    // ---------------------------- CONTROLEURS ------------------------------//
 	    

@@ -59,6 +59,7 @@ public class Affichage implements Observer {
 		/////////////////////// MOUVEMENTS SOURIS ///////////////////////
 		canvas.setOnMouseDragged(e->{
 			
+			if (e.isPrimaryButtonDown()) {
 			if(this.x-e.getX()<0 && !e.isShiftDown()) {
 				mod.rotationY(2);
 			} else if (this.x-e.getX()>0  && !e.isShiftDown()) {
@@ -74,7 +75,16 @@ public class Affichage implements Observer {
 			}
 			this.x = e.getX();
 			this.y = e.getY();
+			} else if (e.isSecondaryButtonDown()) {
+				Point p = new Point(-(this.x-e.getX()),-(this.y-e.getY()),0 );
+				mod.translation(p);
+				System.out.println(this.x + "   "+ e.getX() + " " + this.y  + "  " + e.getY());
+				this.x = e.getX();
+				this.y = e.getY();
+			}
 		});
+		
+		canvas.setOnMousePressed(e ->{this.x = e.getX();this.y = e.getY();});
 		
 		canvas.setOnScroll(e -> {
 			if(e.getDeltaY() > 0) {

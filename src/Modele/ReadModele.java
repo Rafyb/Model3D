@@ -35,8 +35,8 @@ public class ReadModele {
 				System.out.println(e);
 			}
 
-			nbPoint = this.getNbPoints();
-			nbFace = this.getNbFaces();
+			nbPoint = this.ajoutNbPoints();
+			nbFace = this.ajoutNbFaces();
 			this.endHeader();
 			this.insertPoints(nbPoint);
 			this.insertFaces(nbFace);
@@ -48,7 +48,7 @@ public class ReadModele {
 	public static boolean fileExist(String path) {
 		return new File(path).exists();
 	}
-	public int getNbPoints() {
+	public int ajoutNbPoints() {
 		String st ="";
 		int res;
 		do {
@@ -62,7 +62,7 @@ public class ReadModele {
 		return res;
 
 	}
-	public int getNbFaces() {
+	public int ajoutNbFaces() {
 		String st = "";
 		int res;
 		do {
@@ -75,7 +75,16 @@ public class ReadModele {
 		res = Integer.parseInt(st.substring(13));
 		return res;
 	}
+	
+	public int getNbPoints() {
+		return nbPoint;
+	}
 
+	public int getNbFaces() {
+		
+		return nbFace;
+	}
+	
 	public String endHeader() {
 		String st = "";
 		do {
@@ -137,3 +146,5 @@ public class ReadModele {
 		return faces;
 	}	
 }
+
+

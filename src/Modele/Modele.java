@@ -51,7 +51,6 @@ public class Modele extends Observable{
 	 */
 	public void centrer() {
 		double xMin = points[0].getX(), xMax = points[0].getX(),yMin = points[0].getY(),yMax = points[0].getY();
-
 		for (Point p : points) {
 			if (p.getX()<xMin)
 				xMin = p.getX();

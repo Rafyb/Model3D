@@ -51,6 +51,7 @@ public class GestionAffichage implements Observer{
 	  /**
 	   * Afficher tout les controleurs du modèle.
 	   */
+	
 	public void start(Stage stage) {
 	    GridPane boutonsRot = new GridPane();
 	    GridPane boutonsTr = new GridPane();
@@ -63,7 +64,7 @@ public class GestionAffichage implements Observer{
 	    HBox ligne4 = new HBox();
 	    HBox ligne5 = new HBox();
 	    
-	    comboBox = new ComboBox();
+	    comboBox = new ComboBox<String>();
 
 	    Text choixT = new Text("Choix du modele :");
 	    Text slideRot = new Text("10");
@@ -132,8 +133,14 @@ public class GestionAffichage implements Observer{
 	    trait.setOnAction(e-> mod.checkT());
 	    face.setOnAction(e-> mod.checkF());
 	    
-	    comboBox.getSelectionModel().selectedItemProperty().addListener(observable -> mod.changerModele(new ReadModele("./data/"+comboBox.getSelectionModel().getSelectedItem())));
+	    try {
 	    comboBox.setValue("corner.ply");
+	    comboBox.getSelectionModel().selectedItemProperty().addListener(observable -> mod.changerModele(new ReadModele("./data/"+comboBox.getSelectionModel().getSelectedItem())));
+	    } catch(Exception e) {
+	    	e.printStackTrace();
+	    }
+	   
+	    
 	    
 	    
 	    

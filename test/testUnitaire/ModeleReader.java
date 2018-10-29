@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import Modele.Modele;
-import Modele.Point;
 import Modele.ReadModele;
 
 class ModeleReader {

@@ -1,14 +1,24 @@
-Groupe : Canonne ThÃ©o, Danglot ClÃ©ment, Breviere Lucas, Bauvin Raphael
+Groupe O4 : Canonne Theo, Danglot Clement, Breviere Lucas, Bauvin Raphael
 
-A faire:
-- une class Point - Segment - Face M
-- une class pour l'affichage 3D VC
-- une class pour la gestion IHM VC
-- une class ReadFicher M
-- une classe modele M
 
-M -> class Modele
-V-> class Affichage
-C -> class GestionAffichage
+Le Model3D.jar doit etre placer avec le dossier "data" contenant les modeles .ply pour fonctinner.
 
-Tests Ã  faire;
+Au lancement, le modele corner.ply est charge. 
+- Le modele est ensuite changeable grace a la liste de modele disponible sur le panel de controle à droite. 
+- Les boutons permettent de réaliser les rotations, translations, zoom/dezoom et les sliders changent la marge du movement.
+- Les checkBox traits/faces permettent de cacher les traits ou faces.
+- L'appli prend en charge les modeles avec couleur comme "skull.ply".
+- On peut realiser une translation grace au clique droit de la souris.
+- On peut realiser une rotation grace au clique gauche de la sours.
+- Maintenir la touche ctrl pour une rotation seulement horizontal.
+- Maintenir la touche shift pour une rotation seulement vertical.
+
+
+Autres :
+
+Class executable pour lancer le projet : Appli > AppliModel3D
+
+M -> Modele > class Modele
+V-> Vue > class Affichage
+C -> Controlleur > class GestionAffichage ( fait aussi partie de la vue )
+

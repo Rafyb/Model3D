@@ -1,10 +1,11 @@
 Groupe O4 : Canonne Theo, Danglot Clement, Breviere Lucas, Bauvin Raphael
 https://git-iut.univ-lille1.fr/canonnet/Modelisation.git
 
+Generalisations des taches realisees :
 Theo : Realisation du ReadFichier et des calculs mathematiques
 Lucas : Realisation du Modele et des Tests
 Raphael : Realisation de l'afficgae et des controlleurs
-Clement : Realistions des face, point et de la JavaDoc
+Clement : Realistions des faces, points et de la JavaDoc
 
 
 Le Model3D.jar doit etre placer avec le dossier "data" contenant les modeles .ply pour fonctinner.

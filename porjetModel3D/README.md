@@ -29,4 +29,4 @@ Class executable pour lancer le projet : Appli > AppliModel3D
 M -> Modele > class Modele
 V-> Vue > class Affichage
 C -> Controlleur > class GestionAffichage ( fait aussi partie de la vue )
- 
+

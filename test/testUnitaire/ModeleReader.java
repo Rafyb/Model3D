@@ -20,6 +20,6 @@ class ModeleReader {
 	void ajoutDesStructures() {
 		assertNotNull(m.getAllPoints());
 		assertNotNull(m.getAllFace());
-	}
+	} 
 
 }

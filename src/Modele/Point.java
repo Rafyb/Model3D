@@ -30,36 +30,42 @@ public class Point {
 	}
 	/**
 	 * Récupérer la coordonnée X
+	 * @return coordonnée X
 	 */
 	public double getX() {
 		return x;
 	}
 	/**
 	 * Mettre à jour la coordonnée X
+	 * @param x nouvelle coordonnée X	 * 
 	 */
 	public void setX(double x) {
 		this.x = x;
 	}
 	/**
 	 * Récupérer la coordonnée Y
+	 * @return coordonnée Y
 	 */
 	public double getY() {
 		return y;
 	}
 	/**
 	 * Mettre à jour la coordonnée Y
+	 * @param y nouvelle coordonnée y
 	 */
 	public void setY(double y) {
 		this.y = y;
 	}
 	/**
 	 * Récupérer la coordonnée Z
+	 * @return coordonnée Z
 	 */
 	public double getZ() {
 		return z;
 	}
 	/**
 	 * Mettre à jour la coordonnée Z
+	 * @param z nouvelle coordonnée z
 	 */
 	public void setZ(double z) {
 		this.z = z;

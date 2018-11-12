@@ -58,12 +58,13 @@ public class Affichage implements Observer {
 		/////////////////////// MOUVEMENTS SOURIS ///////////////////////
 		canvas.setOnMouseDragged(e->{
 			if (e.isPrimaryButtonDown()) {
-				int rotaX = (int) (this.x - e.getX());
-				int rotaY = (int) (this.y - e.getY());
+				int rotaX = (int) ((Math.abs(this.x-e.getX()) > 20 ) ? -Math.copySign(20, this.x-e.getX()) : -(this.x-e.getX()));
+				int rotaY = (int) ((Math.abs(this.y-e.getY()) > 20 ) ? Math.copySign(20, this.y-e.getY()) : (this.y-e.getY()));
+				System.out.println(rotaX + "-" + rotaY);
 				if(rotaX<0 && !e.isShiftDown()) {
-					mod.rotationY(-rotaX);
+					mod.rotationY(rotaX);
 				} else if (rotaX>0  && !e.isShiftDown()) {
-					mod.rotationY(-rotaX);
+					mod.rotationY(rotaX);
 				}
 
 				if(rotaY<0 && !e.isControlDown()) {

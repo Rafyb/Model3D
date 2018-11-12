@@ -42,38 +42,39 @@ public class Affichage implements Observer {
 	 * 
 	 */
 	public void start(Stage stage) { 
-	
+
 		//////////////////////////// SCENES ////////////////////////////
 		HBox root = new HBox();
 		GestionAffichage boutons = new GestionAffichage(mod);
 		boutons.start(stage);
 		canvas = new Canvas (1150, 800);
 		gc = canvas.getGraphicsContext2D();
-		
+
 		root.getChildren().addAll(canvas,boutons.getPage());
 		Scene scene = new Scene(root);
-		
-		
-		
+
+
+
 		/////////////////////// MOUVEMENTS SOURIS ///////////////////////
 		canvas.setOnMouseDragged(e->{
-			
 			if (e.isPrimaryButtonDown()) {
-			if(this.x-e.getX()<0 && !e.isShiftDown()) {
-				mod.rotationY(2);
-			} else if (this.x-e.getX()>0  && !e.isShiftDown()) {
-				mod.rotationY(-2);
-			}
-			
-			if(this.y-e.getY()<0 && !e.isControlDown()) {
-				
-				mod.rotationX(-2);
-			} else if (this.y-e.getY()>0 && !e.isControlDown()) {
-				
-				mod.rotationX(2);
-			}
-			this.x = e.getX();
-			this.y = e.getY();
+				int rotaX = (int) (this.x - e.getX());
+				int rotaY = (int) (this.y - e.getY());
+				if(rotaX<0 && !e.isShiftDown()) {
+					mod.rotationY(-rotaX);
+				} else if (rotaX>0  && !e.isShiftDown()) {
+					mod.rotationY(-rotaX);
+				}
+
+				if(rotaY<0 && !e.isControlDown()) {
+
+					mod.rotationX(rotaY);
+				} else if (rotaY>0 && !e.isControlDown()) {
+
+					mod.rotationX(rotaY);
+				}
+				this.x = e.getX();
+				this.y = e.getY();
 			} else if (e.isSecondaryButtonDown()) {
 				Point p = new Point(-(this.x-e.getX()),-(this.y-e.getY()),0 );
 				mod.translation(p);
@@ -82,9 +83,9 @@ public class Affichage implements Observer {
 				this.y = e.getY();
 			}
 		});
-		
+
 		canvas.setOnMousePressed(e ->{this.x = e.getX();this.y = e.getY();});
-		
+
 		canvas.setOnScroll(e -> {
 			if(e.getDeltaY() > 0) {
 				mod.zoom(0.1);
@@ -92,7 +93,7 @@ public class Affichage implements Observer {
 				mod.dezoom(0.1);
 			}
 		});
-		
+
 		canvas.setOnKeyPressed(e -> {
 			System.out.println(e.getCode());
 			if (e.getCode().equals(KeyCode.LEFT)) {
@@ -115,9 +116,9 @@ public class Affichage implements Observer {
 		stage.setResizable(false);
 		stage.show();
 
-		
-			
-		
+
+
+
 	}
 
 	/**
@@ -144,11 +145,11 @@ public class Affichage implements Observer {
 	 */
 	public void update(Observable o, Object arg) {
 		try {
-		gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-		mod.triZ();
-		triangle();
+			gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+			mod.triZ();
+			triangle();
 		} catch(Exception e) {
-			
+
 		}
 
 	}

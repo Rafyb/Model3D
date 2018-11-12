@@ -27,6 +27,12 @@ import javafx.stage.Stage;
  * @author bauvinr danglotc
  */
 public class GestionAffichage implements Observer{
+	/**
+	 * mod = modele utilisé.
+	 * listeModele = la liste des modèles selectionnable
+	 * comboBox = affichage de la liste des modeles	 * 	
+	 * root 
+	 */
 	
 	private Modele mod;
 	private ArrayList<String> listeModele;

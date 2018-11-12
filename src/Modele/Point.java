@@ -81,21 +81,21 @@ public class Point {
 	}
 	/**
 	 * Retourne le code couleur R
-	 * return code couleur R
+	 * @return code couleur R
 	 */
 	public double getR() {
 		return r;
 	}
 	/**
 	 * Retourne le code couleur G
-	 * return code couleur G
+	 * @return code couleur G
 	 */
 	public double getG() {
 		return g;
 	}
 	/**
 	 * Retourne le code couleur B
-	 * return code couleur B
+	 * @return code couleur B
 	 */
 	public double getB() {
 		return b;

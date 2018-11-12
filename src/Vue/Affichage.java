@@ -18,12 +18,13 @@ import javafx.stage.Stage;
  * La vue du modele,fonctionne sous la forme de Observer/Observable.
  * Fenetre affichant le modele en 3D à l'aide d'une methode de dessin de triangle.
  * Gere aussi les rotations a la souris 
- * > x et y
- * > x seulement avec ctrl enfonce
- * > y seulement avec shift enfonce
+ *  x et y
+ *  x seulement avec ctrl enfonce
+ *  y seulement avec shift enfonce
  * @author bauvinr canonnet danglotc
  */
 public class Affichage implements Observer {
+	
 	private GraphicsContext gc;
 	private Canvas canvas;
 	private Modele mod;
@@ -39,7 +40,7 @@ public class Affichage implements Observer {
 	}
 	/**
 	 * Methode principale pour l'affichage qui crée les fenêtres.
-	 * 
+	 * @param stage stage
 	 */
 	public void start(Stage stage) { 
 
@@ -142,7 +143,7 @@ public class Affichage implements Observer {
 	}
 
 	/**
-	 * Methode pour mettre à jour l'affichage en effaçant l'écran et en triant le modèle.
+	 * Methode pour mettre à jour l'affichage en effaçant l'écran et en triant le modèle.	 
 	 */
 	public void update(Observable o, Object arg) {
 		try {

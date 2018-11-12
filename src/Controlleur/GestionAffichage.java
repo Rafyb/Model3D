@@ -193,7 +193,7 @@ public class GestionAffichage implements Observer{
 
 
 	/**
-	 * Methode pour mettre à jour le modèle choisi.
+	 * Methode pour mettre à jour la liste.
 	 */
 	public void update(Observable o, Object arg) {
 		comboBox.setValue(comboBox.getSelectionModel().getSelectedItem());

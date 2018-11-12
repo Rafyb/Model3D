@@ -3,12 +3,8 @@ package testUnitaire;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import com.sun.org.apache.bcel.internal.generic.RETURN;
-import com.sun.xml.internal.ws.policy.PolicyIntersector;
-
-import Modele.Face;
 import Modele.Modele;
 import Modele.Point;
 import Modele.ReadModele;
@@ -16,9 +12,9 @@ import Modele.Rotation;
 
 
 public class TriTest {
-	Modele test1   = new Modele(new ReadModele("data/corner.ply"));
-	Modele test2  = new Modele(new ReadModele("data/cornertrie.ply"));
-	ReadModele exist = new ReadModele("data/corner.ply");	
+	Modele test1 ;
+	Modele test2 ;
+	ReadModele exist;	
 	
 	@Before
 	public void setup() {
@@ -26,7 +22,7 @@ public class TriTest {
 		exist =  new ReadModele("data/corner.ply");	
 		test2  = new Modele(new ReadModele("data/cornertrie.ply"));
 
-}
+	}
 		
 
 	@Test

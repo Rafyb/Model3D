@@ -11,6 +11,14 @@ import java.io.IOException;
  * @author danglotc
  */
 public class ReadModele {
+	/**
+	 * f = fichier correspondant pour le readmodele.
+	 * br = bufferedReader
+	 * nbPoint = nombre de points.
+	 * nbFace = nombre de faces.
+	 * points = Tableau des points.
+	 * faces = tableau des faces.
+	 */
 	private File f;
 	private BufferedReader br;
 

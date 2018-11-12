@@ -3,7 +3,7 @@ package Modele;
 import java.util.Arrays;
 import java.util.Observable;
 
-public class Modele extends Observable{
+public final class Modele extends Observable{
 	/**
 	 * @attributes points = tableau de point du modèle.
 	 * face = tableau de face du modèle.
@@ -15,16 +15,21 @@ public class Modele extends Observable{
 	private boolean affTrait = true;
 	private boolean affFace = true;
 	
-
+	private static Modele instance = null;
 	/**
 	 * 
 	 * Constructeur
 	 * @param r pour donner un modèle dans un fichier.
 	 */
-	public Modele(ReadModele r) {
+	private Modele(ReadModele r) {
 		points = r.getPoint();		
 		face =  r.getFace();
 		this.centrer();
+	}
+	
+	public static Modele getModele(ReadModele r) {
+		if(instance == null) instance = new Modele(r);
+		return instance;
 	}
 	
 	

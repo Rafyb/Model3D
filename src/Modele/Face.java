@@ -26,18 +26,21 @@ public class Face implements Comparable<Face>{
 	}
 	/**
 	 * Recupérer les points d'une face dans un tableau.
+	 * @return  Un tableau de points d'une face
 	 */
 	public Point[] getTabp() {
 		return tabp;
 	}
 	/**
 	 * Récupérer le centre de gravité d'une face.
+	 * @return  le centre de gravité de la face.
 	 */
 	public Point getCentreG() {
 		return centreGravite;
 	}
 	/**
 	 * Récupérer le code couleur RGB d'une face.
+	 * @return le code couleur d'une face.
 	 */
 	public int[] getCouleur() {
 		if(couleur[0]==0 && couleur[1]==0 && couleur[2]==0) return null;
@@ -58,6 +61,7 @@ public class Face implements Comparable<Face>{
 	}
 	/**
 	 * Mettre à jour le tableau de points.
+	 * @param tabp tableau de points qui doit être mis à jour dans la fonction.
 	 */
 	public void setTabp(Point[] tabp) {
 		this.tabp = tabp;

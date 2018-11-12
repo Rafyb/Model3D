@@ -30,6 +30,7 @@ public class Modele extends Observable{
 	
 	/**
 	 * Methode pour changer le modèle que l'on veut afficher.
+	 * @param r Modèle different de l'ancien.
 	 */
 	public void changerModele(ReadModele r) {
 		points = r.getPoint();
@@ -112,6 +113,7 @@ public class Modele extends Observable{
 	
 	/**
 	 * Methode pour la rotation dans l'axe X et notifie les observers.
+	 * @param radian l'angle en radian.
 	 */
 	public void rotationX(int radian) {
 		r.rotationX(this,radian);
@@ -121,6 +123,7 @@ public class Modele extends Observable{
 	}
 	/**
 	 * Methode pour la rotation dans l'axe Y sur le modèle et notifie les observers.
+	 * @param radian l'angle en radian.
 	 */
 	public void rotationY(int radian) {
 		r.rotationY(this,radian);
@@ -130,6 +133,7 @@ public class Modele extends Observable{
 	}
 	/**
 	 * Methode pour la rotation dans l'axe Z sur le modèle et notifie les observers.
+	 * @param radian l'angle en radian.
 	 */
 	public void rotationZ(int radian) {
 		r.rotationZ(this,radian);
@@ -140,6 +144,7 @@ public class Modele extends Observable{
 	/**
 	 * 
 	 * Methode pour zoomer le modèle et notifie les observers.
+	 * @param coef coefficient pour zoomer
 	 */
 	public void zoom(double coef) {
 		r.zoom(this,coef);
@@ -149,6 +154,7 @@ public class Modele extends Observable{
 	/**
 	 * 
 	 * Methode pour dezoomer le modèle et notifie les observers.
+	 * @param coef coefficient pour zoomer
 	 */
 	public void dezoom(double coef) {
 		r.dezoom(this,coef);
@@ -158,6 +164,7 @@ public class Modele extends Observable{
 	/**
 	 * 
 	 * Methode pour translater le modèle et notifie les observers.
+	 * @param p point afin de faire la translation
 	 */
 
 	public void translation(Point p) {
@@ -177,6 +184,7 @@ public class Modele extends Observable{
 	}
 	/**
 	 * Récupérer tout les points.
+	 * @return tout les points
 	 * 
 	 */
 	public Point[] getAllPoints(){
@@ -184,20 +192,23 @@ public class Modele extends Observable{
 	}
 	/**
 	 * Récupérer toutes les faces.
+	 * @return toutes les faces
 	 */
 	public Face[] getAllFace(){
 		return face;
 	}
 	/**
 	 * Récupérer les points selon un index en paramètre.
-	 * @param index
+	 * @param index indice pour chercher les points dans le tableau.
+	 * @return les points selon l'indice
 	 */
 	public Point getPointAtIndex(int index){
 		return points[index];
 	}
 	/**
 	 * Récupérer une face selon un index en paramètre.
-	 * @param index
+	 * @param index l'indice permettant de trouver la face
+	 * @return Une face selon l'indice donné.
 	 */
 	public Face getFaceAtIndex(int index){
 		return face[index];

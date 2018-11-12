@@ -34,7 +34,8 @@ public class GestionAffichage implements Observer{
 	private VBox root;
 		
 	/**
-	 * Constructeur prenant en paramètre le modèle qu'il va controler.	 * 
+	 * Constructeur prenant en paramètre le modèle qu'il va controler.
+	 * @param modele le modele qui va être controlé.	 * 
 	 */
 	  public GestionAffichage(Modele modele) {
 		mod = modele;
@@ -50,6 +51,7 @@ public class GestionAffichage implements Observer{
 	}
 	  /**
 	   * Afficher tout les controleurs du modèle.
+	   * @param stage stage
 	   */
 	
 	public void start(Stage stage) {

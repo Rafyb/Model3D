@@ -16,23 +16,18 @@ import Modele.Rotation;
 
 
 public class TriTest {
-	Modele test1  = new Modele(new ReadModele("data/corner.ply"));
+	Modele test1   = new Modele(new ReadModele("data/corner.ply"));
 	Modele test2  = new Modele(new ReadModele("data/cornertrie.ply"));
-	ReadModele exist  =  new ReadModele("data/corner.ply");
+	ReadModele exist = new ReadModele("data/corner.ply");	
 	
 	@Before
 	public void setup() {
-		Modele test1  = new Modele(new ReadModele("data/corner.ply"));
-		ReadModele exist =  new ReadModele("data/corner.ply");
-		
-		Modele test2  = new Modele(new ReadModele("data/cornertrie.ply"));
+		test1  = new Modele(new ReadModele("data/corner.ply"));
+		exist =  new ReadModele("data/corner.ply");	
+		test2  = new Modele(new ReadModele("data/cornertrie.ply"));
 
 }
 		
-	
-		
-	
-
 
 	@Test
 	public void trieRapideTest() {

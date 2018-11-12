@@ -22,8 +22,8 @@ public class ReadModele {
 
 
 	/**
-	 * Constructeur prenant en @param l'adresse d'un fichier, génère un objet ReadModele contenant les faces et les points lues sur le fichier.
-	 *  
+	 * Constructeur prenant en param fichier l'adresse d'un fichier, génère un objet ReadModele contenant les faces et les points lues sur le fichier.
+	 *  @param fichier adresse du fichier
 	 */
 	public ReadModele(String fichier) {
 		if(ReadModele.fileExist(fichier)) {
@@ -44,10 +44,18 @@ public class ReadModele {
 
 
 	}
-
+	/**
+	 * Savoir si il y a un chemin vers le fichier, si oui return true.
+	 * @param path chemin vers le fichier
+	 * @return si le fichier existe ou pas
+	 */
 	public static boolean fileExist(String path) {
 		return new File(path).exists();
 	}
+	/**
+	 * 
+	 * @return nombre de points mis à jour.
+	 */
 	public int ajoutNbPoints() {
 		String st ="";
 		int res;
@@ -62,6 +70,10 @@ public class ReadModele {
 		return res;
 
 	}
+	/**
+	 * 
+	 * @return nombre de faces mis à jour.
+	 */
 	public int ajoutNbFaces() {
 		String st = "";
 		int res;
@@ -75,16 +87,25 @@ public class ReadModele {
 		res = Integer.parseInt(st.substring(13));
 		return res;
 	}
-	
+	/**
+	 * Recupérer le nombre de points.
+	 * @return nombre de points
+	 */
 	public int getNbPoints() {
 		return nbPoint;
 	}
-
+	/**
+	 * Récupérer le nombre de faces.
+	 * @return nombre de faces
+	 */
 	public int getNbFaces() {
 		
 		return nbFace;
 	}
-	
+	/**
+	 * Arriver a la fin du header.
+	 * @return le premier point en String.
+	 */
 	public String endHeader() {
 		String st = "";
 		do {
@@ -96,7 +117,11 @@ public class ReadModele {
 		} while (!st.contains("end_header"));
 		return st;
 	}
-
+	/**
+	 * Permet d'insérer le nombre de points dans le tableau.
+	 * @param nbPoint nombres de points dans le tableau
+	 *  @return tableau de points mis à jour
+	 */
 	public Point[] insertPoints(int nbPoint) {
 		points = new Point[nbPoint];
 		int cpt = 0;
@@ -116,6 +141,11 @@ public class ReadModele {
 		}
 		return points;
 	}
+	/**
+	 * Permet d'insérer le nombre de faces dans le tableau.
+	 * @param nbFace nombres de faces dans le tableau
+	 *  @return tableau de faces mis à jour
+	 */
 
 	public Face[] insertFaces(int nbFace) {
 		faces = new Face[nbFace];
@@ -135,12 +165,14 @@ public class ReadModele {
 	}
 	/**
 	 * Récupérer les points.
+	 * @return points du modèle
 	 */
 	public Point[] getPoint(){	
 		return points;
 	}
 	/**
 	 * Récupérer les faces.
+	 * @return faces du modèle
 	 */
 	public Face[] getFace(){	
 		return faces;

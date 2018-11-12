@@ -68,6 +68,7 @@ public class Face implements Comparable<Face>{
 	}
 	/**
 	 * Methode toString pour la face.
+	 * @return toString.
 	 */
 	public String toString() {
 		return "["+tabp[0]+"-"+tabp[1]+"-"+tabp[2]+"]";
@@ -75,7 +76,9 @@ public class Face implements Comparable<Face>{
 	}
 
 	/**
+	 * @param o
 	 * Une fonction de tri pour l'affichage du modèle.
+	 * @return 1, -1, 0
 	 */
 	public int compareTo(Face o) {
 		if (this.getCentreG().getZ() == o.getCentreG().getZ()) return 0;

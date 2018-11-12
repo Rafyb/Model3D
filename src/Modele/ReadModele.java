@@ -53,7 +53,7 @@ public class ReadModele {
 		return new File(path).exists();
 	}
 	/**
-	 * 
+	 * Ajoute le nombre de points et le met à jour.
 	 * @return nombre de points mis à jour.
 	 */
 	public int ajoutNbPoints() {
@@ -71,7 +71,7 @@ public class ReadModele {
 
 	}
 	/**
-	 * 
+	 * Ajoute le nombre de faces et le met à jour.
 	 * @return nombre de faces mis à jour.
 	 */
 	public int ajoutNbFaces() {

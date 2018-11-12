@@ -19,6 +19,15 @@ public class Point {
 		y = d;
 		z = e;
 	}
+	/**
+	 * Constructeur pour les coordonnées avec les couleurs.
+	 * @param c = coordonnée X
+	 * @param d = coordonnée Y
+	 * @param e = coordonnée Z
+	 * @param r code couleur R
+	 * @param g code couleur G
+	 * @param b code couleur B
+	 */
 	
 	public Point(double c, double d, double e, double r, double g, double b) {
 		x = c;
@@ -70,23 +79,32 @@ public class Point {
 	public void setZ(double z) {
 		this.z = z;
 	}
-	
+	/**
+	 * Retourne le code couleur R
+	 * return code couleur R
+	 */
 	public double getR() {
 		return r;
 	}
+	/**
+	 * Retourne le code couleur G
+	 * return code couleur G
+	 */
 	public double getG() {
 		return g;
 	}
+	/**
+	 * Retourne le code couleur B
+	 * return code couleur B
+	 */
 	public double getB() {
 		return b;
 	}
 	
 	
-	
-	
-	
 	/**
 	 * Méthode d'affichage.
+	 * @return toString.
 	 */
 	public String toString() {
 		return "("+x+","+y+","+z+")";

@@ -5,9 +5,14 @@ import java.util.Observable;
 
 public final class Modele extends Observable{
 	/**
-	 * @attributes points = tableau de point du modèle.
+	 * points = tableau de point du modèle.
 	 * face = tableau de face du modèle.
-	 * r = Rotation du modèle. 
+	 * r = Rotation du modèle.
+	 * affTrait = savoir si on affiche les traits ou pas.
+	 * affFace = savoir si on affiche les faces ou pas.
+	 * 
+	 * 
+	 * 
 	 */
 	private Point[] points ;
 	private Face[] face;
@@ -26,7 +31,11 @@ public final class Modele extends Observable{
 		face =  r.getFace();
 		this.centrer();
 	}
-	
+	/**
+	 * Récupérer le modèle.
+	 * @param r lire le modele
+	 * @return une instance du modèle
+	 */
 	public static Modele getModele(ReadModele r) {
 		if(instance == null) instance = new Modele(r);
 		return instance;
@@ -220,6 +229,7 @@ public final class Modele extends Observable{
 	}
 	/**
 	 * Methode d'affichage.
+	 * @return toString.
 	 */
 	public String toString() {
 		String res = "Points : [";
@@ -236,12 +246,19 @@ public final class Modele extends Observable{
 		return res;
 	}
 
-
+	/**
+	 * Permet de savoir si on affiche les faces ou non.
+	 * @return true or false.
+	 */
 	public boolean getCheckF() {
 		return affFace;
 	}
 
 
+	/**
+	 * Permet de savoir si on affiche les points ou non.
+	 * @return true or false.
+	 */
 	public boolean getCheckT() {
 		return affTrait;
 	}

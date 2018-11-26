@@ -3,10 +3,7 @@ package Modele;
 import java.util.Arrays;
 import java.util.Observable;
 
-import Matrices.Redimensionnement;
-import Matrices.Rotation;
-import Matrices.Translation;
-
+import Matrices.*;
 public final class Modele extends Observable{
 	/**
 	 * points = tableau de point du modèle.
@@ -20,9 +17,8 @@ public final class Modele extends Observable{
 	 */
 	private Point[] points ;
 	private Face[] face;
-	private Translation t;
+	private Transformation[] t;
 	private Rotation r;
-	private Redimensionnement z;
 	private boolean affTrait = true;
 	private boolean affFace = true;
 	
@@ -35,8 +31,10 @@ public final class Modele extends Observable{
 	private Modele(ReadModele r) {
 		this.points = r.getPoint();		
 		this.face =  r.getFace();
-		this.t = new Translation();
-		this.z = new Redimensionnement();
+		this.t = new Transformation[3];
+		t[0] = new Translation();
+		t[1] = new Redimensionnement();
+		t[2] = new Rotation();
 		this.r = new Rotation();
 		this.centrer();
 	}
@@ -89,7 +87,7 @@ public final class Modele extends Observable{
 		double xT = -((xMax+xMin)/2);
 		double yT = -((yMax+yMin)/2);
 		Point translation = new Point(xT,yT,0);
-		t.appliquer(this, translation);
+		t[0].appliquer(this, translation);
 		
 		
 		xMin = points[0].getX(); xMax = points[0].getX();yMin = points[0].getY();yMax = points[0].getY();
@@ -110,7 +108,7 @@ public final class Modele extends Observable{
 		}
 
 		System.out.println(zoom);
-		z.appliquer(this,zoom);
+		t[1].appliquer(this,zoom);
 
 		//System.out.println(" xMin = "+ xMin +" xMax = "+ xMax + " yMin = "+ yMin + " yMax = "+ yMax);
 	}
@@ -170,7 +168,7 @@ public final class Modele extends Observable{
 	 * @param coef coefficient pour zoomer
 	 */
 	public void zoom(double coef) {
-		z.appliquer(this,coef);
+		t[1].appliquer(this,coef);
 		this.setChanged();
 		notifyObservers();
 	}
@@ -180,7 +178,7 @@ public final class Modele extends Observable{
 	 * @param coef coefficient pour zoomer
 	 */
 	public void dezoom(double coef) {
-		z.appliquer(this,-1*coef);
+		t[1].appliquer(this,-1*coef);
 		this.setChanged();
 		notifyObservers();
 	}
@@ -191,7 +189,7 @@ public final class Modele extends Observable{
 	 */
 
 	public void translation(Point p) {
-		t.appliquer(this, p);
+		t[0].appliquer(this, p);
 		this.setChanged();
 		notifyObservers();
 	}

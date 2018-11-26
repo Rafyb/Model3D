@@ -58,6 +58,11 @@ public class Rotation implements Transformation{
 			m.getPointAtIndex(i).setY(sin*x+cos*y);
 		}
 	}
+	@Override
+	public void appliquer(Modele m, Object o) {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 }

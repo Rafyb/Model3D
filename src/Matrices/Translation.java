@@ -10,7 +10,8 @@ public class Translation implements Transformation{
 	 * @param p le point utilisé pour la translation
 	 * @param m Modele utilisé
 	 */
-	public void appliquer(Modele m, Point p) {
+	public void appliquer(Modele m, Object o) {
+		Point p = (Point)o;
 		for(int i = 0 ; i < m.getAllPoints().length;i++) {
 
 			double x = m.getPointAtIndex(i).getX();

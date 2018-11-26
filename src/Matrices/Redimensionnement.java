@@ -9,7 +9,8 @@ public class Redimensionnement implements Transformation{
 	 * @param coef le coef utilisé pour le zoom
 	 * @param m Modele utilisé
 	 */
-	public void appliquer(Modele m, double coef) {
+	public void appliquer(Modele m, Object o) {
+		double coef = (double)o;
 		for(int i = 0 ; i < m.getAllPoints().length;i++) {
 
 			double x = m.getPointAtIndex(i).getX();

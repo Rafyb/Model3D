@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import ExceptionTest.WrongNumberOfPoint;
 import Matrices.*;
 import Modele.Modele;
 import Modele.Point;
@@ -17,7 +18,7 @@ public class TriTest {
 	ReadModele exist;	
 	
 	@Before
-	public void setup() {
+	public void setup() throws WrongNumberOfPoint {
 		test1  = Modele.getModele(new ReadModele("data/corner.ply"));
 		exist =  new ReadModele("data/corner.ply");	
 		//test2  = new Modele(new ReadModele("data/cornertrie.ply"));

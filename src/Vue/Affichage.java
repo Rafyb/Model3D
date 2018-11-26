@@ -111,7 +111,7 @@ public class Affichage implements Observer {
 		
 		scene.widthProperty().addListener(e ->{
 			canvas.setWidth(scene.getWidth()-boutons.getPage().getWidth());
-			
+			this.update(mod,new Object());
 			
 		});
 		scene.heightProperty().addListener(e ->{
@@ -119,16 +119,6 @@ public class Affichage implements Observer {
 			this.update(mod,new Object());
 		});
 		
-		/*stage.sceneProperty()(e->{
-			System.out.println("salut");
-			System.out.println(this.sceneHeight + " " + this.sceneWidth + " ");
-			if (scene.getHeight() != this.sceneHeight ||scene.getWidth() != this.sceneWidth) {
-				this.sceneHeight = scene.getHeight();
-				this.sceneWidth = scene.getWidth();
-				this.update(mod,new Object());
-				
-			}
-		});*/
 		////////////////////////// EXECUTION ///////////////////////////
 		mod.triZ();
 		triangle();

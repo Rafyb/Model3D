@@ -46,6 +46,7 @@ public class GestionAffichage implements Observer{
 	  public GestionAffichage(Modele modele) {
 		mod = modele;
 		mod.addObserver(this);
+		
 		listeModele = new ArrayList<String>();
 		File f = new File("./data");
 		String[] liste = f.list();
@@ -53,7 +54,7 @@ public class GestionAffichage implements Observer{
 			if (s.contains(".ply")) listeModele.add(s);		
 		}
 		listeModele.sort(null);
-		System.out.println(listeModele);
+		//System.out.println(listeModele);
 	}
 	  /**
 	   * Afficher tout les controleurs du modèle.

@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import Matrices.Rotation;
+import Matrices.*;
 import Modele.Modele;
 import Modele.Point;
 import Modele.ReadModele;
@@ -40,8 +40,8 @@ public class TriTest {
 	@Test
 	public void Dezoom() {
         double dezoom = 0.25;
-		Rotation r = new Rotation();
-		r.dezoom(test1,1);
+        Redimensionnement r = new Redimensionnement();
+		r.appliquer(test1,-1);
 		
 		//On ajoute 379.0099999998003 car les points sont centrés	
 		
@@ -183,8 +183,8 @@ public class TriTest {
 	@Test
 	public void Zoom() {
 		double zoom = 0.25;
-		Rotation r = new Rotation();
-		r.zoom(test1,1);
+		Redimensionnement r = new Redimensionnement();
+		r.appliquer(test1,1);
 		test1.triZ();
 
 		//On ajoute 379.0099999998003 car les points sont centrés	
@@ -201,9 +201,9 @@ public class TriTest {
 
 	@Test
 	public void TranslationHaut() {
-		Rotation r= new Rotation();
+		Translation r= new Translation();
 		Point p = new Point(0, -1, 0);
-		r.translation(test1, p);
+		r.appliquer(test1, p);
 		
 		
 		//On ajoute 379.0099999998003 car les points sont centrés	
@@ -224,9 +224,9 @@ public class TriTest {
 	
 	@Test
 	public void TranslationBas() {
-		Rotation r= new Rotation();
+		Translation r= new Translation();
 		Point p = new Point(0, 1, 0);
-		r.translation(test1, p);
+		r.appliquer(test1, p);
 		//On ajoute 379.0099999998003 car les points sont centrés	
 		
 		assertEquals(1.0 + 379.0099999998003, test1.getPointAtIndex(0).getX());
@@ -245,9 +245,9 @@ public class TriTest {
 	
 	@Test
 	public void TranslationDroit() {
-		Rotation r= new Rotation();
+		Translation r= new Translation();
 		Point p = new Point(-1, 0, 0);
-		r.translation(test1, p);
+		r.appliquer(test1, p);
 		
        //On ajoute 379.0099999998003 car les points sont centrés	
 	
@@ -267,9 +267,9 @@ public class TriTest {
 	
 	@Test
 	public void TranslationGauche() {
-		Rotation r= new Rotation();
+		Translation r= new Translation();
 		Point p = new Point(-1, 0, 0);
-		r.translation(test1, p);
+		r.appliquer(test1, p);
 		//On ajoute 379.0099999998003 car les points sont centrés	
 		
 			assertEquals(0 + 379.0099999998003, test1.getPointAtIndex(0).getX());

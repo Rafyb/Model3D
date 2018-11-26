@@ -5,10 +5,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import Matrices.Rotation;
 import Modele.Modele;
 import Modele.Point;
 import Modele.ReadModele;
-import Modele.Rotation;
 
 
 public class TriTest {

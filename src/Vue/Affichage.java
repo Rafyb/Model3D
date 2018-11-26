@@ -29,6 +29,7 @@ public class Affichage implements Observer {
 	private Canvas canvas;
 	private Modele mod;
 	private double x,y;
+	private double sceneWidth,sceneHeight;
 	/**
 	 * Constructeur de la classe Affichage.
 	 *  @param modele = attribut mod.
@@ -50,18 +51,18 @@ public class Affichage implements Observer {
 		boutons.start(stage);
 		canvas = new Canvas (1150, 800);
 		gc = canvas.getGraphicsContext2D();
-
+		
 		root.getChildren().addAll(canvas,boutons.getPage());
 		Scene scene = new Scene(root);
-
-
+		sceneWidth = scene.getWidth();
+		sceneHeight = scene.getHeight();
 
 		/////////////////////// MOUVEMENTS SOURIS ///////////////////////
 		canvas.setOnMouseDragged(e->{
 			if (e.isPrimaryButtonDown()) {
 				int rotaX = (int) ((Math.abs(this.x-e.getX()) > 20 ) ? -Math.copySign(20, this.x-e.getX()) : -(this.x-e.getX()));
 				int rotaY = (int) ((Math.abs(this.y-e.getY()) > 20 ) ? Math.copySign(20, this.y-e.getY()) : (this.y-e.getY()));
-				System.out.println(rotaX + "-" + rotaY);
+
 				if(rotaX<0 && !e.isShiftDown()) {
 					mod.rotationY(rotaX);
 				} else if (rotaX>0  && !e.isShiftDown()) {
@@ -80,7 +81,6 @@ public class Affichage implements Observer {
 			} else if (e.isSecondaryButtonDown()) {
 				Point p = new Point(-(this.x-e.getX()),-(this.y-e.getY()),0 );
 				mod.translation(p);
-				System.out.println(this.x + "   "+ e.getX() + " " + this.y  + "  " + e.getY());
 				this.x = e.getX();
 				this.y = e.getY();
 			}
@@ -108,14 +108,37 @@ public class Affichage implements Observer {
 				mod.rotationX(10);
 			}
 		});
-
+		
+		scene.widthProperty().addListener(e ->{
+			canvas.setWidth(scene.getWidth()-boutons.getPage().getWidth());
+			
+			
+		});
+		scene.heightProperty().addListener(e ->{
+			canvas.setHeight(scene.getHeight());
+			this.update(mod,new Object());
+		});
+		
+		/*stage.sceneProperty()(e->{
+			System.out.println("salut");
+			System.out.println(this.sceneHeight + " " + this.sceneWidth + " ");
+			if (scene.getHeight() != this.sceneHeight ||scene.getWidth() != this.sceneWidth) {
+				this.sceneHeight = scene.getHeight();
+				this.sceneWidth = scene.getWidth();
+				this.update(mod,new Object());
+				
+			}
+		});*/
 		////////////////////////// EXECUTION ///////////////////////////
 		mod.triZ();
 		triangle();
 
+		
 		stage.setScene(scene);
+		stage.setMinWidth(800);
+		stage.setMinHeight(700);
 		stage.setTitle("Model 3D Afficheur");
-		stage.setResizable(false);
+		stage.setResizable(true);
 		stage.show();
 
 

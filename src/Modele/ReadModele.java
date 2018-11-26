@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+
+import ExceptionTest.WrongNumberFace;
 import ExceptionTest.WrongNumberOfPoint;
 
 
@@ -35,8 +37,9 @@ public class ReadModele {
 	 * Constructeur prenant en param fichier l'adresse d'un fichier, génère un objet ReadModele contenant les faces et les points lues sur le fichier.
 	 *  @param fichier adresse du fichier
 	 * @throws WrongNumberOfPoint 
+	 * @throws WrongNumberFace 
 	 */
-	public ReadModele(String fichier) throws WrongNumberOfPoint {
+	public ReadModele(String fichier) throws WrongNumberOfPoint, WrongNumberFace {
 		if(ReadModele.fileExist(fichier)) {
 			f = new File(fichier);
 
@@ -159,9 +162,10 @@ public class ReadModele {
 	 * Permet d'insérer le nombre de faces dans le tableau.
 	 * @param nbFace nombres de faces dans le tableau
 	 *  @return tableau de faces mis à jour
+	 * @throws WrongNumberFace 
 	 */
 
-	public Face[] insertFaces(int nbFace) {
+	public Face[] insertFaces(int nbFace) throws WrongNumberFace {
 		faces = new Face[nbFace];
 		int cpt = 0;
 		String st = "";
@@ -169,7 +173,9 @@ public class ReadModele {
 			try {
 				st = br.readLine();
 				String[] p = st.split(" ");
+				if(p.length == 4)
 				faces[cpt] = new Face(points[Integer.parseInt(p[1])], points[Integer.parseInt(p[2])], points[Integer.parseInt(p[3])]);
+				else throw new WrongNumberFace();
 				cpt ++;
 			} catch (IOException e) {
 				System.out.println("point bug bug");

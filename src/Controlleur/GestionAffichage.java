@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+import ExceptionTest.WrongNumberFace;
 import ExceptionTest.WrongNumberOfPoint;
 import Modele.Modele;
 import Modele.Point;
@@ -149,6 +150,9 @@ public class GestionAffichage implements Observer{
 			try {
 				mod.changerModele(new ReadModele("./data/"+comboBox.getSelectionModel().getSelectedItem()));
 			} catch (WrongNumberOfPoint e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (WrongNumberFace e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}

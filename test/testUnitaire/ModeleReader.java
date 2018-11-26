@@ -13,7 +13,7 @@ class ModeleReader {
 	
 	@Before
 	void initialiser() {
-		m = new Modele(new ReadModele("data/dolphin.ply") );
+		m = Modele.getModele(new ReadModele("data/corner.ply"));
 	}
 	
 	@Test

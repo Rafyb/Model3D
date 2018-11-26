@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import ExceptionTest.WrongNumberOfPoint;
+
 
 /**
  * Lit un fichier de format .ply et genere la liste de point et de face du modele.
@@ -32,8 +34,9 @@ public class ReadModele {
 	/**
 	 * Constructeur prenant en param fichier l'adresse d'un fichier, génère un objet ReadModele contenant les faces et les points lues sur le fichier.
 	 *  @param fichier adresse du fichier
+	 * @throws WrongNumberOfPoint 
 	 */
-	public ReadModele(String fichier) {
+	public ReadModele(String fichier) throws WrongNumberOfPoint {
 		if(ReadModele.fileExist(fichier)) {
 			f = new File(fichier);
 
@@ -129,8 +132,9 @@ public class ReadModele {
 	 * Permet d'insérer le nombre de points dans le tableau.
 	 * @param nbPoint nombres de points dans le tableau
 	 *  @return tableau de points mis à jour
+	 * @throws WrongNumberOfPoint 
 	 */
-	public Point[] insertPoints(int nbPoint) {
+	public Point[] insertPoints(int nbPoint) throws WrongNumberOfPoint {
 		points = new Point[nbPoint];
 		int cpt = 0;
 		String st = "";  
@@ -138,10 +142,12 @@ public class ReadModele {
 			try {
 				st = br.readLine();
 				String[] p = st.split(" ");
+				System.out.println(p.length + st);
 				if (p.length == 3)
 					points[cpt] = new Point(Double.parseDouble(p[0]), Double.parseDouble(p[1]), Double.parseDouble(p[2]));
-				else 
+				else if(p.length == 6) 
 					points[cpt] = new Point(Double.parseDouble(p[0]), Double.parseDouble(p[1]), Double.parseDouble(p[2]),Double.parseDouble(p[3]), Double.parseDouble(p[4]), Double.parseDouble(p[5]));
+				else throw new WrongNumberOfPoint();
 				cpt ++;
 			} catch (IOException e) {
 				System.out.println("point bug bug");

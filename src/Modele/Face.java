@@ -8,6 +8,7 @@ public class Face implements Comparable<Face>{
 	private Point[] tabp;
 	private int[] couleur;
 	private Point centreGravite;
+	private double coefLuminosite;
 	/**
 	 * Constructeur : 
 	 * @param s Premier point ( x ) 
@@ -24,6 +25,26 @@ public class Face implements Comparable<Face>{
 		couleur = new int[]{(int)(s.getR()+s1.getR()+s2.getR())/3,(int)(s.getG()+s1.getG()+s2.getG())/3,(int)(s.getB()+s1.getB()+s2.getB())/3};
 		
 	}
+	
+	
+	/**
+	 * Recupérer le coefficent de luminosité d'une face.
+	 * @return  Un coefficient entre 0 et 1.
+	 */
+	public double getCoefLuminosite() {
+		return coefLuminosite;
+	}
+	
+	/**
+	 * Modifier le coefficent de luminosité d'une face.
+	 * @param  Un coefficient entre 0 et 1.
+	 */
+	public void setCoefLuminosite(double coefLuminosite) {
+		this.coefLuminosite = coefLuminosite;
+	}
+	
+	
+	
 	/**
 	 * Recupérer les points d'une face dans un tableau.
 	 * @return  Un tableau de points d'une face

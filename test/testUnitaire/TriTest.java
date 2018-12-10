@@ -72,11 +72,11 @@ public class TriTest {
 	public void Dezoom() {
         double dezoom = 0.25;
         Redimensionnement r = new Redimensionnement();
-		r.appliquer(test1,-1);
+		r.appliquer(test1,dezoom);
 		
 		//On ajoute 379.0099999998003 car les points sont centrés	
 		
-		assertEquals(0.0, test1.getPointAtIndex(0).getX());
+		assertEquals(380.001 + 210, test1.getPointAtIndex(0).getX());
 		assertEquals(0.0, test1.getPointAtIndex(0).getY());
 		assertEquals(0.0, test1.getPointAtIndex(0).getZ());
 		
@@ -215,18 +215,18 @@ public class TriTest {
 	public void Zoom() {
 		double zoom = 0.25;
 		Redimensionnement r = new Redimensionnement();
-		r.appliquer(test1,1);
+		r.appliquer(test1,zoom);
 		test1.triZ();
 
-		//On ajoute 379.0099999998003 car les points sont centrés	
+		//On ajoute 380.001 car les points sont centrés	
 	
-		assertEquals(380.01 + 378.01   , test1.getPointAtIndex(0).getX(), 0.001);
-		assertEquals(2.0, test1.getPointAtIndex(0).getY());
+		assertEquals(380.01 + 93.761, test1.getPointAtIndex(0).getX(), 0.01);
+		assertEquals(1.25, test1.getPointAtIndex(0).getY());
 		assertEquals(0.0, test1.getPointAtIndex(0).getZ());
 
 
-		assertEquals(-2.0, test1.getPointAtIndex(3).getX());
-		assertEquals(382.01 + 380.01, test1.getPointAtIndex(3).getY(), 0.001);
+		assertEquals(-1.25, test1.getPointAtIndex(3).getX());
+		assertEquals(96.25 + 380.01, test1.getPointAtIndex(3).getY(), 0.01);
 		assertEquals(0.0, test1.getPointAtIndex(3).getZ());
 	}
 

@@ -24,5 +24,13 @@ public class Translation implements Transformation{
 		}
 		
 	}
+	
+	public Point translationCentre(Modele m) {
+		m.updateCentre();
+		Point translation = new Point(-m.getCentreModele().getX(),-m.getCentreModele().getY(),-m.getCentreModele().getZ());
+		this.appliquer(m, translation);
+		Point translationRetour = new Point(-translation.getX(),-translation.getY(),-translation.getZ());
+		return translationRetour;
+	}
 
 }

@@ -21,6 +21,7 @@ public final class Modele extends Observable{
 	private Rotation r;
 	private boolean affTrait = true;
 	private boolean affFace = true;
+	private Point centreModele;
 	
 	private static Modele instance = null;
 	/**
@@ -49,6 +50,8 @@ public final class Modele extends Observable{
 	}
 	
 	
+	
+	
 	/**
 	 * Methode pour changer le modèle que l'on veut afficher.
 	 * @param r Modèle different de l'ancien.
@@ -62,12 +65,16 @@ public final class Modele extends Observable{
 		this.setChanged();
 		this.notifyObservers();
 	}
+	
+	
 	/**
 	 * Methode pour trier le modèle.
 	 */
 	public void triZ() {
 		Arrays.sort(face);
 	}
+	
+	
 	/**
 	 * Methode pour afficher le modèle centrer par rapport à la vue.
 	 */
@@ -113,6 +120,35 @@ public final class Modele extends Observable{
 		//System.out.println(" xMin = "+ xMin +" xMax = "+ xMax + " yMin = "+ yMin + " yMax = "+ yMax);
 	}
 	
+	public void updateCentre() {
+		double xMin = points[0].getX(), xMax = points[0].getX(),yMin = points[0].getY(),yMax = points[0].getY(),zMin = points[0].getZ(),zMax = points[0].getZ();
+		for (Point p : points) {
+			if (p.getX()<xMin)
+				xMin = p.getX();
+			if (p.getX()>xMax)
+				xMax = p.getX();
+			if (p.getY()<yMin)
+				yMin = p.getY();
+			if (p.getY()>yMax)
+				yMax = p.getY();
+			if (p.getZ()<zMin)
+				zMin = p.getZ();
+			if (p.getZ()>zMax)
+				zMax = p.getZ();
+		}
+		centreModele = new Point((xMin+xMax)/2,(yMin+yMax)/2,(zMin+zMax)/2);
+	}
+	
+	public Point getCentreModele() {
+		return centreModele;
+	}
+	
+	
+	public void setCentreModele(Point centreModele) {
+		this.centreModele = centreModele;
+	}
+	
+	
 	public void checkT() {
 		if(affTrait) affTrait =false;
 		else {
@@ -121,6 +157,8 @@ public final class Modele extends Observable{
 		this.setChanged();
 		notifyObservers();
 	}
+	
+	
 	
 	public void checkF() {
 		if(affFace) affFace =false;
@@ -142,6 +180,9 @@ public final class Modele extends Observable{
 		this.setChanged();
 		notifyObservers();
 	}
+	
+	
+	
 	/**
 	 * Methode pour la rotation dans l'axe Y sur le modèle et notifie les observers.
 	 * @param radian l'angle en radian.
@@ -152,6 +193,8 @@ public final class Modele extends Observable{
 		this.setChanged();
 		notifyObservers();
 	}
+	
+	
 	/**
 	 * Methode pour la rotation dans l'axe Z sur le modèle et notifie les observers.
 	 * @param radian l'angle en radian.
@@ -162,6 +205,8 @@ public final class Modele extends Observable{
 		this.setChanged();
 		notifyObservers();
 	}
+	
+	
 	/**
 	 * 
 	 * Methode pour zoomer le modèle et notifie les observers.
@@ -172,6 +217,8 @@ public final class Modele extends Observable{
 		this.setChanged();
 		notifyObservers();
 	}
+	
+	
 	/**
 	 * 
 	 * Methode pour dezoomer le modèle et notifie les observers.
@@ -182,6 +229,8 @@ public final class Modele extends Observable{
 		this.setChanged();
 		notifyObservers();
 	}
+	
+	
 	/**
 	 * 
 	 * Methode pour translater le modèle et notifie les observers.
@@ -190,6 +239,13 @@ public final class Modele extends Observable{
 
 	public void translation(Point p) {
 		t[0].appliquer(this, p);
+		this.setChanged();
+		notifyObservers();
+	}
+	
+	
+	public void translationCentre() {
+		((Translation) t[0]).translationCentre(this);
 		this.setChanged();
 		notifyObservers();
 	}
@@ -203,6 +259,8 @@ public final class Modele extends Observable{
 			f.updateCdG();
 		}
 	}
+	
+	
 	/**
 	 * Récupérer tout les points.
 	 * @return tout les points
@@ -211,6 +269,8 @@ public final class Modele extends Observable{
 	public Point[] getAllPoints(){
 		return points;
 	}
+	
+	
 	/**
 	 * Récupérer toutes les faces.
 	 * @return toutes les faces
@@ -218,6 +278,8 @@ public final class Modele extends Observable{
 	public Face[] getAllFace(){
 		return face;
 	}
+	
+	
 	/**
 	 * Récupérer les points selon un index en paramètre.
 	 * @param index indice pour chercher les points dans le tableau.
@@ -226,6 +288,8 @@ public final class Modele extends Observable{
 	public Point getPointAtIndex(int index){
 		return points[index];
 	}
+	
+	
 	/**
 	 * Récupérer une face selon un index en paramètre.
 	 * @param index l'indice permettant de trouver la face
@@ -234,6 +298,8 @@ public final class Modele extends Observable{
 	public Face getFaceAtIndex(int index){
 		return face[index];
 	}
+	
+	
 	/**
 	 * Methode d'affichage.
 	 * @return toString.

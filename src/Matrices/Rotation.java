@@ -1,8 +1,10 @@
 package Matrices;
 
 import Modele.Modele;
+import Modele.Point;
 
 public class Rotation implements Transformation{	
+	Translation t = new Translation();
 	/**
 	 * Permet de faire la rotation autour de l'axe X avec un angle en radian.
 	 * @param radian l'angle en radian utilisé
@@ -12,6 +14,7 @@ public class Rotation implements Transformation{
 	 */
 
 	public void rotationX(Modele m, int radian) {
+		Point vecteurT = t.translationCentre(m);
 		for(int i = 0 ; i < m.getAllPoints().length;i++) {
 			double cos = Math.cos(Math.toRadians(radian));
 			double sin = Math.sin(Math.toRadians(radian));
@@ -22,6 +25,7 @@ public class Rotation implements Transformation{
 			m.getPointAtIndex(i).setY((y*cos+z*(-sin)));
 			m.getPointAtIndex(i).setZ((y*sin)+(z*cos));
 		}
+		t.appliquer(m, vecteurT);
 	}
 	/**
 	 * Permet de faire la rotation autour de l'axe Y avec un angle en radian.
@@ -30,6 +34,7 @@ public class Rotation implements Transformation{
 	 */
 
 	public void rotationY(Modele m, int radian) {
+		Point vecteurT = t.translationCentre(m);
 		for(int i = 0 ; i < m.getAllPoints().length;i++) {
 			double cos = Math.cos(Math.toRadians(radian));
 			double sin = Math.sin(Math.toRadians(radian));
@@ -40,6 +45,7 @@ public class Rotation implements Transformation{
 			m.getPointAtIndex(i).setX(x*cos+z*sin);
 			m.getPointAtIndex(i).setZ((-sin)*x+z*cos);
 		}
+		t.appliquer(m, vecteurT);
 	}
 	/**
 	 * Permet de faire la rotation autour de l'axe Z avec un angle en radian.
@@ -47,6 +53,7 @@ public class Rotation implements Transformation{
 	 * @param m Modele utilisé
 	 */
 	public void rotationZ(Modele m, int radian) {
+		Point vecteurT = t.translationCentre(m);
 		for(int i = 0 ; i < m.getAllPoints().length;i++) {
 			double cos = Math.cos(Math.toRadians(radian));
 			double sin = Math.sin(Math.toRadians(radian));
@@ -57,6 +64,7 @@ public class Rotation implements Transformation{
 			m.getPointAtIndex(i).setX(x*cos-sin*y);
 			m.getPointAtIndex(i).setY(sin*x+cos*y);
 		}
+		t.appliquer(m, vecteurT);
 	}
 	
 	@Override
@@ -64,6 +72,5 @@ public class Rotation implements Transformation{
 		// TODO Auto-generated method stub
 		
 	}
-
 
 }

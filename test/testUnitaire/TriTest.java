@@ -119,7 +119,7 @@ public class TriTest {
 
 
 
-		//On ajoute 380.001 car les points sont centrés	
+		//On ajoute 380.001 car les points sont centrés	8
 		
 				assertEquals(378.01 + 379.0099999998003, test1.getPointAtIndex(0).getX(),0.001);
 				assertEquals(1.0, test1.getPointAtIndex(0).getY(),1);

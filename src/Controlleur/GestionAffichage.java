@@ -41,7 +41,7 @@ public class GestionAffichage implements Observer{
 	private ArrayList<String> listeModele;
 	private ComboBox<String> comboBox;
 	private VBox root;
-	private OtherVue ovue = new OtherVue();
+	private OtherVue ovue;
 		
 	/**
 	 * Constructeur prenant en paramètre le modèle qu'il va controler.
@@ -152,7 +152,10 @@ public class GestionAffichage implements Observer{
 	    face.setOnAction(e-> mod.checkF());
 	    //ombre.setOnAction(e-> mod.checkO());
 	    
-	    vueCoupe.setOnAction(e-> ovue.vueEnCoupe());
+	    vueCoupe.setOnAction(e->{
+	    	ovue = new OtherVue(mod);
+	    	ovue.vueEnCoupe();
+	    });
 	    
 	    try {
 	    comboBox.setValue("corner.ply");

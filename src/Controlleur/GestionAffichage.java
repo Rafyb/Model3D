@@ -154,7 +154,7 @@ public class GestionAffichage implements Observer{
 	    
 	    vueCoupe.setOnAction(e->{
 	    	ovue = new OtherVue(mod);
-	    	ovue.vueEnCoupe();
+			ovue.vueEnCoupe();
 	    });
 	    
 	    try {

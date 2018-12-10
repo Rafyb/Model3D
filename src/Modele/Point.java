@@ -4,7 +4,7 @@ package Modele;
  * Objet Point avec les coordonnees x, y et z.
  * @author danglotc
  */
-public class Point {
+public class Point implements Comparable<Point>{
 	private double x,y,z;
 	private double r,g,b;
 	
@@ -109,5 +109,11 @@ public class Point {
 	public String toString() {
 		return "("+x+","+y+","+z+")";
 	}
-
+	
+	public int compareTo(Point p2) {
+		if (this.getY() == p2.getY()) return 0;
+		if (this.getY() - p2.getY() < 0) return -1;
+		return 1;
+	}
+	
 }

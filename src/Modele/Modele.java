@@ -110,7 +110,7 @@ public final class Modele extends Observable{
 		}
 
 		double zoom = 0;
-		while(xMax*(1+zoom) < 500 && yMax*(1+zoom) < 380) {
+		while(xMax*(1+zoom) < 360 && yMax*(1+zoom) < 300) {
 			zoom += 0.01;
 		}
 

@@ -13,7 +13,7 @@ public class Translation implements Transformation{
 	public void appliquer(Modele m, Object o) {
 		Point p = (Point)o;
 		for(int i = 0 ; i < m.getAllPoints().length;i++) {
-
+			
 			double x = m.getPointAtIndex(i).getX();
 			double y = m.getPointAtIndex(i).getY();
 			double z = m.getPointAtIndex(i).getZ();

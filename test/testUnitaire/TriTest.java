@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import ExceptionTest.WrongNumberFace;
 import ExceptionTest.WrongNumberOfPoint;
 import Matrices.*;
 import Modele.Modele;
@@ -18,7 +19,7 @@ public class TriTest {
 	ReadModele exist;	
 	
 	@Before
-	public void setup() throws WrongNumberOfPoint {
+	public void setup() throws WrongNumberOfPoint, WrongNumberFace {
 		test1  = Modele.getModele(new ReadModele("data/corner.ply"));
 		exist =  new ReadModele("data/corner.ply");	
 		//test2  = new Modele(new ReadModele("data/cornertrie.ply"));
@@ -66,14 +67,14 @@ public class TriTest {
 
 		//On ajoute 379.0099999998003 car les points sont centrés	
 		
-				assertEquals(379.01 + 379.0099999998003, test1.getPointAtIndex(0).getX(),0.001);
-				assertEquals(2.0, test1.getPointAtIndex(0).getY(),1);
-				assertEquals(0.035, test1.getPointAtIndex(0).getZ(),0.001);
+				assertEquals(379.010, test1.getPointAtIndex(0).getX(),0.001);
+				assertEquals(1, test1.getPointAtIndex(0).getY(),1);
+				assertEquals(0.017, test1.getPointAtIndex(0).getZ(),0.001);
 				
 				
-				assertEquals(-2.0, test1.getPointAtIndex(3).getX());
-				assertEquals(382.894 + 379.0099999998003, test1.getPointAtIndex(3).getY(),0.001);
-				assertEquals(13.299, test1.getPointAtIndex(3).getZ(),0.001);
+				assertEquals(-1.0, test1.getPointAtIndex(3).getX());
+				assertEquals(380.952, test1.getPointAtIndex(3).getY(),0.001);
+				assertEquals(6.650, test1.getPointAtIndex(3).getZ(),0.001);
 				}
 	
 	
@@ -110,14 +111,14 @@ public class TriTest {
 		
 		//On ajoute 379.0099999998003 car les points sont centrés	
 		
-		assertEquals(378 + 379.904, test1.getPointAtIndex(0).getX(),0.001);
-		assertEquals(2.0, test1.getPointAtIndex(0).getY());
-		assertEquals(-13.229, test1.getPointAtIndex(0).getZ(),0.001);
+		assertEquals(378.952, test1.getPointAtIndex(0).getX(),0.001);
+		assertEquals(1.0, test1.getPointAtIndex(0).getY());
+		assertEquals(-6.615, test1.getPointAtIndex(0).getZ(),0.001);
 		
 		
-		assertEquals(-1.999, test1.getPointAtIndex(3).getX(),0.001);
-		assertEquals(383.01 + 379.0099999998003, test1.getPointAtIndex(3).getY(),0.001);
-		assertEquals(0.0359, test1.getPointAtIndex(3).getZ(),0.001);
+		assertEquals(-0.999, test1.getPointAtIndex(3).getX(),0.001);
+		assertEquals(381.009, test1.getPointAtIndex(3).getY(),0.001);
+		assertEquals(0.017, test1.getPointAtIndex(3).getZ(),0.001);
 		}
 	
 	
@@ -129,13 +130,13 @@ public class TriTest {
 		
 		//On ajoute 379.0099999998003 car les points sont centrés	
 		
-				assertEquals(379.01 + 379.0099999998003, test1.getPointAtIndex(0).getX(),0.001);
-				assertEquals(2.0, test1.getPointAtIndex(0).getY());
+				assertEquals(379.009, test1.getPointAtIndex(0).getX(),0.001);
+				assertEquals(1.0, test1.getPointAtIndex(0).getY());
 				assertEquals(0, test1.getPointAtIndex(0).getZ(),0.001);
 				
 				
-				assertEquals(-2.0, test1.getPointAtIndex(3).getX());
-				assertEquals(383.01 + 379.0099999998003, test1.getPointAtIndex(3).getY(),0.001);
+				assertEquals(-1.0, test1.getPointAtIndex(3).getX());
+				assertEquals(381.010, test1.getPointAtIndex(3).getY(),0.001);
 				assertEquals(0.0, test1.getPointAtIndex(3).getZ(),0.001);
 				}
 		
@@ -208,14 +209,14 @@ public class TriTest {
 		
 		
 		//On ajoute 379.0099999998003 car les points sont centrés	
-		assertEquals(379.01 + 379.0099999998003, test1.getPointAtIndex(0).getX(),0.001);
-		assertEquals(1.0, test1.getPointAtIndex(0).getY(),1);
+		assertEquals( 379.009, test1.getPointAtIndex(0).getX(),0.001);
+		assertEquals(-1, test1.getPointAtIndex(0).getY(),1);
 		assertEquals(0.0, test1.getPointAtIndex(0).getZ(),1);
 		
 		
-		assertEquals(-2.0, test1.getPointAtIndex(3).getX());
-		assertEquals(381.894 + 379.0099999998003, test1.getPointAtIndex(3).getY(),0.001);
-		assertEquals(13.299, test1.getPointAtIndex(3).getZ(),0.001);
+		assertEquals(-1.0, test1.getPointAtIndex(3).getX());
+		assertEquals(379.952, test1.getPointAtIndex(3).getY(),0.001);
+		assertEquals(6.650, test1.getPointAtIndex(3).getZ(),0.001);
 		
 		}
 	

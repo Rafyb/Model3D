@@ -10,6 +10,7 @@ import ExceptionTest.WrongNumberOfPoint;
 import Modele.Modele;
 import Modele.Point;
 import Modele.ReadModele;
+import Vue.OtherVue;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -40,6 +41,7 @@ public class GestionAffichage implements Observer{
 	private ArrayList<String> listeModele;
 	private ComboBox<String> comboBox;
 	private VBox root;
+	private OtherVue ovue;
 		
 	/**
 	 * Constructeur prenant en paramètre le modèle qu'il va controler.
@@ -74,6 +76,7 @@ public class GestionAffichage implements Observer{
 	    
 	    HBox ligne4 = new HBox();
 	    HBox ligne5 = new HBox();
+	    HBox ligne6 = new HBox();
 	    
 	    comboBox = new ComboBox<String>();
 
@@ -109,6 +112,9 @@ public class GestionAffichage implements Observer{
 	    
 	    CheckBox trait = new CheckBox();
 	    CheckBox face = new CheckBox();
+	    CheckBox ombre = new CheckBox();
+	    
+	    Button vueCoupe = new Button("Lancer vue en coupe");
 	    
 	    ligne2.getChildren().addAll(zoom,dezoom);
 	    
@@ -119,6 +125,7 @@ public class GestionAffichage implements Observer{
 	    ligne3.getChildren().addAll(new Label("Slider translation : "),slideTr);
 	    ligne4.getChildren().addAll(trait,new Label("Masquer traits"));
 	    ligne5.getChildren().addAll(face,new Label("Masquer faces"));
+	    ligne6.getChildren().addAll(ombre,new Label("Visualisation Ombre"));
 	    
 	    // ---------------------------- CONTROLEURS ------------------------------//
 	    
@@ -143,6 +150,12 @@ public class GestionAffichage implements Observer{
 	    
 	    trait.setOnAction(e-> mod.checkT());
 	    face.setOnAction(e-> mod.checkF());
+	    //ombre.setOnAction(e-> mod.checkO());
+	    
+	    vueCoupe.setOnAction(e->{
+	    	ovue = new OtherVue(mod);
+	    	ovue.vueEnCoupe();
+	    });
 	    
 	    try {
 	    comboBox.setValue("corner.ply");
@@ -194,9 +207,10 @@ public class GestionAffichage implements Observer{
 	    
 	    comboBox.setMinWidth(150); 
 	    
+	    root.setStyle("-fx-background-color: #8FAAC8;");
 	    
 	    comboBox.getItems().setAll(listeModele);
-	    root.getChildren().addAll(choixT,comboBox,ligne1,sliderrot,boutonsRot,ligne2,ligne3,slidertr,boutonsTr,ligne4,ligne5);
+	    root.getChildren().addAll(choixT,comboBox,ligne1,sliderrot,boutonsRot,ligne2,ligne3,slidertr,boutonsTr,ligne4,ligne5,ligne6,vueCoupe);
 	    root.setPadding(new Insets(10,15,20,20));
 	    root.setSpacing(10);
 	    

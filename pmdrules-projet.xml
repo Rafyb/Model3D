@@ -60,6 +60,10 @@
     <rule ref="category/java/design.xml/SimplifyConditional" />
     <rule ref="category/java/design.xml/TooManyFields" />
     <rule ref="category/java/design.xml/TooManyMethods" />
+    
+    <!-- Règles qui correspondent aux critères de notation -->
+	
+	<!-- Règles qui me semblent importantes -->
 
 </ruleset>
 	

@@ -361,7 +361,26 @@ public class TriTest {
 		
 	}
 
-
+    @Test
+    public void pointToSting(){
+    	Point point = new Point(1.0, 1.0, 1.0);
+    	assertEquals("(1.0,1.0,1.0)", point.toString());
+    	
+    }
+    
+    
+    @Test
+    public void pointCompareY(){
+    	Point point1 = new Point(1.0, 1.0, 1.0);
+    	Point point2 = new Point(1.0, 2.0, 1.0);
+    	Point point3 = new Point(1.0, 0.0, 1.0);
+    	Point point6 = new Point(1.0, 1.0, 1.0, 22.0, 253.0, 58.4);
+    	
+    	assertEquals(-1, point1.compareTo(point2));
+    	assertEquals(1, point1.compareTo(point3));
+    	assertEquals(0, point1.compareTo(point6));
+    	
+    }
 
 
 

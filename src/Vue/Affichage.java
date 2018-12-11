@@ -97,7 +97,6 @@ public class Affichage implements Observer {
 		});
 
 		canvas.setOnKeyPressed(e -> {
-			System.out.println(e.getCode());
 			if (e.getCode().equals(KeyCode.LEFT)) {
 				mod.rotationY(-10);
 			} else if (e.getCode().equals(KeyCode.UP)) {

@@ -11,10 +11,7 @@
 
     
     <!-- Règles qui correspondent aux critères de notation -->
-    <rule ref="category/java/codestyle.xml/ClassNamingConventions" />
-    <rule ref="category/java/codestyle.xml/ForLoopShouldBeWhileLoop" />
-    <rule ref="category/java/codestyle.xml/LinguisticNaming" />
-    <rule ref="category/java/codestyle.xml/PrematureDeclaration" />
+
     
 	
 	<!-- Règles qui me semblent importantes -->
@@ -24,6 +21,7 @@
     <rule ref="category/java/bestpractices.xml/OneDeclarationPerLine" />
     <rule ref="category/java/bestpractices.xml/SystemPrintln" />
     <rule ref="category/java/bestpractices.xml/UnusedFormalParameter" />
+    <rule ref="category/java/codestyle.xml/PrematureDeclaration" />
 
 </ruleset>
 	

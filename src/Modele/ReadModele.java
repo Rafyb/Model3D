@@ -145,7 +145,6 @@ public class ReadModele {
 			try {
 				st = br.readLine();
 				String[] p = st.split(" ");
-				System.out.println(p.length + st);
 				if (p.length == 3)
 					points[cpt] = new Point(Double.parseDouble(p[0]), Double.parseDouble(p[1]), Double.parseDouble(p[2]));
 				else if(p.length == 6) 

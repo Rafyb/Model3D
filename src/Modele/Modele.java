@@ -113,8 +113,7 @@ public final class Modele extends Observable{
 		while(xMax*(1+zoom) < 360 && yMax*(1+zoom) < 300) {
 			zoom += 0.01;
 		}
-
-		System.out.println(zoom);
+		
 		t[1].appliquer(this,zoom);
 
 		//System.out.println(" xMin = "+ xMin +" xMax = "+ xMax + " yMin = "+ yMin + " yMax = "+ yMax);

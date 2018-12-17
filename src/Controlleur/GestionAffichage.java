@@ -114,7 +114,7 @@ public class GestionAffichage implements Observer{
 	    CheckBox face = new CheckBox();
 	    CheckBox ombre = new CheckBox();
 	    
-	    Button vueCoupe = new Button("Lancer vue en coupe");
+	    Button rotAuto = new Button("Rotation Automatique");
 	    
 	    ligne2.getChildren().addAll(zoom,dezoom);
 	    
@@ -152,9 +152,8 @@ public class GestionAffichage implements Observer{
 	    face.setOnAction(e-> mod.checkF());
 	    //ombre.setOnAction(e-> mod.checkO());
 	    
-	    vueCoupe.setOnAction(e->{
-	    	ovue = new OtherVue(mod);
-			ovue.vueEnCoupe();
+	    rotAuto.setOnAction(e->{
+	    	ovue.rotAuto();
 	    });
 	    
 	    try {
@@ -210,7 +209,7 @@ public class GestionAffichage implements Observer{
 	    root.setStyle("-fx-background-color: #8FAAC8;");
 	    
 	    comboBox.getItems().setAll(listeModele);
-	    root.getChildren().addAll(choixT,comboBox,ligne1,sliderrot,boutonsRot,ligne2,ligne3,slidertr,boutonsTr,ligne4,ligne5,ligne6,vueCoupe);
+	    root.getChildren().addAll(choixT,comboBox,ligne1,sliderrot,boutonsRot,ligne2,ligne3,slidertr,boutonsTr,ligne4,ligne5,ligne6,rotAuto);
 	    root.setPadding(new Insets(10,15,20,20));
 	    root.setSpacing(10);
 	    

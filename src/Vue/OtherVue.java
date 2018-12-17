@@ -41,9 +41,6 @@ public class OtherVue {
 		stage.setResizable(true);
 		stage.show();
 		
-
-		
-			System.out.println("Affichage Rotation Auto");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

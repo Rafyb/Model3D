@@ -153,6 +153,7 @@ public class GestionAffichage implements Observer{
 	    //ombre.setOnAction(e-> mod.checkO());
 	    
 	    rotAuto.setOnAction(e->{
+	    	ovue = new OtherVue(mod);
 	    	ovue.rotAuto();
 	    });
 	    

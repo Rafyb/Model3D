@@ -11,6 +11,7 @@ import org.junit.Test;
 import ExceptionTest.WrongNumberFace;
 import ExceptionTest.WrongNumberOfPoint;
 import Matrices.*;
+import Modele.Face;
 import Modele.Modele;
 import Modele.Point;
 import Modele.ReadModele;
@@ -347,7 +348,7 @@ public class TriTest {
 		
 		
 	}
-	
+ 
 	@Test
 	public void FileExist() {
 	assertTrue(exist.fileExist("data/corner.ply"));		
@@ -368,6 +369,36 @@ public class TriTest {
     	
     }
     
+    @Test
+    public void faceToSting(){
+    	Point point1 = new Point(1.0, 1.0, 1.0);
+    	Point point2 = new Point(2.0, 2.0, 2.0);
+    	Point point3 = new Point(3.0, 3.0, 3.0);
+    	
+    	Face face = new Face(point1, point2, point3);
+    	
+    	
+    	assertEquals("[(1.0,1.0,1.0)-(2.0,2.0,2.0)-(3.0,3.0,3.0)]", face.toString());    	
+    }
+    
+    @Test
+    public void faceCompare(){
+    	Point point1 = new Point(1.0, 1.0, 1.0);
+    	Point point2 = new Point(2.0, 2.0, 2.0);
+    	Point point3 = new Point(3.0, 3.0, 3.0);    
+    	
+    	Face face1 = new Face(point2, point2, point2);
+    	Face face2 = new Face(point1, point1, point1);
+    	Face face3 = new Face(point3, point3, point3);
+    	
+    	
+    	assertEquals(0 ,face1.compareTo(face1));
+    	assertEquals(-1 ,face1.compareTo(face3));
+    	assertEquals(1 ,face1.compareTo(face2));    
+
+    	
+    }
+    
     
     @Test
     public void pointCompareY(){
@@ -381,7 +412,10 @@ public class TriTest {
     	assertEquals(0, point1.compareTo(point6));
     	
     }
-
+   
+    
+    
+       
 
 
 

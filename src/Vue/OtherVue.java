@@ -41,13 +41,14 @@ public class OtherVue {
 		stage.setResizable(true);
 		stage.show();
 		
+		rotation();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public void rotation() {
-		for(int i = 1; i<=360; i++) {
+		for(int i = 1; i<=10; i++) {
 			try {
 				gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 				mod.triZ();

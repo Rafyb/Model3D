@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import Modele.*;
+import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -11,56 +12,17 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class OtherVue {
+public class OtherVue extends Application implements Runnable{
 	private GraphicsContext gc;
 	private Canvas canvas;
 	private Modele mod;
+	private Stage stage;
 	
 	public OtherVue(Modele mod) {
 		this.mod = mod;
+		Stage stage = new Stage();
 	}
 
-	public void rotAuto(){
-		Stage stage = new Stage();
-		try {
-		canvas = new Canvas (800, 800);
-		gc = canvas.getGraphicsContext2D();
-		
-		triangle();
-		
-		
-		
-		
-		VBox root = new VBox();
-		root.getChildren().add(canvas);
-		
-		stage.setScene(new Scene(root));
-		stage.setMinWidth(800);
-		stage.setMinHeight(800);
-		stage.setTitle("Vue rotation");
-		stage.setResizable(true);
-		stage.show();
-		
-		rotation();
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void rotation() {
-		for(int i = 1; i<=10; i++) {
-			try {
-				gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-				mod.triZ();
-				triangle();
-				Thread.sleep(1000);
-				mod.rotationX(1);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
 	
 	private void triangle() {
 		for(int i = 0; i < mod.getAllFace().length; i++) {
@@ -79,9 +41,41 @@ public class OtherVue {
 	}
 	
 
-	
-	public void vueCoupe() {
+	@Override
+	public void run() {
+		while(stage.isFocused()) {
+			try {
+				gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+				mod.triZ();
+				triangle();
+				Thread.sleep(200);
+				mod.rotationY(1);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
+	}
+
+	@Override
+	public void start(Stage s){
+		stage = s;
+		stage = new Stage();
+		canvas = new Canvas (800, 800);
+		gc = canvas.getGraphicsContext2D();
+		triangle();
+
+		VBox root = new VBox();
+		root.getChildren().add(canvas);
+		
+		stage.setScene(new Scene(root));
+		stage.setMinWidth(800);
+		stage.setMinHeight(800);
+		stage.setTitle("Vue rotation");
+		stage.setResizable(true);
+		stage.show();
+
 	}
 	
 

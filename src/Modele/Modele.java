@@ -21,6 +21,7 @@ public final class Modele extends Observable{
 	private Rotation r;
 	private boolean affTrait = true;
 	private boolean affFace = true;
+	private boolean affOmbre = false;
 	private Point centreModele;
 	
 	private static Modele instance = null;
@@ -162,6 +163,16 @@ public final class Modele extends Observable{
 		if(affFace) affFace =false;
 		else {
 			affFace = true;
+		}
+		this.setChanged();
+		notifyObservers();
+	}
+	
+	
+	public void checkO() {
+		if(affOmbre) affOmbre =false;
+		else {
+			affOmbre = true;
 		}
 		this.setChanged();
 		notifyObservers();
@@ -335,6 +346,9 @@ public final class Modele extends Observable{
 	}
 
 
+	public boolean getCheckO() {
+		return affOmbre;
+	}
 
 
 

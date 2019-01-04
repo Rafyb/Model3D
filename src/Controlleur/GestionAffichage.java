@@ -41,7 +41,7 @@ public class GestionAffichage implements Observer{
 	private ArrayList<String> listeModele;
 	private ComboBox<String> comboBox;
 	private VBox root;
-	private OtherVue ovue;
+
 		
 	/**
 	 * Constructeur prenant en paramètre le modèle qu'il va controler.
@@ -150,11 +150,16 @@ public class GestionAffichage implements Observer{
 	    
 	    trait.setOnAction(e-> mod.checkT());
 	    face.setOnAction(e-> mod.checkF());
-	    //ombre.setOnAction(e-> mod.checkO());
+	    ombre.setOnAction(e -> mod.checkO());
 	    
+
 	    rotAuto.setOnAction(e->{
-	    	ovue = new OtherVue(mod);
-	    	ovue.rotAuto();
+		    Stage st2 = new Stage();
+		    OtherVue o = new OtherVue(mod);
+	    	Thread t = new Thread( (Runnable) o);
+	    	
+	    	o.start(st2);
+	    	t.start();
 	    });
 	    
 	    try {

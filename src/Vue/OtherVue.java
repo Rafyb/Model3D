@@ -1,8 +1,5 @@
 package Vue;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import Modele.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -20,11 +17,10 @@ public class OtherVue extends Application implements Runnable{
 	
 	public OtherVue(Modele mod) {
 		this.mod = mod;
-		Stage stage = new Stage();
 	}
 
 	
-	private void triangle() {
+	private void printTriangle() {
 		for(int i = 0; i < mod.getAllFace().length; i++) {
 			gc.setFill(Color.GREY);
 			Face face = mod.getFaceAtIndex(i);
@@ -43,18 +39,21 @@ public class OtherVue extends Application implements Runnable{
 
 	@Override
 	public void run() {
+    	mod.checkR();
 		while(stage.isFocused()) {
 			try {
 				gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 				mod.triZ();
-				triangle();
-				Thread.sleep(200);
-				mod.rotationY(1);
+				printTriangle();
+				
+				Thread.sleep(50);
+				mod.rotationY(2);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+    	mod.checkR();
 		
 	}
 
@@ -64,7 +63,7 @@ public class OtherVue extends Application implements Runnable{
 		stage = new Stage();
 		canvas = new Canvas (800, 800);
 		gc = canvas.getGraphicsContext2D();
-		triangle();
+		printTriangle();
 
 		VBox root = new VBox();
 		root.getChildren().add(canvas);

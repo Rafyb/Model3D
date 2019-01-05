@@ -9,6 +9,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+/**
+ * Fenetre s'ouvrant après l'utilisation du bouton Rotation Automatique de l'application.
+ * Tant que la fenetre est en premier plan, l'objet effectue une rotation continue au tour de lui meme. 
+ * @author bauvinr
+ */
 public class OtherVue extends Application implements Runnable{
 	private GraphicsContext gc;
 	private Canvas canvas;
@@ -19,7 +24,9 @@ public class OtherVue extends Application implements Runnable{
 		this.mod = mod;
 	}
 
-	
+	/**
+	 * Methode qui dessine les triangles du modele sur la fenetre.
+	 */
 	private void printTriangle() {
 		for(int i = 0; i < mod.getAllFace().length; i++) {
 			gc.setFill(Color.GREY);
@@ -37,7 +44,10 @@ public class OtherVue extends Application implements Runnable{
 	}
 	
 
-	@Override
+	/**
+	 * Methode issu de l'implementation de Runnable qui lance l'execution d'un second thread pour
+	 * gerer la rotation du modele sur la nouvelle fenetre.
+	 */
 	public void run() {
     	mod.checkR();
 		while(stage.isFocused()) {
@@ -49,15 +59,15 @@ public class OtherVue extends Application implements Runnable{
 				Thread.sleep(50);
 				mod.rotationY(2);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
     	mod.checkR();
-		
 	}
 
-	@Override
+	/**
+	 * Ouvre une seconde fenetre sur laquel s'effectue la rotation.
+	 */
 	public void start(Stage s){
 		stage = s;
 		stage = new Stage();

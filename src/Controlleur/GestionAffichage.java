@@ -27,16 +27,9 @@ import javafx.stage.Stage;
  * Un controleur attache au modele qui est la fenetre de controle de l'affichage.
  * Permet d'effectuer les differentes operations de translation/rotation/zoom.
  * La sensibilite des mouvements est modifiable via les sliders.
- * @author bauvinr danglotc
+ * @author bauvinr
  */
 public class GestionAffichage implements Observer{
-	/**
-	 * mod = modele utilisé.
-	 * listeModele = la liste des modèles selectionnable
-	 * comboBox = affichage de la liste des modeles	 * 	
-	 * root 
-	 */
-	
 	private Modele mod;
 	private ArrayList<String> listeModele;
 	private ComboBox<String> comboBox;
@@ -44,8 +37,8 @@ public class GestionAffichage implements Observer{
 
 		
 	/**
-	 * Constructeur prenant en paramètre le modèle qu'il va controler.
-	 * @param modele le modele qui va être controlé.	 * 
+	 * Constructeur prenant en parametre le modele qu'il va controler.
+	 * @param modele le modele qui va etre controle.	 * 
 	 */
 	  public GestionAffichage(Modele modele) {
 		mod = modele;
@@ -61,7 +54,7 @@ public class GestionAffichage implements Observer{
 		//System.out.println(listeModele);
 	}
 	  /**
-	   * Afficher tout les controleurs du modèle.
+	   * Afficher tout les controleurs du modele.
 	   * @param stage stage
 	   */
 	
@@ -157,7 +150,7 @@ public class GestionAffichage implements Observer{
 		    Stage st2 = new Stage();
 		    OtherVue o = new OtherVue(mod);
 	    	Thread t = new Thread( (Runnable) o);
-	    	
+
 	    	o.start(st2);
 	    	t.start();
 	    });
@@ -219,19 +212,12 @@ public class GestionAffichage implements Observer{
 	    root.setPadding(new Insets(10,15,20,20));
 	    root.setSpacing(10);
 	    
-	    /*
-	    Scene scene = new Scene(root, 150, 600);
-	    stage.setScene(scene);
-	    stage.setTitle("Model 3D Move");
-	    stage.setResizable(false);
-	    stage.show();*/
-
 	  }
 
 
 
 	/**
-	 * Methode pour mettre à jour la liste.
+	 * Methode pour mettre a jour la liste.
 	 */
 	public void update(Observable o, Object arg) {
 		comboBox.setValue(comboBox.getSelectionModel().getSelectedItem());

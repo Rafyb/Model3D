@@ -2,14 +2,23 @@ package Matrices;
 
 import Modele.Modele;
 
-public class Redimensionnement implements Transformation{
+public class Redimensionnement implements StrategieTransformation{
+	Modele m;
 	
 	/**
-	 * Zoomer la figure selon un paramètre de zoom donné.
-	 * @param coef le coef utilisé pour le zoom
-	 * @param m Modele utilisé
+	 * Fait parti du desing pattern "Strategy"
+	 * Permet d'agrandir et de retrecir le modele
+	 * @author canonnet
 	 */
-	public void appliquer(Modele m, Object o) {
+	public Redimensionnement(Modele m) {
+		this.m=m;
+	}
+	
+	/**
+	 * Zoomer la figure selon un parametre de zoom donne.
+	 * @param coef le coef utilise pour le zoom
+	 */
+	public void appliquer(Object o) {
 		double coef = (double)o;
 		for(int i = 0 ; i < m.getAllPoints().length;i++) {
 

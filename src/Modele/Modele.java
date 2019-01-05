@@ -2,60 +2,65 @@ package Modele;
 
 import java.util.Arrays;
 import java.util.Observable;
-
 import Matrices.*;
+/**
+ * Class principal, elle represente le Modele 3D et fait partie de la configuration MVC.
+ * Le MVC est construit autour de Observer/Observable, le modele est l'observable.
+ * Elle est sous forme d'un "singleton" et ne comporte aucun lien direct avec la vue ou le controleur.
+ * Elle comprend toute les m�thodes de manipulations du modele.
+ * @author danglotc bauvinr brevierl canonnet
+ */
 public final class Modele extends Observable{
 	/**
-	 * points = tableau de point du modèle.
-	 * face = tableau de face du modèle.
-	 * r = Rotation du modèle.
+	 * points = tableau de point du modele.
+	 * face = tableau de face du modele.
+	 * t = Matrice de transformation
+	 * 		> Translation
+	 * 		> Redimensionnement
+	 * 		> Rotation sur l'axe X
+	 *      > Rotation sur l'axe Y
+	 *      > Rotation sur l'axe Z
 	 * affTrait = savoir si on affiche les traits ou pas.
 	 * affFace = savoir si on affiche les faces ou pas.
-	 * 
-	 * 
-	 * 
+	 * affOmbre = savoir si on affiche l'ombre ou pas.
+	 * rotAuto = savoir si la rotation est active.
+	 * centreModele = le centre du Modele.
 	 */
 	private Point[] points ;
 	private Face[] face;
-	private Transformation[] t;
-	private Rotation r;
+	private Matrice t;
 	private boolean affTrait = true;
 	private boolean affFace = true;
 	private boolean affOmbre = false;
+	private boolean rotAuto = false;
 	private Point centreModele;
 	
 	private static Modele instance = null;
+	
 	/**
-	 * 
 	 * Constructeur
-	 * @param r pour donner un modèle dans un fichier.
+	 * @param r le reader du fichier du modele.
 	 */
 	private Modele(ReadModele r) {
 		this.points = r.getPoint();		
 		this.face =  r.getFace();
-		this.t = new Transformation[3];
-		t[0] = new Translation();
-		t[1] = new Redimensionnement();
-		t[2] = new Rotation();
-		this.r = new Rotation();
+		t = new Matrice();
 		this.centrer();
 	}
+	
 	/**
-	 * Récupérer le modèle.
-	 * @param r lire le modele
-	 * @return une instance du modèle
+	 * Recuperer l'instance du modele.
+	 * @param r le reader du fichier du modele
+	 * @return l'instance unique du modele
 	 */
 	public static Modele getModele(ReadModele r) {
 		if(instance == null) instance = new Modele(r);
 		return instance;
 	}
-	
-	
-	
-	
+
 	/**
-	 * Methode pour changer le modèle que l'on veut afficher.
-	 * @param r Modèle different de l'ancien.
+	 * Methode pour changer le modele que l'on veut afficher.
+	 * @param r le nouveau reader du fichier du modele
 	 */
 	public void changerModele(ReadModele r) {
 		points = r.getPoint();
@@ -67,16 +72,15 @@ public final class Modele extends Observable{
 		this.notifyObservers();
 	}
 	
-	
 	/**
-	 * Methode pour trier le modèle.
+	 * Methode pour trier le modele sur les Z.
 	 */
 	public void triZ() {
 		Arrays.sort(face);
 	}
 		
 	/**
-	 * Methode pour afficher le modèle centrer par rapport à la vue.
+	 * Methode pour centrer le modele par rapport a�la vue.
 	 */
 	public void centrer() {
 		double xMin = points[0].getX(), xMax = points[0].getX(),yMin = points[0].getY(),yMax = points[0].getY();
@@ -94,7 +98,7 @@ public final class Modele extends Observable{
 		double xT = -((xMax+xMin)/2);
 		double yT = -((yMax+yMin)/2);
 		Point translation = new Point(xT,yT,0);
-		t[0].appliquer(this, translation);
+		t.transformation(new Translation(this) , translation);
 		
 		
 		xMin = points[0].getX(); xMax = points[0].getX();yMin = points[0].getY();yMax = points[0].getY();
@@ -114,11 +118,14 @@ public final class Modele extends Observable{
 			zoom += 0.01;
 		}
 		
-		t[1].appliquer(this,zoom);
+		t.transformation(new Redimensionnement(this),zoom);
 
 		//System.out.println(" xMin = "+ xMin +" xMax = "+ xMax + " yMin = "+ yMin + " yMax = "+ yMax);
 	}
 	
+	/**
+	 * Methode pour mettre � jour le centre du modele.
+	 */
 	public void updateCentre() {
 		double xMin = points[0].getX(), xMax = points[0].getX(),yMin = points[0].getY(),yMax = points[0].getY(),zMin = points[0].getZ(),zMax = points[0].getZ();
 		for (Point p : points) {
@@ -138,16 +145,23 @@ public final class Modele extends Observable{
 		centreModele = new Point((xMin+xMax)/2,(yMin+yMax)/2,(zMin+zMax)/2);
 	}
 	
+	/**
+	 * @return le point au centre du Modele.
+	 */
 	public Point getCentreModele() {
 		return centreModele;
 	}
 	
-	
+	/**
+	 * @param le point que l'on d�finit comme le centre du modele.
+	 */
 	public void setCentreModele(Point centreModele) {
 		this.centreModele = centreModele;
 	}
 	
-	
+	/**
+	 * Switch l'�tat d'afficher Trait.
+	 */
 	public void checkT() {
 		if(affTrait) affTrait =false;
 		else {
@@ -157,8 +171,9 @@ public final class Modele extends Observable{
 		notifyObservers();
 	}
 	
-	
-	
+	/**
+	 * Switch l'�tat d'afficher Face.
+	 */
 	public void checkF() {
 		if(affFace) affFace =false;
 		else {
@@ -168,7 +183,9 @@ public final class Modele extends Observable{
 		notifyObservers();
 	}
 	
-	
+	/**
+	 * Switch l'�tat d'afficher le flux lumineux.
+	 */
 	public void checkO() {
 		if(affOmbre) affOmbre =false;
 		else {
@@ -178,18 +195,28 @@ public final class Modele extends Observable{
 		notifyObservers();
 	}
 	
+	/**
+	 * Switch l'�tat de la rotationAuto.
+	 */
+	public void checkR() {
+		if(rotAuto) rotAuto =false;
+		else {
+			rotAuto = true;
+		}
+		this.setChanged();
+		notifyObservers();
+	}
 	
 	/**
 	 * Methode pour la rotation dans l'axe X et notifie les observers.
 	 * @param radian l'angle en radian.
 	 */
 	public void rotationX(int radian) {
-		r.rotationX(this,radian);
+		t.transformation(new RotationX(instance),radian);
 		update();
 		this.setChanged();
 		notifyObservers();
 	}
-	
 	
 	
 	/**
@@ -197,7 +224,7 @@ public final class Modele extends Observable{
 	 * @param radian l'angle en radian.
 	 */
 	public void rotationY(int radian) {
-		r.rotationY(this,radian);
+		t.transformation(new RotationY(instance),radian);
 		update();
 		this.setChanged();
 		notifyObservers();
@@ -209,88 +236,79 @@ public final class Modele extends Observable{
 	 * @param radian l'angle en radian.
 	 */
 	public void rotationZ(int radian) {
-		r.rotationZ(this,radian);
+		t.transformation(new RotationZ(instance),radian);
 		update();
 		this.setChanged();
 		notifyObservers();
 	}
 	
-	
 	/**
-	 * 
-	 * Methode pour zoomer le modèle et notifie les observers.
+	 * Methode pour zoomer le modele et notifie les observers.
 	 * @param coef coefficient pour zoomer
 	 */
 	public void zoom(double coef) {
-		t[1].appliquer(this,coef);
+		t.transformation(new Redimensionnement(instance),coef);
 		this.setChanged();
 		notifyObservers();
 	}
 	
-	
 	/**
-	 * 
-	 * Methode pour dezoomer le modèle et notifie les observers.
+	 * Methode pour dezoomer le modele et notifie les observers.
 	 * @param coef coefficient pour zoomer
 	 */
 	public void dezoom(double coef) {
-		t[1].appliquer(this,-1*coef);
+		t.transformation(new Redimensionnement(instance),-1*coef);
 		this.setChanged();
 		notifyObservers();
 	}
 	
-	
 	/**
-	 * 
-	 * Methode pour translater le modèle et notifie les observers.
+	 * Methode pour translater le modele et notifie les observers.
 	 * @param p point afin de faire la translation
 	 */
-
 	public void translation(Point p) {
-		t[0].appliquer(this, p);
+		t.transformation(new Translation(instance),p);
 		this.setChanged();
 		notifyObservers();
 	}
 	
-	
+	/**
+	 * Methode pour translater le modele vers le centre et notifie les observers.
+	 */
 	public void translationCentre() {
-		((Translation) t[0]).translationCentre(this);
+		Translation tr = new Translation(instance);
+		tr.translationCentre();
 		this.setChanged();
 		notifyObservers();
 	}
 
 	/**
-	 * Methode mettant à jour le centre de gravité.
+	 * Methode mettant a jour le centre de gravite.
 	 */ 
 	private void update() {
 		for (Face f : face) {
-
 			f.updateCdG();
 		}
 	}
 	
-	
 	/**
-	 * Récupérer tout les points.
-	 * @return tout les points
-	 * 
+	 * Recuperer tout les points.
+	 * @return les points du modele dans un tableau
 	 */
 	public Point[] getAllPoints(){
 		return points;
 	}
 	
-	
 	/**
-	 * Récupérer toutes les faces.
-	 * @return toutes les faces
+	 * Recuperer toutes les faces.
+	 * @return les faces du modele dans un tableau
 	 */
 	public Face[] getAllFace(){
 		return face;
 	}
 	
-	
 	/**
-	 * Récupérer les points selon un index en paramètre.
+	 * Recuperer le points selon un index en parametre.
 	 * @param index indice pour chercher les points dans le tableau.
 	 * @return les points selon l'indice
 	 */
@@ -300,9 +318,9 @@ public final class Modele extends Observable{
 	
 	
 	/**
-	 * Récupérer une face selon un index en paramètre.
+	 * Recuperer une face selon un index en parametre.
 	 * @param index l'indice permettant de trouver la face
-	 * @return Une face selon l'indice donné.
+	 * @return Une face selon l'indice donne.
 	 */
 	public Face getFaceAtIndex(int index){
 		return face[index];
@@ -310,7 +328,7 @@ public final class Modele extends Observable{
 	
 	
 	/**
-	 * Methode d'affichage.
+	 * Methode d'affichage sortie standard.
 	 * @return toString.
 	 */
 	public String toString() {
@@ -336,7 +354,6 @@ public final class Modele extends Observable{
 		return affFace;
 	}
 
-
 	/**
 	 * Permet de savoir si on affiche les points ou non.
 	 * @return true or false.
@@ -345,11 +362,21 @@ public final class Modele extends Observable{
 		return affTrait;
 	}
 
-
+	/**
+	 * Permet de savoir si on affiche les ombres ou non.
+	 * @return true or false.
+	 */
 	public boolean getCheckO() {
 		return affOmbre;
 	}
 
+	/**
+	 * Permet de savoir si la rotationAuto est en marche ou non.
+	 * @return true or false.
+	 */
+	public boolean getCheckR() {
+		return rotAuto;
+	}
 
 
 }

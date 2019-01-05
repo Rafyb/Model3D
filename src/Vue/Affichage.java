@@ -17,11 +17,11 @@ import javafx.stage.Stage;
 /**
  * La vue du modele,fonctionne sous la forme de Observer/Observable.
  * Fenetre affichant le modele en 3D à l'aide d'une methode de dessin de triangle.
- * Gere aussi les rotations a la souris 
+ * Gere aussi les rotations et translations a la souris :
  *  x et y
  *  x seulement avec ctrl enfonce
  *  y seulement avec shift enfonce
- * @author bauvinr canonnet danglotc
+ * @author bauvinr canonnet
  */
 public class Affichage implements Observer {
 	
@@ -29,7 +29,7 @@ public class Affichage implements Observer {
 	private Canvas canvas;
 	private Modele mod;
 	private double x,y;
-	private double sceneWidth,sceneHeight;
+
 	/**
 	 * Constructeur de la classe Affichage.
 	 *  @param modele = attribut mod.
@@ -40,7 +40,7 @@ public class Affichage implements Observer {
 		x=y=0;
 	}
 	/**
-	 * Methode principale pour l'affichage qui crée les fenêtres.
+	 * Methode principale.
 	 * @param stage stage
 	 */
 	public void start(Stage stage) { 
@@ -54,8 +54,6 @@ public class Affichage implements Observer {
 		
 		root.getChildren().addAll(canvas,boutons.getPage());
 		Scene scene = new Scene(root);
-		sceneWidth = scene.getWidth();
-		sceneHeight = scene.getHeight();
 
 		/////////////////////// MOUVEMENTS SOURIS ///////////////////////
 		canvas.setOnMouseDragged(e->{
@@ -129,10 +127,6 @@ public class Affichage implements Observer {
 		stage.setTitle("Model 3D Afficheur");
 		stage.setResizable(true);
 		stage.show();
-
-
-
-
 	}
 
 	/**
@@ -155,13 +149,15 @@ public class Affichage implements Observer {
 	}
 
 	/**
-	 * Methode pour mettre à jour l'affichage en effaçant l'écran et en triant le modèle.	 
+	 * Methode pour mettre a jour l'affichage en effacant l'ecran et en triant le modele.	 
 	 */
 	public void update(Observable o, Object arg) {
 		try {
+			if(!mod.getCheckR()) {
 			gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 			mod.triZ();
 			triangle();
+			}
 		} catch(Exception e) {
 
 		}

@@ -94,8 +94,8 @@ public class TriTest {
 	public void RotationXHaut() {
 		int rotation = 1;
 
-		Rotation r = new Rotation();
-		r.rotationX(test1, rotation);
+		RotationX r = new RotationX();
+		r.appliquer(test1, rotation);
 
 
 		//On ajoute 380.001 car les points sont centrés	
@@ -115,8 +115,8 @@ public class TriTest {
 	public void RotationXBas() {
 		int rotation = -1;
 
-		Rotation r = new Rotation();
-		r.rotationX(test1, rotation);
+		RotationX r = new RotationX();
+		r.appliquer(test1, rotation);
 
 
 
@@ -138,9 +138,9 @@ public class TriTest {
 
 	@Test
 	public void RotationYDroite() {
-		Rotation r = new Rotation();
+		RotationX r = new RotationX();
 		int rotation = 1;
-		r.rotationY(test1, rotation);
+		r.appliquer(test1, rotation);
 		
 		//On ajoute 380.001 car les points sont centrés	
 		
@@ -157,9 +157,9 @@ public class TriTest {
 	
 	@Test
 	public void RotationYGauche() {
-		Rotation r = new Rotation();
+		RotationX r = new RotationX();
 		int rotation = -1;
-		r.rotationY(test1, rotation);
+		r.appliquer(test1, rotation);
 		
 		//On ajoute 380.001 car les points sont centrés	
 		
@@ -177,9 +177,9 @@ public class TriTest {
 
 	@Test
 	public void RotationZDroite() {
-		Rotation r = new Rotation();
+		RotationX r = new RotationX();
 		int rotation = 1;
-		r.rotationZ(test1, rotation);
+		r.appliquer(test1, rotation);
 		
 		//On ajoute 380.001 car les points sont centrés	
 		
@@ -196,9 +196,9 @@ public class TriTest {
 	
 	@Test
 	public void RotationZGauche() {
-		Rotation r = new Rotation();
+		RotationX r = new RotationX();
 		int rotation = -1;
-		r.rotationZ(test1, rotation);
+		r.appliquer(test1, rotation);
 		
 		//On ajoute 380.001 car les points sont centrés	
 		
@@ -349,6 +349,7 @@ public class TriTest {
 		
 	}
  
+	@SuppressWarnings("static-access")
 	@Test
 	public void FileExist() {
 	assertTrue(exist.fileExist("data/corner.ply"));		
@@ -356,6 +357,7 @@ public class TriTest {
 	}
 
 	
+	@SuppressWarnings("static-access")
 	@Test
 	public void RecupNotExist() {
 	assertFalse(exist.fileExist("ppppp"));		

@@ -104,8 +104,10 @@ public class GestionAffichage implements Observer{
 	    Button dezoom = new Button("-");
 	    
 	    CheckBox trait = new CheckBox();
+	    trait.setSelected(true);
 	    CheckBox face = new CheckBox();
 	    CheckBox ombre = new CheckBox();
+	    ombre.setSelected(true);
 	    
 	    Button rotAuto = new Button("Rotation Automatique");
 	    
@@ -121,6 +123,7 @@ public class GestionAffichage implements Observer{
 	    ligne6.getChildren().addAll(ombre,new Label("Visualisation Ombre"));
 	    
 	    // ---------------------------- CONTROLEURS ------------------------------//
+	    
 	    
 	    haut.setOnAction(e ->mod.rotationX((int)sliderrot.getValue()));
 	    bas.setOnAction(e ->mod.rotationX((int)sliderrot.getValue()*-1)); 

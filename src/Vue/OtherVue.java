@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
- * Fenetre s'ouvrant après l'utilisation du bouton Rotation Automatique de l'application.
+ * Fenetre s'ouvrant aprï¿½s l'utilisation du bouton Rotation Automatique de l'application.
  * Tant que la fenetre est en premier plan, l'objet effectue une rotation continue au tour de lui meme. 
  * @author bauvinr
  */
@@ -32,10 +32,10 @@ public class OtherVue extends Application implements Runnable{
 			gc.setFill(Color.GREY);
 			Face face = mod.getFaceAtIndex(i);
 			Point[] points = face.getTabp();
-			if(face.getCouleur()!= null) {
-				int[] colors = face.getCouleur();
-				gc.setFill(Color.rgb(colors[0], colors[1], colors[2]));
-			}
+			
+			int[] colors = face.getCouleur();
+			gc.setFill(Color.rgb((int)(colors[0]*face.getCoefLuminosite()), (int)(colors[1]*face.getCoefLuminosite()), (int)(colors[2]*face.getCoefLuminosite())));
+
 			if(mod.getCheckF())gc.fillPolygon(new double[]{points[0].getX()+(canvas.getWidth()/2),points[1].getX()+(canvas.getWidth()/2),points[2].getX()+(canvas.getWidth()/2)},
 					new double[]{points[0].getY()+(canvas.getHeight()/2),points[1].getY()+(canvas.getHeight()/2),points[2].getY()+(canvas.getHeight()/2)},3);
 			if(mod.getCheckT())gc.strokePolygon(new double[]{points[0].getX()+(canvas.getWidth()/2),points[1].getX()+(canvas.getWidth()/2),points[2].getX()+(canvas.getWidth()/2)},
@@ -50,13 +50,14 @@ public class OtherVue extends Application implements Runnable{
 	 */
 	public void run() {
     	mod.checkR();
-		while(stage.isFocused()) {
+    	mod.centrer();
+		while(stage.isShowing()) {
 			try {
 				gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 				mod.triZ();
 				printTriangle();
 				
-				Thread.sleep(50);
+				Thread.sleep(100);
 				mod.rotationY(2);
 			} catch (InterruptedException e) {
 				e.printStackTrace();

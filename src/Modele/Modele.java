@@ -29,9 +29,9 @@ public final class Modele extends Observable{
 	private Point[] points ;
 	private Face[] face;
 	private Matrice t;
-	private boolean affTrait = true;
+	private boolean affTrait = false;
 	private boolean affFace = true;
-	private boolean affOmbre = false;
+	private boolean affOmbre = true;
 	private boolean rotAuto = false;
 	private Point centreModele;
 	

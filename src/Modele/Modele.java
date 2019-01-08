@@ -7,7 +7,7 @@ import Matrices.*;
  * Class principal, elle represente le Modele 3D et fait partie de la configuration MVC.
  * Le MVC est construit autour de Observer/Observable, le modele est l'observable.
  * Elle est sous forme d'un "singleton" et ne comporte aucun lien direct avec la vue ou le controleur.
- * Elle comprend toute les méthodes de manipulations du modele.
+ * Elle comprend toute les mï¿½thodes de manipulations du modele.
  * @author danglotc bauvinr brevierl canonnet
  */
 public final class Modele extends Observable{
@@ -80,7 +80,7 @@ public final class Modele extends Observable{
 	}
 		
 	/**
-	 * Methode pour centrer le modele par rapport a la vue.
+	 * Methode pour centrer le modele par rapport aï¿½la vue.
 	 */
 	public void centrer() {
 		double xMin = points[0].getX(), xMax = points[0].getX(),yMin = points[0].getY(),yMax = points[0].getY();
@@ -124,7 +124,7 @@ public final class Modele extends Observable{
 	}
 	
 	/**
-	 * Methode pour mettre à jour le centre du modele.
+	 * Methode pour mettre ï¿½ jour le centre du modele.
 	 */
 	public void updateCentre() {
 		double xMin = points[0].getX(), xMax = points[0].getX(),yMin = points[0].getY(),yMax = points[0].getY(),zMin = points[0].getZ(),zMax = points[0].getZ();
@@ -153,14 +153,14 @@ public final class Modele extends Observable{
 	}
 	
 	/**
-	 * @param le point que l'on définit comme le centre du modele.
+	 * @param le point que l'on dï¿½finit comme le centre du modele.
 	 */
 	public void setCentreModele(Point centreModele) {
 		this.centreModele = centreModele;
 	}
 	
 	/**
-	 * Switch l'état d'afficher Trait.
+	 * Switch l'ï¿½tat d'afficher Trait.
 	 */
 	public void checkT() {
 		if(affTrait) affTrait =false;
@@ -172,7 +172,7 @@ public final class Modele extends Observable{
 	}
 	
 	/**
-	 * Switch l'état d'afficher Face.
+	 * Switch l'ï¿½tat d'afficher Face.
 	 */
 	public void checkF() {
 		if(affFace) affFace =false;
@@ -184,7 +184,7 @@ public final class Modele extends Observable{
 	}
 	
 	/**
-	 * Switch l'état d'afficher le flux lumineux.
+	 * Switch l'ï¿½tat d'afficher le flux lumineux.
 	 */
 	public void checkO() {
 		if(affOmbre) affOmbre =false;
@@ -196,7 +196,7 @@ public final class Modele extends Observable{
 	}
 	
 	/**
-	 * Switch l'état de la rotationAuto.
+	 * Switch l'ï¿½tat de la rotationAuto.
 	 */
 	public void checkR() {
 		if(rotAuto) rotAuto =false;
@@ -288,6 +288,7 @@ public final class Modele extends Observable{
 	private void update() {
 		for (Face f : face) {
 			f.updateCdG();
+			f.calculNormal();
 		}
 	}
 	

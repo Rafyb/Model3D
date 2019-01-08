@@ -1,5 +1,7 @@
 package Modele;
 
+import com.sun.javafx.geom.Vec3f;
+
 /**
  * Objet Face qui est forme de 3 points, contient les methodes de gestions du centre de gravite.
  * @author danglotc
@@ -22,8 +24,12 @@ public class Face implements Comparable<Face>{
 		double yG = (s.getY()+s1.getY()+s2.getY())/3;
 		double zG = (s.getZ()+s1.getZ()+s2.getZ())/3;
 		centreGravite = new Point(xG,yG,zG);
-		couleur = new int[]{(int)(s.getR()+s1.getR()+s2.getR())/3,(int)(s.getG()+s1.getG()+s2.getG())/3,(int)(s.getB()+s1.getB()+s2.getB())/3};
 		
+		if(s.getR() == -1 || s1.getR() == -1 || s2.getR() == -1)
+			couleur = new int[] {200,200,200};
+		else
+			couleur = new int[]{(int)(s.getR()+s1.getR()+s2.getR())/3,(int)(s.getG()+s1.getG()+s2.getG())/3,(int)(s.getB()+s1.getB()+s2.getB())/3};
+
 	}
 	
 	
@@ -44,6 +50,27 @@ public class Face implements Comparable<Face>{
 	}
 	
 	
+	/**
+	 * Calcul un vecteur normal au plan.
+	 */
+	public void calculNormal() {
+
+
+		Vec3f vL = new Vec3f(-0,1,0);
+		
+		Vec3f v1 = new Vec3f((float)(tabp[1].getX()-tabp[0].getX()),(float)(tabp[1].getY()-tabp[0].getY()),(float)(tabp[1].getZ()-tabp[0].getZ()));
+		Vec3f v2 = new Vec3f((float)(tabp[2].getX()-tabp[0].getX()),(float)(tabp[2].getY()-tabp[0].getY()),(float)(tabp[2].getZ()-tabp[0].getZ()));
+
+		v1.cross(v1, v2);
+		
+		double dessus = vL.x *v1.x + vL.y * v1.y + vL.z * v1 .z;
+		double dessous1 = Math.sqrt(vL.x*vL.x + vL.y * vL.y + vL.z * vL.z );
+		double dessous2 = Math.sqrt(v1.x*v1.x + v1.y * v1.y + v1.z * v1.z );
+		
+		double cosa = dessus/(dessous1*dessous2);
+		
+		this.setCoefLuminosite(Math.acos(cosa)/3);
+	}
 	
 	/**
 	 * Recupérer les points d'une face dans un tableau.

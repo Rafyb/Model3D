@@ -137,10 +137,10 @@ public class Affichage implements Observer {
 			gc.setFill(Color.GREY);
 			Face face = mod.getFaceAtIndex(i);
 			Point[] points = face.getTabp();
-			if(face.getCouleur()!= null) {
-				int[] colors = face.getCouleur();
-				gc.setFill(Color.rgb(colors[0], colors[1], colors[2]));
-			}
+			
+			int[] colors = face.getCouleur();
+			gc.setFill(Color.rgb((int)(colors[0]*face.getCoefLuminosite()), (int)(colors[1]*face.getCoefLuminosite()), (int)(colors[2]*face.getCoefLuminosite())));
+
 			if(mod.getCheckF())gc.fillPolygon(new double[]{points[0].getX()+(canvas.getWidth()/2),points[1].getX()+(canvas.getWidth()/2),points[2].getX()+(canvas.getWidth()/2)},
 					new double[]{points[0].getY()+(canvas.getHeight()/2),points[1].getY()+(canvas.getHeight()/2),points[2].getY()+(canvas.getHeight()/2)},3);
 			if(mod.getCheckT())gc.strokePolygon(new double[]{points[0].getX()+(canvas.getWidth()/2),points[1].getX()+(canvas.getWidth()/2),points[2].getX()+(canvas.getWidth()/2)},

@@ -15,6 +15,7 @@ public class Point{
 	 * @param e = coordonnée Z
 	 */
 	public Point(double c, double d, double e) {
+		r = g = b = -1;
 		x = c;
 		y = d;
 		z = e;

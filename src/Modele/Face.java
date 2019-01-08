@@ -25,13 +25,16 @@ public class Face implements Comparable<Face>{
 		double zG = (s.getZ()+s1.getZ()+s2.getZ())/3;
 		centreGravite = new Point(xG,yG,zG);
 		
-		if(s.getR() == -1 || s1.getR() == -1 || s2.getR() == -1)
+		if(this.estColore())
 			couleur = new int[] {200,200,200};
 		else
 			couleur = new int[]{(int)(s.getR()+s1.getR()+s2.getR())/3,(int)(s.getG()+s1.getG()+s2.getG())/3,(int)(s.getB()+s1.getB()+s2.getB())/3};
 
 	}
 	
+	public boolean estColore() {
+		return (tabp[0].getR() == -1 || tabp[1].getR() == -1 || tabp[2].getR() == -1);
+	}
 	
 	/**
 	 * Recupérer le coefficent de luminosité d'une face.
@@ -55,7 +58,7 @@ public class Face implements Comparable<Face>{
 	 */
 	public void calculNormal() {
 
-
+		if (Modele.getModele(null).getCheckO()) {
 		Vec3f vL = new Vec3f(-0,1,0);
 		
 		Vec3f v1 = new Vec3f((float)(tabp[1].getX()-tabp[0].getX()),(float)(tabp[1].getY()-tabp[0].getY()),(float)(tabp[1].getZ()-tabp[0].getZ()));
@@ -70,6 +73,9 @@ public class Face implements Comparable<Face>{
 		double cosa = dessus/(dessous1*dessous2);
 		
 		this.setCoefLuminosite(Math.acos(cosa)/3);
+		} else {
+			this.setCoefLuminosite(0.5);
+		}
 	}
 	
 	/**

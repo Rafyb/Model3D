@@ -79,6 +79,7 @@ public final class Modele extends Observable{
 	public void triZ() {
 		Arrays.sort(face);
 	}
+	
 		
 	/**
 	 * Methode pour centrer le modele par rapport a�la vue.

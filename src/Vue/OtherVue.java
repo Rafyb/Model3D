@@ -60,7 +60,7 @@ public class OtherVue extends Application implements Runnable{
 				
 				Thread.sleep(100);
 				mod.rotationY(2);
-			} catch (InterruptedException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}

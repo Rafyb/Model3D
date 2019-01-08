@@ -191,6 +191,7 @@ public final class Modele extends Observable{
 		else {
 			affOmbre = true;
 		}
+		this.update();
 		this.setChanged();
 		notifyObservers();
 	}

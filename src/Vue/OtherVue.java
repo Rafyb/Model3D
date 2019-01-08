@@ -57,7 +57,7 @@ public class OtherVue extends Application implements Runnable{
 				mod.triZ();
 				printTriangle();
 				
-				Thread.sleep(100);
+				Thread.sleep(2000);
 				mod.rotationY(2);
 			} catch (InterruptedException e) {
 				e.printStackTrace();

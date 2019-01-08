@@ -48,6 +48,7 @@ public class OtherVue extends Application implements Runnable{
 	 * Methode issu de l'implementation de Runnable qui lance l'execution d'un second thread pour
 	 * gerer la rotation du modele sur la nouvelle fenetre.
 	 */
+	@SuppressWarnings("deprecation")
 	public void run() {
     	mod.checkR();
     	mod.centrer();
@@ -75,7 +76,7 @@ public class OtherVue extends Application implements Runnable{
 		canvas = new Canvas (800, 800);
 		gc = canvas.getGraphicsContext2D();
 		printTriangle();
-
+		
 		VBox root = new VBox();
 		root.getChildren().add(canvas);
 		

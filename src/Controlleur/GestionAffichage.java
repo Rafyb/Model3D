@@ -110,6 +110,7 @@ public class GestionAffichage implements Observer{
 	    ombre.setSelected(true);
 	    
 	    Button rotAuto = new Button("Rotation Automatique");
+	    Button centre = new Button("Centrer");
 	    
 	    ligne2.getChildren().addAll(zoom,dezoom);
 	    
@@ -148,6 +149,9 @@ public class GestionAffichage implements Observer{
 	    face.setOnAction(e-> mod.checkF());
 	    ombre.setOnAction(e -> mod.checkO());
 	    
+	    centre.setOnAction(e->{
+	    mod.centrer();
+	    });
 
 	    rotAuto.setOnAction(e->{
 		    Stage st2 = new Stage();
@@ -211,7 +215,7 @@ public class GestionAffichage implements Observer{
 	    root.setStyle("-fx-background-color: #8FAAC8;");
 	    
 	    comboBox.getItems().setAll(listeModele);
-	    root.getChildren().addAll(choixT,comboBox,ligne1,sliderrot,boutonsRot,ligne2,ligne3,slidertr,boutonsTr,ligne4,ligne5,ligne6,rotAuto);
+	    root.getChildren().addAll(choixT,comboBox,ligne1,sliderrot,boutonsRot,ligne2,ligne3,slidertr,boutonsTr,ligne4,ligne5,ligne6,rotAuto,centre);
 	    root.setPadding(new Insets(10,15,20,20));
 	    root.setSpacing(10);
 	    

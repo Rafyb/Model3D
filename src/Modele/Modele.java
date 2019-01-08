@@ -66,6 +66,7 @@ public final class Modele extends Observable{
 		points = r.getPoint();
 		face = r.getFace();
 
+		this.rotationZ(180);
 		this.update();
 		this.centrer();
 		this.setChanged();
@@ -119,6 +120,8 @@ public final class Modele extends Observable{
 		}
 		
 		t.transformation(new Redimensionnement(this),zoom);
+		this.setChanged();
+		notifyObservers();
 
 		//System.out.println(" xMin = "+ xMin +" xMax = "+ xMax + " yMin = "+ yMin + " yMax = "+ yMax);
 	}

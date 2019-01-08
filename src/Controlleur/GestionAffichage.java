@@ -163,7 +163,7 @@ public class GestionAffichage implements Observer{
 	    });
 	    
 	    try {
-	    comboBox.setValue("corner.ply");
+	    comboBox.setValue("beethoven.ply");
 	    comboBox.getSelectionModel().selectedItemProperty().addListener(observable -> {
 			try {
 				mod.changerModele(new ReadModele("./data/"+comboBox.getSelectionModel().getSelectedItem()));

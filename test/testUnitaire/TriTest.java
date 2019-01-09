@@ -78,15 +78,15 @@ public class TriTest {
 		
 		
 		
-		//On ajoute 380.001 car les points sont centrés	
+		//On ajoute 299.009 car les points sont centrés			
 		
-		assertEquals(380.001 - 25.43, test1.getPointAtIndex(0).getX(),0.001);
-		assertEquals(0 + 0.188, test1.getPointAtIndex(0).getY(),0.001);
+		assertEquals(299.009-19.75, test1.getPointAtIndex(0).getX(),0.001);
+		assertEquals(0.0, test1.getPointAtIndex(0).getY(),0.001);
 		assertEquals(0.0, test1.getPointAtIndex(0).getZ());
 		
 		
-		assertEquals(-1 - 0.6875, test1.getPointAtIndex(3).getX());
-		assertEquals(380.001 - 23.554, test1.getPointAtIndex(3).getY(),0.001);
+		assertEquals(-2 , test1.getPointAtIndex(3).getX());
+		assertEquals(299.009-17.75, test1.getPointAtIndex(3).getY(),0.001);
 		assertEquals(0.0, test1.getPointAtIndex(3).getZ());
 		}
 
@@ -98,7 +98,7 @@ public class TriTest {
 		r.appliquer(test1, rotation);
 
 
-		//On ajoute 380.001 car les points sont centrés	
+		//On ajoute 299.009 car les points sont centrés
 		
 				assertEquals(380.010 + 93.761 , test1.getPointAtIndex(0).getX(),0.001);
 				assertEquals(1, test1.getPointAtIndex(0).getY(),1);
@@ -120,8 +120,7 @@ public class TriTest {
 
 
 
-		//On ajoute 380.001 car les points sont centrés	8
-		
+		//On ajoute 299.009 car les points sont centrés		
 				assertEquals(380.001+ 92.761, test1.getPointAtIndex(0).getX(),0.001);
 				assertEquals(0 +1.0, test1.getPointAtIndex(0).getY(),1);
 				assertEquals(0.0, test1.getPointAtIndex(0).getZ(),0.001);
@@ -142,8 +141,7 @@ public class TriTest {
 		int rotation = 1;
 		r.appliquer(test1, rotation);
 		
-		//On ajoute 380.001 car les points sont centrés	
-		
+		//On ajoute 299.009 car les points sont centrés		
 		assertEquals(380.001+ 93.689, test1.getPointAtIndex(0).getX(),0.001);
 		assertEquals(0 + 1.25, test1.getPointAtIndex(0).getY());
 		assertEquals(0 - 8.29, test1.getPointAtIndex(0).getZ(),0.001);
@@ -161,8 +159,7 @@ public class TriTest {
 		int rotation = -1;
 		r.appliquer(test1, rotation);
 		
-		//On ajoute 380.001 car les points sont centrés	
-		
+		//On ajoute 299.009 car les points sont centrés		
 				assertEquals(380.001+ 93.761, test1.getPointAtIndex(0).getX(),0.001);
 				assertEquals(0 + 1.25, test1.getPointAtIndex(0).getY());
 				assertEquals(0, test1.getPointAtIndex(0).getZ(),0.001);
@@ -181,8 +178,7 @@ public class TriTest {
 		int rotation = 1;
 		r.appliquer(test1, rotation);
 		
-		//On ajoute 380.001 car les points sont centrés	
-		
+		//On ajoute 299.009 car les points sont centrés		
 		assertEquals(378.860 + 379.0099999998003 , test1.getPointAtIndex(0).getX(),0.001);
 		assertEquals(15.228, test1.getPointAtIndex(0).getY(),0.001);
 		assertEquals(0.0, test1.getPointAtIndex(0).getZ(),1);
@@ -200,8 +196,7 @@ public class TriTest {
 		int rotation = -1;
 		r.appliquer(test1, rotation);
 		
-		//On ajoute 380.001 car les points sont centrés	
-		
+		//On ajoute 299.009 car les points sont centrés		
 		assertEquals(0.952+ 379.001, test1.getPointAtIndex(0).getX(),0.01);
 		assertEquals(-6.632, test1.getPointAtIndex(0).getY(),0.01);
 		assertEquals(0.0, test1.getPointAtIndex(0).getZ());
@@ -221,36 +216,36 @@ public class TriTest {
 		test1.zoom(zoom);
 		test1.triZ();
 
-		//On ajoute 380.001 car les points sont centrés	
+		///On ajoute 299.009 car les points sont centrés		
 	
-		assertEquals(380.01 + 93.761, test1.getPointAtIndex(0).getX(), 0.01);
-		assertEquals(1.25, test1.getPointAtIndex(0).getY());
+		assertEquals(299.009 + 75.003, test1.getPointAtIndex(0).getX(), 0.01);
+		assertEquals(1.0, test1.getPointAtIndex(0).getY());
 		assertEquals(0.0, test1.getPointAtIndex(0).getZ());
 
 
-		assertEquals(-1.25, test1.getPointAtIndex(3).getX());
-		assertEquals(96.25 + 380.01, test1.getPointAtIndex(3).getY(), 0.01);
+		assertEquals(-1.00, test1.getPointAtIndex(3).getX());
+		assertEquals(77.01 + 299.009, test1.getPointAtIndex(3).getY(), 0.01); 
 		assertEquals(0.0, test1.getPointAtIndex(3).getZ());
 	}
 
 	@Test
 	public void TranslationHaut() {
-		Translation r= new Translation();
+		
 		Point p = new Point(0, -1, 0);
-		r.appliquer(test1, p);
+		test1.translation(p);
 		
 		
-		//On ajoute 380.001 car les points sont centrés	
-
-		
-		assertEquals( 380.001 + 93.761, test1.getPointAtIndex(0).getX(),0.001);
-		assertEquals(0 + 0.25, test1.getPointAtIndex(0).getY(),1);
-		assertEquals(0.0, test1.getPointAtIndex(0).getZ(),1);
+		//On ajoute 299.009 car les points sont centrés	
 		
 		
-		assertEquals(-1.0 - 0.25, test1.getPointAtIndex(3).getX());
-		assertEquals(380.001 + 95.189, test1.getPointAtIndex(3).getY(),0.001);
-		assertEquals(0 + 8.29, test1.getPointAtIndex(3).getZ(),0.001);
+		assertEquals(75.003 + 299.009, test1.getPointAtIndex(0).getX(),0.001);
+		assertEquals(0.0, test1.getPointAtIndex(0).getY());
+		assertEquals(0.0, test1.getPointAtIndex(0).getZ());
+		
+		
+		assertEquals(-1.0, test1.getPointAtIndex(3).getX());
+		assertEquals(76.003 + 299.009, test1.getPointAtIndex(3).getY(),0.001);
+		assertEquals(0.0, test1.getPointAtIndex(3).getZ());
 		
 		}
 	
@@ -260,21 +255,21 @@ public class TriTest {
 	
 	@Test
 	public void TranslationBas() {
-		Translation r= new Translation();
-		Point p = new Point(0, 1, 0);
-		r.appliquer(test1, p);
 		
-		//On ajoute 380.001 car les points sont centrés	
+		Point p = new Point(0, 1, 0);
+		test1.translation(p);
+		
+		//On ajoute 299.009 car les points sont centrés	
 
 		
 		
-		assertEquals(1.0 + 379.0099999998003, test1.getPointAtIndex(0).getX());
+		assertEquals(1.0 + 299.009, test1.getPointAtIndex(0).getX(),0.001);
 		assertEquals(1.0, test1.getPointAtIndex(0).getY());
 		assertEquals(0.0, test1.getPointAtIndex(0).getZ());
 		
 		
 		assertEquals(0.0, test1.getPointAtIndex(3).getX());
-		assertEquals(2.0 + 379.0099999998003, test1.getPointAtIndex(3).getY());
+		assertEquals(2.0 + 299.009, test1.getPointAtIndex(3).getY(),0.001);
 		assertEquals(0.0, test1.getPointAtIndex(3).getZ());
 		
 	
@@ -284,20 +279,21 @@ public class TriTest {
 	
 	@Test
 	public void TranslationDroit() {
-		Translation r= new Translation();
+		
 		Point p = new Point(-1, 0, 0);
-		r.appliquer(test1, p);
+		test1.translation(p);
 		
-		//On ajoute 380.001 car les points sont centrés	
-	
-		assertEquals(380.001 +92.761 , test1.getPointAtIndex(0).getX(),0.001);
-		assertEquals(1.0, test1.getPointAtIndex(0).getY(),1);
-		assertEquals(0.0, test1.getPointAtIndex(0).getZ(),0.001);
+		//On ajoute 299.009 car les points sont centrés	
 		
 		
-		assertEquals(-1.0 - 1.25, test1.getPointAtIndex(3).getX());
-		assertEquals(380.001 +95.189 , test1.getPointAtIndex(3).getY(),0.001);
-		assertEquals(0 +8.29, test1.getPointAtIndex(3).getZ(),0.001);
+		assertEquals(74.003 + 299.009, test1.getPointAtIndex(0).getX(),0.001);
+		assertEquals(0.0, test1.getPointAtIndex(0).getY());
+		assertEquals(0.0, test1.getPointAtIndex(0).getZ());
+		
+		
+		assertEquals(-2.0, test1.getPointAtIndex(3).getX());
+		assertEquals(76.003 + 299.009, test1.getPointAtIndex(3).getY(),0.001);
+		assertEquals(0.0, test1.getPointAtIndex(3).getZ());
 		
 		
 	}
@@ -311,23 +307,22 @@ public class TriTest {
 	
 	@Test
 	public void TranslationGauche() {
-		Translation r= new Translation();
 		Point p = new Point(-1, 0, 0);
-		r.appliquer(test1, p);
+		test1.translation(p);
 		
 		
-		//On ajoute 380.001 car les points sont centrés	
+		//On ajoute 299.009 car les points sont centrés	
 
-			assertEquals(379.0099999998003 , test1.getPointAtIndex(0).getX());
+			assertEquals(0 + 299.009 , test1.getPointAtIndex(0).getX(),0.001);
 			assertEquals(1.0, test1.getPointAtIndex(0).getY());
 			assertEquals(0.0, test1.getPointAtIndex(0).getZ());
 			
 			
 			assertEquals(-1.0, test1.getPointAtIndex(3).getX());
-			assertEquals(2+ 379.0099999998003, test1.getPointAtIndex(3).getY());
+			assertEquals(2+ 299.009, test1.getPointAtIndex(3).getY(),0.001);
 			assertEquals(0.0, test1.getPointAtIndex(3).getZ());
 
-	//	}
+	
 		
 	}
 	
@@ -401,23 +396,7 @@ public class TriTest {
     	
     }
     
-    
-    @Test
-    public void pointCompareY(){
-    	Point point1 = new Point(1.0, 1.0, 1.0);
-    	Point point2 = new Point(1.0, 2.0, 1.0);
-    	Point point3 = new Point(1.0, 0.0, 1.0);
-    	Point point6 = new Point(1.0, 1.0, 1.0, 22.0, 253.0, 58.4);
-    	
-    	assertEquals(-1, point1.compareTo(point2));
-    	assertEquals(1, point1.compareTo(point3));
-    	assertEquals(0, point1.compareTo(point6));
-    	
-    }
-   
-    
-    
-       
+
 
 
 

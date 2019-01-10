@@ -7,16 +7,18 @@ import com.sun.javafx.geom.Vec3f;
  * @author danglotc
  */
 public class Face implements Comparable<Face>{	
+
 	private Point[] tabp;
 	private int[] couleur;
 	private Point centreGravite;
 	private double coefLuminosite;
+	
 	/**
-	 * Constructeur : 
-	 * @param s Premier point ( x ) 
+	 * Constructeur : .
+	 *
+	 * @param s Premier point ( x )
 	 * @param s1 Deuxieme point ( y )
 	 * @param s2 Troisieme point ( z )
-	 * 
 	 */
 	public Face(Point s, Point s1, Point s2) { 
 		tabp = new Point[] {s, s1, s2};
@@ -46,7 +48,8 @@ public class Face implements Comparable<Face>{
 	
 	/**
 	 * Modifier le coefficent de luminosité d'une face.
-	 * @param  Un coefficient entre 0 et 1.
+	 *
+	 * @param coefLuminosite the new coef luminosite
 	 */
 	public void setCoefLuminosite(double coefLuminosite) {
 		this.coefLuminosite = coefLuminosite;
@@ -130,8 +133,9 @@ public class Face implements Comparable<Face>{
 	}
 
 	/**
-	 * @param o
-	 * Une fonction de tri pour l'affichage du modèle.
+	 * Compare to.
+	 *
+	 * @param o Une fonction de tri pour l'affichage du modèle.
 	 * @return 1, -1, 0
 	 */
 	public int compareTo(Face o) {

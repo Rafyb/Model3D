@@ -18,11 +18,14 @@ import Modele.ReadModele;
 
 
 public class TriTest {
+	
 	Modele test1 ;
 	FileWriter fWriter1;
 	//Modele test2 ;
-	ReadModele exist;	
+	ReadModele exist;
+	Matrice t;
 	
+
 	@Before
 	public void setup() throws WrongNumberOfPoint, WrongNumberFace, IOException {
 		fWriter1 = new FileWriter("data/cornertest.ply");
@@ -51,7 +54,7 @@ public class TriTest {
 				"3 5 0 3 \n" );
 		fWriter1.close();
 				
-		
+		t = new Matrice();
 		test1  = Modele.getModele(new ReadModele("data/cornertest.ply"));
 		exist =  new ReadModele("data/cornertest.ply");	
 		//test2  = new Modele(new ReadModele("data/cornertrie.ply"));
@@ -71,6 +74,9 @@ public class TriTest {
 	}
 	*/
 
+	/**
+	 * Dezoom.
+	 */
 	@Test
 	public void Dezoom() {
         double dezoom = 0.25;
@@ -90,12 +96,15 @@ public class TriTest {
 		assertEquals(0.0, test1.getPointAtIndex(3).getZ());
 		}
 
+	/**
+	 * Rotation X haut.
+	 */
 	@Test
 	public void RotationXHaut() {
 		int rotation = 1;
 
-		RotationX r = new RotationX();
-		r.appliquer(test1, rotation);
+		t.transformation(new RotationX(test1),rotation);
+
 
 
 		//On ajoute 299.009 car les points sont centrés
@@ -111,12 +120,14 @@ public class TriTest {
 				}
 	
 	
+	/**
+	 * Rotation X bas.
+	 */
 	@Test
 	public void RotationXBas() {
 		int rotation = -1;
 
-		RotationX r = new RotationX();
-		r.appliquer(test1, rotation);
+		t.transformation(new RotationX(test1),rotation);
 
 
 
@@ -135,11 +146,14 @@ public class TriTest {
 
 	
 
+	/**
+	 * Rotation Y droite.
+	 */
 	@Test
 	public void RotationYDroite() {
-		RotationX r = new RotationX();
+		
 		int rotation = 1;
-		r.appliquer(test1, rotation);
+		t.transformation(new RotationY(test1),rotation);
 		
 		//On ajoute 299.009 car les points sont centrés		
 		assertEquals(380.001+ 93.689, test1.getPointAtIndex(0).getX(),0.001);
@@ -153,11 +167,15 @@ public class TriTest {
 		}
 	
 	
+	/**
+	 * Rotation Y gauche.
+	 */
 	@Test
 	public void RotationYGauche() {
-		RotationX r = new RotationX();
 		int rotation = -1;
-		r.appliquer(test1, rotation);
+		t.transformation(new RotationY(test1),rotation);
+		
+		
 		
 		//On ajoute 299.009 car les points sont centrés		
 				assertEquals(380.001+ 93.761, test1.getPointAtIndex(0).getX(),0.001);
@@ -172,11 +190,15 @@ public class TriTest {
 		
 	
 
+	/**
+	 * Rotation Z droite.
+	 */
 	@Test
 	public void RotationZDroite() {
-		RotationX r = new RotationX();
+		
 		int rotation = 1;
-		r.appliquer(test1, rotation);
+		t.transformation(new RotationZ(test1),rotation);
+		
 		
 		//On ajoute 299.009 car les points sont centrés		
 		assertEquals(378.860 + 379.0099999998003 , test1.getPointAtIndex(0).getX(),0.001);
@@ -190,11 +212,13 @@ public class TriTest {
 		}
 	
 	
+	/**
+	 * Rotation Z gauche.
+	 */
 	@Test
 	public void RotationZGauche() {
-		RotationX r = new RotationX();
 		int rotation = -1;
-		r.appliquer(test1, rotation);
+		t.transformation(new RotationZ(test1),rotation);
 		
 		//On ajoute 299.009 car les points sont centrés		
 		assertEquals(0.952+ 379.001, test1.getPointAtIndex(0).getX(),0.01);
@@ -210,6 +234,9 @@ public class TriTest {
 	
 
 
+	/**
+	 * Zoom.
+	 */
 	@Test
 	public void Zoom() {
 		double zoom = 0.25;
@@ -228,6 +255,9 @@ public class TriTest {
 		assertEquals(0.0, test1.getPointAtIndex(3).getZ());
 	}
 
+	/**
+	 * Translation haut.
+	 */
 	@Test
 	public void TranslationHaut() {
 		
@@ -253,6 +283,9 @@ public class TriTest {
 	
 	
 	
+	/**
+	 * Translation bas.
+	 */
 	@Test
 	public void TranslationBas() {
 		
@@ -277,6 +310,9 @@ public class TriTest {
 	}
 	
 	
+	/**
+	 * Translation droit.
+	 */
 	@Test
 	public void TranslationDroit() {
 		
@@ -305,6 +341,9 @@ public class TriTest {
 	
 	
 	
+	/**
+	 * Translation gauche.
+	 */
 	@Test
 	public void TranslationGauche() {
 		Point p = new Point(-1, 0, 0);
@@ -326,6 +365,9 @@ public class TriTest {
 		
 	}
 	
+	/**
+	 * Recup face.
+	 */
 	@Test
 	public void RecupFace() {
 		
@@ -336,6 +378,9 @@ public class TriTest {
 		
 	}
 	
+	/**
+	 * Recup points.
+	 */
 	@Test
 	public void RecupPoints() {
     assertEquals(6,exist.getNbPoints());
@@ -344,6 +389,9 @@ public class TriTest {
 		
 	}
  
+	/**
+	 * File exist.
+	 */
 	@SuppressWarnings("static-access")
 	@Test
 	public void FileExist() {
@@ -352,6 +400,9 @@ public class TriTest {
 	}
 
 	
+	/**
+	 * Recup not exist.
+	 */
 	@SuppressWarnings("static-access")
 	@Test
 	public void RecupNotExist() {
@@ -359,6 +410,9 @@ public class TriTest {
 		
 	}
 
+    /**
+     * Point to sting.
+     */
     @Test
     public void pointToSting(){
     	Point point = new Point(1.0, 1.0, 1.0);
@@ -366,6 +420,9 @@ public class TriTest {
     	
     }
     
+    /**
+     * Face to sting.
+     */
     @Test
     public void faceToSting(){
     	Point point1 = new Point(1.0, 1.0, 1.0);
@@ -378,6 +435,9 @@ public class TriTest {
     	assertEquals("[(1.0,1.0,1.0)-(2.0,2.0,2.0)-(3.0,3.0,3.0)]", face.toString());    	
     }
     
+    /**
+     * Face compare.
+     */
     @Test
     public void faceCompare(){
     	Point point1 = new Point(1.0, 1.0, 1.0);

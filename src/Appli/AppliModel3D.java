@@ -12,7 +12,6 @@ import javafx.stage.Stage;
  */
 public class AppliModel3D extends Application {
 
-	@Override
 	public void start(Stage primaryStage) throws Exception {
 		Modele mod = Modele.getModele(new ReadModele("data/beethoven.ply"));
 		Affichage aff = new Affichage(mod);

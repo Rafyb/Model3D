@@ -14,6 +14,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
 /**
  * La vue du modele,fonctionne sous la forme de Observer/Observable.
  * Fenetre affichant le modele en 3D à l'aide d'une methode de dessin de triangle.
@@ -39,9 +40,9 @@ public class Affichage implements Observer {
 		mod.addObserver(this);
 		x=y=0;
 	}
+	
 	/**
 	 * Methode principale.
-	 * @param stage stage
 	 */
 	public void start(Stage stage) { 
 
@@ -149,7 +150,8 @@ public class Affichage implements Observer {
 	}
 
 	/**
-	 * Methode pour mettre a jour l'affichage en effacant l'ecran et en triant le modele.	 
+	 * Methode pour mettre a jour l'affichage en effacant l'ecran et en triant le modele.
+	 *
 	 */
 	public void update(Observable o, Object arg) {
 		try {

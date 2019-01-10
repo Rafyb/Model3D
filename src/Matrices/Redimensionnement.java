@@ -3,15 +3,16 @@ package Matrices;
 import Modele.Modele;
 import Modele.Point;
 
+/**
+ * Fait parti du desing pattern "Strategy"
+ * Permet d'effectuer un Redimensionnement.
+ * @author canonnet
+ */
 public class Redimensionnement implements StrategieTransformation{
+
 	Modele m;
 	Translation t;
 	
-	/**
-	 * Fait parti du desing pattern "Strategy"
-	 * Permet d'agrandir et de retrecir le modele
-	 * @author canonnet
-	 */
 	public Redimensionnement(Modele m) {
 		this.m=m;
 		t = new Translation(m);
@@ -19,7 +20,6 @@ public class Redimensionnement implements StrategieTransformation{
 	
 	/**
 	 * Zoomer la figure selon un parametre de zoom donne.
-	 * @param coef le coef utilise pour le zoom
 	 */
 	public void appliquer(Object o) {
 		double coef = (double)o;

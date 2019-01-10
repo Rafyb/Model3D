@@ -9,10 +9,9 @@ import java.io.IOException;
 import ExceptionTest.WrongNumberFace;
 import ExceptionTest.WrongNumberOfPoint;
 
-
 /**
  * Lit un fichier de format .ply et genere la liste de point et de face du modele.
- * @author danglotc
+ * @author canonnet
  */
 public class ReadModele {
 	/**
@@ -25,19 +24,18 @@ public class ReadModele {
 	 */
 	private File f;
 	private BufferedReader br;
-
 	private int nbPoint;
 	private int nbFace;
-
 	private Point[] points;
 	private Face[] faces;
 
 
 	/**
 	 * Constructeur prenant en param fichier l'adresse d'un fichier, génère un objet ReadModele contenant les faces et les points lues sur le fichier.
-	 *  @param fichier adresse du fichier
-	 * @throws WrongNumberOfPoint 
-	 * @throws WrongNumberFace 
+	 *
+	 * @param fichier adresse du fichier
+	 * @throws WrongNumberOfPoint the wrong number of point
+	 * @throws WrongNumberFace the wrong number face
 	 */
 	public ReadModele(String fichier) throws WrongNumberOfPoint, WrongNumberFace {
 		if(ReadModele.fileExist(fichier)) {
@@ -131,11 +129,13 @@ public class ReadModele {
 		} while (!st.contains("end_header"));
 		return st;
 	}
+	
 	/**
 	 * Permet d'insérer le nombre de points dans le tableau.
+	 *
 	 * @param nbPoint nombres de points dans le tableau
-	 *  @return tableau de points mis à jour
-	 * @throws WrongNumberOfPoint 
+	 * @return tableau de points mis à jour
+	 * @throws WrongNumberOfPoint the wrong number of point
 	 */
 	public Point[] insertPoints(int nbPoint) throws WrongNumberOfPoint {
 		points = new Point[nbPoint];
@@ -157,11 +157,13 @@ public class ReadModele {
 		}
 		return points;
 	}
+	
 	/**
 	 * Permet d'insérer le nombre de faces dans le tableau.
+	 *
 	 * @param nbFace nombres de faces dans le tableau
-	 *  @return tableau de faces mis à jour
-	 * @throws WrongNumberFace 
+	 * @return tableau de faces mis à jour
+	 * @throws WrongNumberFace the wrong number face
 	 */
 
 	public Face[] insertFaces(int nbFace) throws WrongNumberFace {

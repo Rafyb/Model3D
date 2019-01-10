@@ -9,6 +9,7 @@ import Modele.Point;
  * @author canonnet
  */
 public class Translation implements StrategieTransformation{
+
 	Modele m;
 	
 	public Translation(Modele m) {
@@ -17,7 +18,6 @@ public class Translation implements StrategieTransformation{
 
 	/**
 	 * Methode permettant de faire les transitions de la figure.
-	 * @param p le point utilise pour la translation
 	 */
 	public void appliquer(Object o) {
 		Point p = (Point)o;

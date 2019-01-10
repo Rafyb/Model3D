@@ -9,6 +9,7 @@ import Modele.Point;
  * @author canonnet
  */
 public class RotationX implements StrategieTransformation{	
+
 	Modele m;
 	Translation t;
 	

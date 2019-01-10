@@ -8,7 +8,8 @@ package Matrices;
 public interface StrategieTransformation {
 	
 	/**
-	 * Methode commune a toutes les transformations, applique la transformation
+	 * Methode commune a toutes les transformations, applique la transformation.
+	 *
 	 * @param o > argument de transformation
 	 */
 	public void appliquer(Object o);

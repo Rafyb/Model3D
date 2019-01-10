@@ -9,9 +9,10 @@ import Modele.Point;
  * @author canonnet
  */
 public class RotationZ implements StrategieTransformation{
+
 	Modele m;
 	Translation t;
-	
+
 	public RotationZ(Modele m) {
 		this.m = m;
 		t = new Translation(m);

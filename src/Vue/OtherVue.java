@@ -15,11 +15,13 @@ import javafx.stage.Stage;
  * @author bauvinr
  */
 public class OtherVue extends Application implements Runnable{
+	
 	private GraphicsContext gc;
 	private Canvas canvas;
 	private Modele mod;
 	private Stage stage;
 	
+
 	public OtherVue(Modele mod) {
 		this.mod = mod;
 	}
@@ -48,7 +50,6 @@ public class OtherVue extends Application implements Runnable{
 	 * Methode issu de l'implementation de Runnable qui lance l'execution d'un second thread pour
 	 * gerer la rotation du modele sur la nouvelle fenetre.
 	 */
-	@SuppressWarnings("deprecation")
 	public void run() {
     	mod.checkR();
     	mod.centrer();

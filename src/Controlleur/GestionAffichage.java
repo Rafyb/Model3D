@@ -23,6 +23,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+
 /**
  * Un controleur attache au modele qui est la fenetre de controle de l'affichage.
  * Permet d'effectuer les differentes operations de translation/rotation/zoom.
@@ -30,6 +31,8 @@ import javafx.stage.Stage;
  * @author bauvinr
  */
 public class GestionAffichage implements Observer{
+	
+
 	private Modele mod;
 	private ArrayList<String> listeModele;
 	private ComboBox<String> comboBox;
@@ -51,13 +54,11 @@ public class GestionAffichage implements Observer{
 			if (s.contains(".ply")) listeModele.add(s);		
 		}
 		listeModele.sort(null);
-		//System.out.println(listeModele);
 	}
 	  /**
 	   * Afficher tout les controleurs du modele.
 	   * @param stage stage
 	   */
-	
 	public void start(Stage stage) {
 	    GridPane boutonsRot = new GridPane();
 	    GridPane boutonsTr = new GridPane();
@@ -230,6 +231,7 @@ public class GestionAffichage implements Observer{
 		comboBox.setValue(comboBox.getSelectionModel().getSelectedItem());
 	}
 	
+
 	public VBox getPage() {
 		return root;
 	}

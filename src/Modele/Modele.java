@@ -3,6 +3,7 @@ package Modele;
 import java.util.Arrays;
 import java.util.Observable;
 import Matrices.*;
+
 /**
  * Class principal, elle represente le Modele 3D et fait partie de la configuration MVC.
  * Le MVC est construit autour de Observer/Observable, le modele est l'observable.
@@ -34,11 +35,11 @@ public final class Modele extends Observable{
 	private boolean affOmbre = true;
 	private boolean rotAuto = false;
 	private Point centreModele;
-	
 	private static Modele instance = null;
 	
 	/**
-	 * Constructeur
+	 * Constructeur.
+	 *
 	 * @param r le reader du fichier du modele.
 	 */
 	private Modele(ReadModele r) {
@@ -124,7 +125,6 @@ public final class Modele extends Observable{
 		this.setChanged();
 		notifyObservers();
 
-		//System.out.println(" xMin = "+ xMin +" xMax = "+ xMax + " yMin = "+ yMin + " yMax = "+ yMax);
 	}
 	
 	/**
@@ -150,6 +150,8 @@ public final class Modele extends Observable{
 	}
 	
 	/**
+	 * Gets the centre modele.
+	 *
 	 * @return le point au centre du Modele.
 	 */
 	public Point getCentreModele() {
@@ -157,14 +159,16 @@ public final class Modele extends Observable{
 	}
 	
 	/**
-	 * @param le point que l'on d�finit comme le centre du modele.
+	 * Sets the centre modele.
+	 *
+	 * @param centreModele the new centre modele
 	 */
 	public void setCentreModele(Point centreModele) {
 		this.centreModele = centreModele;
 	}
 	
 	/**
-	 * Switch l'�tat d'afficher Trait.
+	 * Switch l'etat d'afficher Trait.
 	 */
 	public void checkT() {
 		if(affTrait) affTrait =false;
@@ -176,7 +180,7 @@ public final class Modele extends Observable{
 	}
 	
 	/**
-	 * Switch l'�tat d'afficher Face.
+	 * Switch l'etat d'afficher Face.
 	 */
 	public void checkF() {
 		if(affFace) affFace =false;
@@ -188,7 +192,7 @@ public final class Modele extends Observable{
 	}
 	
 	/**
-	 * Switch l'�tat d'afficher le flux lumineux.
+	 * Switch l'etat d'afficher le flux lumineux.
 	 */
 	public void checkO() {
 		if(affOmbre) affOmbre =false;
@@ -201,7 +205,7 @@ public final class Modele extends Observable{
 	}
 	
 	/**
-	 * Switch l'�tat de la rotationAuto.
+	 * Switch l'etat de la rotationAuto.
 	 */
 	public void checkR() {
 		if(rotAuto) rotAuto =false;

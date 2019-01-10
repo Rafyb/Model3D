@@ -8,7 +8,8 @@ package Matrices;
 public class Matrice {
 	
 	/**
-	 * 
+	 * Transformation.
+	 *
 	 * @param st > la strategie employee pour la transformation
 	 * @param o > l'argument de transformation
 	 */
